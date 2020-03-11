@@ -1,0 +1,50 @@
+<div class="main">
+    <div class="container align-self-center">
+        <h1>Login</h1>
+        <br>
+        <!-- <div class="log">
+        <button class="btn btn-outline-danger logWithGmail">
+            LOGIN WITH GOOGLE
+        </button>
+        </div> -->
+        
+            <div class="row logWithGmail">
+                <div class="col-sm-3">
+                    <img src="../../../assets/g logo.PNG">
+                </div>
+                <div class="col-sm-9">
+                    <div class="but-text"><p>Sign in with Google</p></div>
+                </div>
+            </div>
+        
+        
+            <div class="row">
+                <div class="col-sm-5"><hr></div>
+                <div class="col-sm-2">Or</div>
+                <div class="col-sm-5"><hr></div>
+            </div>
+          <br>
+        <form #logIn="ngForm">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                </div>
+                <input type="text" name="email" ngModel class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                </div>
+                <input type="password" class="form-control" name="password" ngModel placeholder="password" aria-label="Password" aria-describedby="basic-addon1">
+              </div>
+            <input type="checkbox" name="rememberMe" ngModel class="form-group"> <label>Remember me</label>
+            <br>
+            <button class="btn loginBtn">Log In</button>
+            <span><a href="#">Forgot Password?</a></span>
+            <br>
+            <br>
+            Don't have an account? <a routerLink="/signUp">Sign Up</a>
+
+        </form>
+    </div>
+</div>

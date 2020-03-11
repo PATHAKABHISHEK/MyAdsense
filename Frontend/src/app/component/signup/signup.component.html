@@ -1,0 +1,39 @@
+<div class="main">
+    <div class="container align-self-center">
+        <h1>Sign up</h1>
+        <br>
+        <div class="row logWithGmail">
+            <div class="col-sm-3">
+                <img src="../../../assets/g logo.PNG">
+            </div>
+            <div class="col-sm-9">
+                <div class="but-text"><p>Sign up with Google</p></div>
+            </div>
+        </div>
+    
+    
+        <div class="row">
+            <div class="col-sm-5"><hr></div>
+            <div class="col-sm-2">Or</div>
+            <div class="col-sm-5"><hr></div>
+        </div>
+        <br>
+        <form #signUp="ngForm">
+            <!-- {{signUp.value|json}} -->
+            <div class="form-group">
+                <input type="text" name="name" ngModel class="form-control" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+                <input type="text" name="email" ngModel class="form-control" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+            <input type="text" name="password" ngModel class="form-control" placeholder="Create Password">
+            </div> 
+            <input type="checkbox" name="rememberMe" ngModel class="form-group"> <label>By signing up you agree with our T&C</label>
+        <br>
+            <button class="btn loginBtn form-group">Sign up</button>
+            <br>
+            Already have an account?<a routerLink="/">Login</a>
+        </form>
+    </div>
+</div>

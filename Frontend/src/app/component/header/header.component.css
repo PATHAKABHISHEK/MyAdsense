@@ -1,0 +1,21 @@
+li,a,.logo{
+    display: inline;
+    color:#ff1300;
+    text-align: center;
+    padding: 30px;
+    text-decoration: none;
+    
+    
+}
+ul{
+    background: black;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 50px;
+    padding-top: 10px;
+}
+/* .logo{
+    float:left;
+} */
