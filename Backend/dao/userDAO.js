@@ -28,7 +28,6 @@ class UserDAO {
         mobileNumber: mobileNumber
       })
         .then(() => {
-          console.log("added");
           resolve("User Added");
         })
         .catch(err => {
