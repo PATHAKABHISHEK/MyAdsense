@@ -22,7 +22,7 @@
       <div class="form-group">
         <input
           type="text"
-          name="name"
+          name="firstName"
           ngModel
           class="form-control"
           placeholder="First Name"
@@ -31,7 +31,7 @@
       <div class="form-group">
         <input
           type="text"
-          name="name"
+          name="lastName"
           ngModel
           class="form-control"
           placeholder="Last Name"
@@ -40,7 +40,7 @@
       <div class="form-group">
         <input
           type="text"
-          name="email"
+          name="emailId"
           ngModel
           class="form-control"
           placeholder="Email Address"
@@ -67,7 +67,12 @@
       <input type="checkbox" name="rememberMe" ngModel class="form-group" />
       <label>By signing up you agree with our T&C</label>
       <br />
-      <button class="btn loginBtn form-group">Sign up</button>
+      <button
+        class="btn loginBtn form-group"
+        (click)="signUpButton(signUp.value)"
+      >
+        Sign up
+      </button>
       <br />
       Already have an account?<a routerLink="/">Login</a>
     </form>

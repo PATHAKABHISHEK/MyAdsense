@@ -21,9 +21,9 @@ class PasswordHashing {
         .compare(password, hashedPassword)
         .then(result => {
           if (result) {
-            resolve("Password Matched");
+            resolve(true);
           } else {
-            resolve("Password didn't Matched");
+            resolve(false);
           }
         })
         .catch(err => {

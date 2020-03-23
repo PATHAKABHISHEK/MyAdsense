@@ -2,6 +2,10 @@ const userDAO = require("../dao/userDAO").userDAO;
 const passwordHashing = require("../services/passwordHashingService")
   .passwordHashing;
 
+/**
+ * This is UserController
+ * @constructor
+ */
 class UserController {
   constructor(router) {
     this.router = router;
@@ -9,10 +13,15 @@ class UserController {
   }
 
   registerRoutes() {
-    this.router.get("/signUp", this.signUpUser.bind(this));
+    this.router.post("/signUp", this.signUpUser.bind(this));
     this.router.post("/signIn", this.signInUser.bind(this));
   }
-
+  /**
+   * @desc This is a Api of SignUp User
+   * @param {Object} req - This is RequestObject
+   * @param {Object} res
+   * @param {Object} next
+   */
   signUpUser(req, res, next) {
     // Fetching Parameters from request body
     let firstName = req.body.firstName;
@@ -27,14 +36,11 @@ class UserController {
           console.log("User Already Exists");
           next();
         } else {
-          return new Promise();
+          return passwordHashing().hashPassword(password);
         }
       })
-      .then(() => {
-        return passwordHashing().hashPassword(password);
-      })
       .then(hashedPassword => {
-        return addUser(
+        return userDAO().addUser(
           firstName,
           lastName,
           emailId,
@@ -50,10 +56,39 @@ class UserController {
       })
       .catch(err => {
         console.log(err);
+        next();
       });
   }
 
-  signInUser(req, res, next) {}
+  signInUser(req, res, next) {
+    let emailId = req.body.emailId;
+    let password = req.body.password;
+    userDAO()
+      .returnUser(emailId)
+      .then(user => {
+        if (user) {
+          passwordHashing()
+            .comparePassword(password, user.password)
+            .then(result => {
+              if (result) {
+                console.log("valid credentials");
+                user.password = null;
+                res.send(user);
+              } else {
+                console.log("invalid credentials");
+                next();
+              }
+            });
+        } else {
+          console.log("user doesn't exist");
+          next();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        next();
+      });
+  }
 }
 
 const userController = userRouter => {

@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const User = require("../models/index").User;
 
 class UserDAO {
   checkIfUserExists(emailId) {
@@ -8,6 +8,7 @@ class UserDAO {
           if (user) {
             resolve(true);
           } else {
+            console.log("No");
             resolve(false);
           }
         })
@@ -27,7 +28,24 @@ class UserDAO {
         mobileNumber: mobileNumber
       })
         .then(() => {
+          console.log("added");
           resolve("User Added");
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  returnUser(emailId) {
+    return new Promise((resolve, reject) => {
+      User.findOne({ where: { emailId: emailId } })
+        .then(user => {
+          if (user) {
+            resolve(user);
+          } else {
+            resolve({});
+          }
         })
         .catch(err => {
           reject(err);
