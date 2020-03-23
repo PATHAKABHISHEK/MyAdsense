@@ -4,11 +4,11 @@ li,a,.logo{
     text-align: center;
     padding: 30px;
     text-decoration: none;
-    
-    
+    width:50px;
 }
+
 ul{
-    background: black;
+    background:#e9ecef;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -19,3 +19,14 @@ ul{
 /* .logo{
     float:left;
 } */
+.navigation{
+    height: 50px;
+    background:#e9ecef;
+    /* padding-top: 10px; */
+}
+/* .collogo{
+    width: 20%;
+} */
+.colnav{
+    float: right;
+} 

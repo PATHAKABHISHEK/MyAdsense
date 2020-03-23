@@ -10,6 +10,10 @@ import { HomeComponent } from './component/home/home.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { AboutComponent } from './component/about/about.component';
+import { MatrimonialComponent } from './component/matrimonial/matrimonial.component';
+import { PropertyComponent } from './component/property/property.component';
+import { RecuitmentComponent } from './component/recuitment/recuitment.component';
+import { RateComponent } from './component/rate/rate.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { AboutComponent } from './component/about/about.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    AboutComponent
+    AboutComponent,
+    MatrimonialComponent,
+    PropertyComponent,
+    RecuitmentComponent,
+    RateComponent
   ],
   imports: [
     BrowserModule,

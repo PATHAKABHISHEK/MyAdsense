@@ -12,7 +12,7 @@ li{
     cursor: pointer;
   
 }
-li:hover{
+li:hover,.date:hover{
     border:2px solid #ff1300;
 }
 .container{
@@ -21,4 +21,22 @@ li:hover{
 h1{
     text-align: center;
     margin-bottom: 50px;
+}
+.date{
+    width: 60%;
+    min-width: 400px;
+    margin-left: 20%;
+    margin-right:20%;
+    height: 40px;
+    align-self:center;
+}
+
+.next{
+    float: right;
+}
+form{
+    width: 60%;
+    min-width: 400px;
+    margin-left: 20%;
+    margin-right:20%;
 }

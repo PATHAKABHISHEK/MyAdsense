@@ -1,13 +1,57 @@
 <div class="container">
+    <form #ADs="ngForm">
+    <div *ngIf="adCategory==''">
     <h1>What type of Ads you want to publish?</h1>
     <ul>
-        <li>Matrimonial Ads</li>
-        <li>Property Ads</li>
-        <li>Recuitment Ads</li>
-        <li>Business or Personal</li>
-        <li>Name Change</li>
-        <li>Marriage Notice</li>
-        <li>Education</li>
-        <li>Other</li>
+      
+        <li (click)="selectType('Matrimonial')">Matrimonial</li>
+        <li (click)="selectType('Property')">Property Ads</li>
+        <li (click)="selectType('Recuitment')">Recuitment Ads</li>
+        <li (click)="selectType('Business')">Business or Personal</li>
+        <li (click)="selectType('Name Change')">Name Change</li>
+        <li (click)="selectType('Education')">Education</li>
+        <li (click)="selectType('Other')">Other</li>
     </ul>
+    </div>
+    <div *ngIf="adCategory!=='' && adRegion==''">
+        <h1>What reagion you want to publish?</h1>
+        <ul>
+            <li (click)="selectRegion('Delhi/NCR')">Delhi/NCR</li>
+            <li (click)="selectRegion('Chandigarh')">Chandigarh</li>
+            <li (click)="selectRegion('Mumbai')">Mumbai</li>
+            <li (click)="selectRegion('Kanpur')">Kanpur</li>
+            <li (click)="selectRegion('Bengaluru')">Bengaluru</li>
+            <li (click)="selectRegion('Hyderabad')">Hyderabad</li>
+            <li (click)="selectRegion('Kolkata')">Kolkata</li>
+            <li (click)="selectRegion('Bhopal')">Bhopal</li>
+            <li (click)="selectRegion('Jaipur')">Jaipur</li>
+        </ul>
+    </div>
+    <div  *ngIf="adCategory!=='' && adRegion!=='' && adType==''">
+       <h1> What type of Ads you want?</h1>
+        <div class="row">
+        <div class="col-sm-6" (click)="selectAdType('text')">
+            Text Ads
+        </div>
+        <div class="col-sm-6" (click)="selectAdType('display')">
+            Display Ads
+        </div>
+        </div>
+    </div>
+    <div *ngIf="adType!==''">
+        <br><br>
+        <h1>What date you choose for publish?</h1>
+        <input type="date" name="date OF publish" class="form-control date">
+        <br><br>
+        <button (click)="route()" class="btn btn-success next">Click here to get rate book</button>
+    </div>
+
+    <div *ngIf="adType=='Matrimonial'">
+        
+
+    </div>
+
+
+
+</form>
 </div>
