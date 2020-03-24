@@ -10,14 +10,15 @@ import { NewstemplateComponent } from './component/newstemplate/newstemplate.com
 import { AuthGuard } from './auth.guard';
 
 
+
 const routes: Routes = [
   { path : "",component:LoginComponent},
   { path : "signUp",component:SignupComponent},
   {path:"about" ,component:AboutComponent},
-  {path:"home",component:HomeComponent},
-  {path:"recuitment", component:RecuitmentComponent},
-  {path:"rate",component:RateComponent},
-  {path:"newsContent",component:NewstemplateComponent}
+  {path:"home",component:HomeComponent, canActivate: [AuthGuard]},
+  {path:"recuitment", component:RecuitmentComponent, canActivate: [AuthGuard]},
+  {path:"rate",component:RateComponent, canActivate: [AuthGuard]},
+  {path:"newsContent",component:NewstemplateComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

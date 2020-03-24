@@ -3,21 +3,21 @@
     <table>
         <tr>
             <th>Newspaper</th>
-            <th>Category</th>
-            <th>price/word</th>
-            <th></th>
+            <!-- <th>Category</th> -->
+            <th>price</th>
+            <th *ngIf="adType==='display'">Size</th>
+            <th *ngIf="adType==='text'">words/lines/char</th>
+            <th ></th>
           </tr>
-          <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
+          <tr *ngFor="let rate of newspaperAdRates">
+    
+            <td>{{rate['newspaperName']}}</td>
+            <td *ngIf="adType==='text'">{{rate['adTextPrice']}}</td>
+            <td *ngIf="adType==='display'">{{rate['adDisplayPrice']}}</td>
+            <td *ngIf="adType==='text'">{{rate['adTextWord']}}</td>
+            <td *ngIf="adType==='display'">{{rate['adDisplaySize']}}</td>
             <td><button routerLink="/newsContent">Book</button></td>
           </tr>
-          <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-            <td><button routerLink="/newsContent">Book</button></td>
-          </tr>
+
     </table>
 </div>

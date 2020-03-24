@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router"
+import { NewspaperService } from 'src/app/service/newspaper.service';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,15 @@ export class HomeComponent implements OnInit {
   adLanguage="";
   adNewspaper="";
   dateOfPublish="";
-  constructor(public router: Router) { }
-
+  categories = [];
+  newspaper={
+    language: null,
+    category: null
+  };
+  newspapers=[];
+  newspaperEditions=[];
+  constructor(public router: Router, public newspaperService: NewspaperService) { }
+  languages = [];
   route(){
       this.router.navigateByUrl("/rate");
       console.log(this.dateOfPublish);
@@ -24,26 +32,51 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.newspaperService.getLanguage().subscribe(res => {
+      this.languages = res["languages"]
+    })
   }
-  selectType(a){
-    this.adCategory=a;
+  selectCategory(category){
+    this.adCategory=category;
+    localStorage.setItem("category",this.adCategory);
     console.log(this.adCategory);
+    this.newspaper.category = this.adCategory;
+    this.newspaper.language = this.adLanguage;
+    this.newspaperService.getNewspaper(this.newspaper).subscribe(res=>{
+      console.log(res);
+      this.newspapers=res["newspaper"];
+    });
   }
-  selectRegion(a){
-    this.adRegion=a;
+  selectRegion(region){
+    this.adRegion=region;
+    localStorage.setItem("edition",this.adRegion);
     console.log(this.adRegion);
   }
-  selectAdType(a){
-    this.adType=a;
+  selectAdType(type){
+    this.adType=type;
+    localStorage.setItem("adType",this.adType);
     console.log(this.adType);
   }
-  selectLanguage(a){
-    this.adLanguage=a;
+  selectLanguage(language){
+    this.adLanguage=language;
+    localStorage.setItem("language",this.adLanguage);
     console.log(this.adLanguage);
+
+    this.newspaperService.getCategory().subscribe(res => {
+      this.categories = res["adCategory"]
+
+    })
+
       }
-  selectNewspaper(a){
-    this.adNewspaper=a;
+  selectNewspaper(newspaperName){
+    this.adNewspaper = newspaperName;
+    localStorage.setItem("newspaper",this.adNewspaper);
     console.log(this.adNewspaper);
+    this.newspaperService.getNewspaperEdition({newspaper: this.adNewspaper}).subscribe(res=>{
+      console.log(res);
+      this.newspaperEditions=res["newspaperEdition"];
+    })
   }
 
 }

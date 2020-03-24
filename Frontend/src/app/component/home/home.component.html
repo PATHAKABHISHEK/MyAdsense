@@ -1,49 +1,38 @@
 <div class="container">
     <form #ADs="ngForm">
-        <div *ngIf="adNewspaper==''">
-            <h1>In which newspaper you want to publish ad?</h1>
+
+        <div *ngIf="adLanguage==''">
+            <h1>Select language in which you want to publish?</h1>
             <ul>
-                <li (click)="selectNewspaper('The Indian Express')">The Indian Express</li>
-                <li (click)="selectNewspaper('Financial Express')">Financial Express</li>
-                <li (click)="selectNewspaper('Loksatta')">Loksatta</li>
-                <li (click)="selectNewspaper('Jansatta')">Jansatta</li>
+                <li *ngFor="let lang of languages, let i=index"  (click)="selectLanguage(lang)">{{lang}}</li>
             </ul>
         </div>
-    <div *ngIf="adCategory=='' && adNewspaper!==''">
-    <h1>What type of Ads you want to publish?</h1>
-    <ul>
-      
-        <li (click)="selectType('Matrimonial')">Matrimonial</li>
-        <li (click)="selectType('Property')">Property Ads</li>
-        <li (click)="selectType('Recuitment')">Recuitment Ads</li>
-        <li (click)="selectType('Business')">Business or Personal</li>
-        <li (click)="selectType('Name Change')">Name Change</li>
-        <li (click)="selectType('Education')">Education</li>
-        <li (click)="selectType('Other')">Other</li>
-    </ul>
-    </div>
-    <div *ngIf="adCategory!=='' && adRegion=='' && adNewspaper!==''">
+
+        <div *ngIf="adCategory=='' && adLanguage!==''">
+            <h1>What type of Ads you want to publish?</h1>
+            <ul>
+              
+                <li *ngFor="let cat of categories ,let i = index" (click)="selectCategory(cat)">{{cat}}</li>
+         
+            </ul>
+            </div>
+
+        <div *ngIf="adNewspaper=='' && adCategory!=='' && adLanguage!==''">
+            <h1>In which newspaper you want to publish ad?</h1>
+            <ul>
+            <li *ngFor="let newspaper of newspapers" (click)="selectNewspaper(newspaper)">{{newspaper}}</li>
+  
+            </ul>
+        </div>
+
+    <div *ngIf="adCategory!=='' && adRegion=='' && adNewspaper!=='' && adLanguage!==''">
         <h1>What reagion you want to publish?</h1>
         <ul>
-            <li (click)="selectRegion('Delhi/NCR')">Delhi/NCR</li>
-            <li (click)="selectRegion('Chandigarh')">Chandigarh</li>
-            <li (click)="selectRegion('Mumbai')">Mumbai</li>
-            <li (click)="selectRegion('Kanpur')">Kanpur</li>
-            <li (click)="selectRegion('Bengaluru')">Bengaluru</li>
-            <li (click)="selectRegion('Hyderabad')">Hyderabad</li>
-            <li (click)="selectRegion('Kolkata')">Kolkata</li>
-            <li (click)="selectRegion('Bhopal')">Bhopal</li>
-            <li (click)="selectRegion('Jaipur')">Jaipur</li>
+            <li *ngFor="let edition of newspaperEditions" (click)="selectRegion(edition)">{{edition}}</li>
+   
         </ul>
     </div>
-    <div *ngIf="adLanguage=='' && adCategory!=='' && adRegion!=='' && adNewspaper!==''">
-        <h1>Select language in which you want to publish?</h1>
-        <ul>
-            <li (click)="selectLanguage('Hindi')">Hindi</li>
-            <li (click)="selectLanguage('English')">English</li>
-            <li (click)="selectLanguage('Punjabi')">Punjabi</li>
-        </ul>
-    </div>
+
     <div  *ngIf="adCategory!=='' && adRegion!=='' && adLanguage!=='' && adType=='' && adNewspaper!==''">
        <h1> What type of Ads you want?</h1>
         <div class="row">
