@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     adTextPrice: DataTypes.STRING,
     adTextWord: DataTypes.STRING,
     adDisplayPrice: DataTypes.STRING,
-    adDisplaySize: DataTypes.STRING
+    adDisplaySize: DataTypes.STRING,
+    newspaperLanguage: DataTypes.STRING
   }, {});
   AdCollection.associate = function(models) {
     // associations can be defined here

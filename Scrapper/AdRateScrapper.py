@@ -64,6 +64,7 @@ try:
                 
                 #Selection Edition
                 edition = soup.find_all('h1')
+                newspaperLanguage = edition[-3].text.split(" ")[-2]
                 edition = edition[2:-2]
                 edition = edition[0:int(len(edition)/2)]
                 for i in range(len(edition)):
@@ -102,11 +103,11 @@ try:
 
                     # SQL QUERY for inserting newspaper text ad rates
                     sql = "INSERT INTO adcollections (id, newspaperName, adCategory, \
-                    adEdition, adType, adTextPrice, adTextWord, createdAt, updatedAt) \
+                    adEdition, adType, adTextPrice, adTextWord, newspaperLanguage, createdAt, updatedAt) \
                         VALUES ({id}, '{newspaper}', '{category}', '{edition}', 'text',\
-                            '{textPrice}', '{textWord}', '{createdAt}', '{updatedAt}')"
-                            .format(id=k, newspaper=paper, category=category, edition=edition[i], 
+                            '{textPrice}', '{textWord}', '{newspaperLanguage}', '{createdAt}', '{updatedAt}')".format(id=k, newspaper=paper, category=category, edition=edition[i], 
                             textPrice=text_price_and_words[i][0], textWord=text_price_and_words[i][1], 
+                            newspaperLanguage=newspaperLanguage,
                             createdAt=datetime.datetime.now(), updatedAt=datetime.datetime.now())
                     k += 1
                     cursor.execute(sql)
@@ -116,11 +117,11 @@ try:
 
                     # SQL QUERY for inserting newspaper display ad rates
                     sql = "INSERT INTO adcollections (id, newspaperName, adCategory, \
-                        adEdition, adType, adDisplayPrice, adDisplaySize, createdAt, updatedAt) \
+                        adEdition, adType, adDisplayPrice, adDisplaySize, newspaperLanguage, createdAt, updatedAt) \
                         VALUES ({id}, '{newspaper}', '{category}', '{edition}', 'display', \
-                            '{displayPrice}', '{displaySize}', '{createdAt}', '{updatedAt}')"
-                            .format(id=k, newspaper=paper, category=category, edition=edition[i], 
-                            displayPrice=display_price_and_words[i][0], displaySize=display_price_and_words[i][1], 
+                            '{displayPrice}', '{displaySize}', '{newspaperLanguage}', '{createdAt}', '{updatedAt}')".format(id=k, newspaper=paper, category=category, edition=edition[i], 
+                            displayPrice=display_price_and_words[i][0], displaySize=display_price_and_words[i][1],
+                            newspaperLanguage=newspaperLanguage,
                             createdAt=datetime.datetime.now(), updatedAt=datetime.datetime.now())
                     
                     k += 1
@@ -147,6 +148,8 @@ finally:
 # #Selection Edition
 # # Some Bug here
 # edition = soup.find_all('h1')
+# # Some Bug may occur in this code
+# language = edition[-3].text.split(" ")[-2]
 # #edition = edition[2: -3] 
 # edition = edition[2:-2]
 # edition = edition[0:int(len(edition)/2)]

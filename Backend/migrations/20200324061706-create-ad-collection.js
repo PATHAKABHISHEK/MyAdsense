@@ -32,6 +32,9 @@ module.exports = {
       adDisplaySize: {
         type: Sequelize.STRING
       },
+      newspaperLanguage: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
