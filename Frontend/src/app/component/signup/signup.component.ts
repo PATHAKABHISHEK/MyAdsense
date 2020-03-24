@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
         lastName: signUp.lastName,
         emailId: signUp.emailId,
         password: signUp.password,
-        mobileNumer: signUp.mobileNumber
+        mobileNumber: signUp.mobileNumber
       })
       .subscribe(res => {
         console.log(res);

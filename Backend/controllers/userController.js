@@ -32,27 +32,28 @@ class UserController {
     userDAO()
       .checkIfUserExists(emailId)
       .then(isExist => {
-        if (isExist) {
+        if (isExist === true) {
           console.log("User Already Exists");
           next();
         } else {
-          return passwordHashing().hashPassword(password);
+          passwordHashing()
+            .hashPassword(password)
+            .then(hashedPassword => {
+              return userDAO().addUser(
+                firstName,
+                lastName,
+                emailId,
+                hashedPassword,
+                mobileNumber
+              );
+            })
+            .then(message => {
+              if (message) {
+                console.log(message);
+              }
+              next();
+            });
         }
-      })
-      .then(hashedPassword => {
-        return userDAO().addUser(
-          firstName,
-          lastName,
-          emailId,
-          hashedPassword,
-          mobileNumber
-        );
-      })
-      .then(message => {
-        if (message) {
-          console.log(message);
-        }
-        next();
       })
       .catch(err => {
         console.log(err);
