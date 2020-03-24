@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="main">
+    <h1>Compose Ads Matter</h1>
+    <textarea name="" id="" cols="50" rows="5" [(ngModel)]="content"></textarea>
+    <h2>{{content}}</h2>
+    <button (click)="onCalculate()">Calculate Price</button>
+    <div *ngIf="clicked">
+        <h3>Calculated amount is : {{count}}</h3>
+    </div>
+    </div>
+</div>

@@ -1,6 +1,15 @@
 <div class="container">
     <form #ADs="ngForm">
-    <div *ngIf="adCategory==''">
+        <div *ngIf="adNewspaper==''">
+            <h1>In which newspaper you want to publish ad?</h1>
+            <ul>
+                <li (click)="selectNewspaper('The Indian Express')">The Indian Express</li>
+                <li (click)="selectNewspaper('Financial Express')">Financial Express</li>
+                <li (click)="selectNewspaper('Loksatta')">Loksatta</li>
+                <li (click)="selectNewspaper('Jansatta')">Jansatta</li>
+            </ul>
+        </div>
+    <div *ngIf="adCategory=='' && adNewspaper!==''">
     <h1>What type of Ads you want to publish?</h1>
     <ul>
       
@@ -13,7 +22,7 @@
         <li (click)="selectType('Other')">Other</li>
     </ul>
     </div>
-    <div *ngIf="adCategory!=='' && adRegion==''">
+    <div *ngIf="adCategory!=='' && adRegion=='' && adNewspaper!==''">
         <h1>What reagion you want to publish?</h1>
         <ul>
             <li (click)="selectRegion('Delhi/NCR')">Delhi/NCR</li>
@@ -27,29 +36,39 @@
             <li (click)="selectRegion('Jaipur')">Jaipur</li>
         </ul>
     </div>
-    <div  *ngIf="adCategory!=='' && adRegion!=='' && adType==''">
+    <div *ngIf="adLanguage=='' && adCategory!=='' && adRegion!=='' && adNewspaper!==''">
+        <h1>Select language in which you want to publish?</h1>
+        <ul>
+            <li (click)="selectLanguage('Hindi')">Hindi</li>
+            <li (click)="selectLanguage('English')">English</li>
+            <li (click)="selectLanguage('Punjabi')">Punjabi</li>
+        </ul>
+    </div>
+    <div  *ngIf="adCategory!=='' && adRegion!=='' && adLanguage!=='' && adType=='' && adNewspaper!==''">
        <h1> What type of Ads you want?</h1>
         <div class="row">
         <div class="col-sm-6" (click)="selectAdType('text')">
-            Text Ads
+            <img src="../../../assets/text ads.PNG" alt="Text Ads"><br>
+            <label>Text Ads</label>
         </div>
         <div class="col-sm-6" (click)="selectAdType('display')">
-            Display Ads
+            <img src="../../../assets/dispaly.jfif" alt="Text Ads"><br>
+            <label>Display Ads</label>
         </div>
         </div>
     </div>
-    <div *ngIf="adType!==''">
+    <div *ngIf="adCategory!=='' && adRegion!=='' && adLanguage!=='' && adType!=='' && adNewspaper!==''">
         <br><br>
         <h1>What date you choose for publish?</h1>
-        <input type="date" name="date OF publish" class="form-control date">
+        <input type="date" name="date OF publish" class="form-control date" [(ngModel)]="dateOfPublish">
         <br><br>
         <button (click)="route()" class="btn btn-success next">Click here to get rate book</button>
     </div>
 
-    <div *ngIf="adType=='Matrimonial'">
+    <!-- <div *ngIf="adType=='Matrimonial'">
         
 
-    </div>
+    </div> -->
 
 
 
