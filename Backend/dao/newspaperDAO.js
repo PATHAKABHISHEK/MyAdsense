@@ -20,6 +20,26 @@ class NewspaperDAO {
         });
     });
   }
+
+  getNewspaperCategory() {
+    return new Promise((resolve, reject) => {
+      let adCategories = [];
+      AdCollection.aggregate("adCategory", "DISTINCT", {
+        plain: false
+      })
+        .then(distinctCategories => {
+          if (distinctCategories) {
+            distinctCategories.forEach(element => {
+              adCategories.push(element["DISTINCT"]);
+            });
+          }
+          resolve(adCategories);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }
 
 const newspaperDAO = () => {
