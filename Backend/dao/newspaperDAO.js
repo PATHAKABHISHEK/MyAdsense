@@ -68,6 +68,33 @@ class NewspaperDAO {
         });
     });
   }
+
+  getNewspaperEdition(newspaper) {
+    return new Promise((resolve, reject) => {
+      let newspaperEditions = [];
+      AdCollection.findAll({
+        attributes: [
+          Sequelize.fn("DISTINCT", Sequelize.col("adEdition")),
+          "adEdition"
+        ],
+        where: {
+          newspaperName: newspaper
+        }
+      })
+        .then(newspaperEdition => {
+          if (newspaperEdition) {
+            newspaperEdition.forEach(element => {
+              newspaperEditions.push(element["adEdition"]);
+            });
+          }
+          console.log(newspaperEdition);
+          resolve(newspaperEditions);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }
 
 const newspaperDAO = () => {

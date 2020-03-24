@@ -19,6 +19,10 @@ class NewspaperController {
       "/get_newspaper_based_on_language_and_category",
       this.getNewspaperBasedOnLanguageAndCategory.bind(this)
     );
+    this.router.post(
+      "/get_newspaper_edition",
+      this.getNewspaperEdition.bind(this)
+    );
   }
 
   getNewspaperLanguage(req, res, next) {
@@ -54,6 +58,19 @@ class NewspaperController {
       .getNewspaperBasedOnLanguageAndCategory(language, category)
       .then(newspaper => {
         res.send({ newspaper });
+      })
+      .catch(err => {
+        console.log(err);
+        next();
+      });
+  }
+
+  getNewspaperEdition(req, res, next) {
+    let newspaper = req.body.newspaper;
+    newspaperDAO()
+      .getNewspaperEdition(newspaper)
+      .then(newspaperEdition => {
+        res.send({ newspaperEdition });
       })
       .catch(err => {
         console.log(err);
