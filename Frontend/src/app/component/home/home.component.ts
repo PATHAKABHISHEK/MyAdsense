@@ -11,12 +11,14 @@ export class HomeComponent implements OnInit {
   adType="";
   adCategory="";
   adRegion="";
+  adLanguage="";
+  adNewspaper="";
+  dateOfPublish="";
   constructor(public router: Router) { }
 
   route(){
-    if(this.adCategory==="Matrimonial"){
       this.router.navigateByUrl("/rate");
-    }
+      console.log(this.dateOfPublish);
   }
 
 
@@ -35,4 +37,13 @@ export class HomeComponent implements OnInit {
     this.adType=a;
     console.log(this.adType);
   }
+  selectLanguage(a){
+    this.adLanguage=a;
+    console.log(this.adLanguage);
+      }
+  selectNewspaper(a){
+    this.adNewspaper=a;
+    console.log(this.adNewspaper);
+  }
+
 }

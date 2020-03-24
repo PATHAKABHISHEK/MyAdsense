@@ -1,10 +1,16 @@
-li,a,.logo{
+li,a{
     display: inline;
     color:#ff1300;
     text-align: center;
     padding: 30px;
     text-decoration: none;
-    width:50px;
+    width:85px;
+}
+img{
+    margin-top: 4px;
+    width: 200px;
+    height: 80px;
+
 }
 
 ul{
@@ -13,15 +19,18 @@ ul{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    height: 50px;
-    padding-top: 10px;
+    height: 90px;
+    padding-top: 30px;
+    float: right;
 }
 /* .logo{
     float:left;
 } */
 .navigation{
-    height: 50px;
+    height: 90px;
+    width: 100%;
     background:#e9ecef;
+    margin: 0px;
     /* padding-top: 10px; */
 }
 /* .collogo{
@@ -30,3 +39,11 @@ ul{
 .colnav{
     float: right;
 } 
+li:hover{
+    border-bottom: 5px solid #ff1300;
+}
+#contact{
+    background-color: #ff1300;
+    color: #fff;
+    height: 90px;
+}

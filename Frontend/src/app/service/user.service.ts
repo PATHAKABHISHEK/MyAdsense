@@ -17,4 +17,7 @@ export class UserService {
   public signIn(user): Observable<any> {
     return this._http.post(`${this.url}signIn`, user);
   }
+  public loggedIn(){
+    return !!localStorage.getItem("token")
+  }
 }

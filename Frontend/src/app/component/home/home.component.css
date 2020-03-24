@@ -1,15 +1,13 @@
 li{
     display: block;
-    width: 60%;
     min-width: 400px;
     border: 2px solid #cccccc;
     height: 40px;
     font-size: 1.5em;
     margin-bottom: 5px;
-    margin-left: 20%;
-    margin-right:20%;
     padding-left: 5%;
     cursor: pointer;
+    border-radius: 0.7em;
   
 }
 li:hover,.date:hover{
@@ -21,12 +19,11 @@ li:hover,.date:hover{
 h1{
     text-align: center;
     margin-bottom: 50px;
+    margin-top: 100px;
 }
 .date{
-    width: 60%;
+    width: 100%;
     min-width: 400px;
-    margin-left: 20%;
-    margin-right:20%;
     height: 40px;
     align-self:center;
 }
@@ -39,4 +36,12 @@ form{
     min-width: 400px;
     margin-left: 20%;
     margin-right:20%;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}
+.col-sm-6{
+    padding-left: 15%;
 }
