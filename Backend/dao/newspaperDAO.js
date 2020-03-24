@@ -95,6 +95,33 @@ class NewspaperDAO {
         });
     });
   }
+  getAllNewspaperAdRates(language, category, newspaper, edition, adType) {
+    return new Promise((resolve, reject) => {
+      AdCollection.findAll({
+        attributes: [
+          "adTextPrice",
+          "adTextWord",
+          "adDisplayPrice",
+          "adDisplaySize",
+          "newspaperName"
+        ],
+        where: {
+          newspaperLanguage: language,
+          adCategory: category,
+          adEdition: edition,
+          adType: adType
+        }
+      })
+        .then(newspaperAdRate => {
+          if (newspaperAdRate) {
+            resolve(newspaperAdRate);
+          }
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }
 
 const newspaperDAO = () => {
