@@ -83,8 +83,8 @@ try:
                     if(j <= len(edition)):
                         # Text Classified Ad 
                         price = i.text.split(' / ')[0].split('.')[1]
-                        words = i.text.split(' / ')[1].split(' ')[0]
-                        text_price_and_words.append([price, words])
+                        words_or_lines = i.text.split(' / ')[1]
+                        text_price_and_words.append([price, words_or_lines])
                     else:
                         # Display Ad
                         price = i.text.split('(')[0].split('.')[1]
