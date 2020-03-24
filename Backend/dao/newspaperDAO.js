@@ -1,4 +1,5 @@
 const AdCollection = require("../models/index").AdCollection;
+const Sequelize = require("../models/index").Sequelize;
 
 class NewspaperDAO {
   getNewspaperLanguage() {
@@ -34,6 +35,33 @@ class NewspaperDAO {
             });
           }
           resolve(adCategories);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  getNewspaperBasedOnLanguageAndCategory(language, category) {
+    return new Promise((resolve, reject) => {
+      let newspapers = [];
+      AdCollection.findAll({
+        attributes: [
+          Sequelize.fn("DISTINCT", Sequelize.col("newspaperName")),
+          "newspaperName"
+        ],
+        where: {
+          newspaperLanguage: language,
+          adCategory: category
+        }
+      })
+        .then(newspaper => {
+          if (newspaper) {
+            newspaper.forEach(element => {
+              newspapers.push(element["newspaperName"]);
+            });
+          }
+          resolve(newspapers);
         })
         .catch(err => {
           reject(err);
