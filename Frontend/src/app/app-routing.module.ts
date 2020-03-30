@@ -8,6 +8,7 @@ import { RecuitmentComponent } from './component/recuitment/recuitment.component
 import { RateComponent } from './component/rate/rate.component';
 import { NewstemplateComponent } from './component/newstemplate/newstemplate.component';
 import { AuthGuard } from './auth.guard';
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
 
 
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:"home",component:HomeComponent, canActivate: [AuthGuard]},
   {path:"recuitment", component:RecuitmentComponent, canActivate: [AuthGuard]},
   {path:"rate",component:RateComponent, canActivate: [AuthGuard]},
-  {path:"newsContent",component:NewstemplateComponent, canActivate: [AuthGuard]}
+  {path:"newsContent",component:NewstemplateComponent, canActivate: [AuthGuard]},
+  {path:"userProfile",component:UserProfileComponent}
 ];
 
 @NgModule({

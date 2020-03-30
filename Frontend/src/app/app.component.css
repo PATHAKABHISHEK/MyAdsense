@@ -2,5 +2,6 @@ app-header{
     position:fixed;
     top: 0px;
     width: 100%;
-    height: 90px;
+    height: 64px;
+    margin-right: 0px;
 }

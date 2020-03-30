@@ -1,9 +1,9 @@
 <div class="container">
-    <h1>Rate Book</h1>
-    <table>
+    <h1 class="head">Rate Book</h1>
+    <!-- <table>
         <tr>
             <th>Newspaper</th>
-            <!-- <th>Category</th> -->
+          
             <th>price</th>
             <th *ngIf="adType==='display'">Size</th>
             <th *ngIf="adType==='text'">words/lines/char</th>
@@ -19,5 +19,23 @@
             <td><button routerLink="/newsContent">Book</button></td>
           </tr>
 
-    </table>
+    </table> -->
+    <div *ngFor="let rate of newspaperAdRates">
+      <div class="row rowdiv">
+        <div class="col-sm-4">
+          <img src="../../../assets/loginImg.jfif" alt="">
+        </div>
+        <div class="col-sm-5">
+         <h3>{{rate['newspaperName']|titlecase}}</h3>
+         <h6></h6>
+         <h6 *ngIf="adType==='text'">{{rate['adTextPrice']}}</h6>
+         <h6 *ngIf="adType==='display'">{{rate['adDisplayPrice']}}</h6>
+         <h6 *ngIf="adType==='text'">{{rate['adTextWord']}}</h6>
+         <h6 *ngIf="adType==='display'">{{rate['adDisplaySize']}}</h6>
+        </div>
+        <div class="col-sm-3 btnDiv">
+          <button  routerLink="/newsContent" class="btn btn-success">Book Deal</button>
+        </div>
+      </div>
+  </div>
 </div>

@@ -9,6 +9,8 @@ import { NewspaperService } from 'src/app/service/newspaper.service';
 })
 export class HomeComponent implements OnInit {
 
+  start=true;
+  currentDate=new Date;
   adType="";
   adCategory="";
   adRegion="";
@@ -34,8 +36,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.newspaperService.getLanguage().subscribe(res => {
-      this.languages = res["languages"]
+      this.languages = res["languages"];
+
     })
+    console.log(this.currentDate);
   }
   selectCategory(category){
     this.adCategory=category;

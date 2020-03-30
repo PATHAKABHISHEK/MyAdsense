@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/service/user.service";
 import { Router } from "@angular/router";
 import swal from "sweetalert";
+
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -12,7 +13,9 @@ export class LoginComponent implements OnInit {
   emailId;
   password;
   isAuthenticated="N";
-  ngOnInit() {}
+  ngOnInit() {
+    localStorage.clear();
+  }
 
   signIn() {
     console.log("hh");
@@ -26,6 +29,7 @@ export class LoginComponent implements OnInit {
         if(res){
         this.isAuthenticated="Y";
         localStorage.setItem('canNavigate', this.isAuthenticated);
+        localStorage.setItem("username",res.firstName);
         this.router.navigateByUrl("/home");
         }
         else{

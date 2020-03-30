@@ -1,0 +1,27 @@
+.main-div{
+    margin-left:20%;
+    margin-right: 20%;
+    margin-top: 100px;
+    /* border: 1px solid black; */
+    box-shadow: 0 0.56875rem 2.1875rem rgba(4,9,20,.03), 0 1.0375rem 1.40625rem rgba(4,9,20,.03), 0 0.55rem 0.53125rem rgba(4,9,20,.05), 0 0.125rem 0.1875rem rgba(4,9,20,.03);
+
+    width: 60%;
+    height: 60%;
+    align-content: center;
+
+}
+.pic-div{
+    margin-top: 50px;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-bottom: 50px;
+}
+.pic{
+    height: 150px;
+    width: 150px;
+    border-radius: 100%; 
+}
+.detail-div{
+    text-align: center;
+    margin-bottom: 100px;
+}

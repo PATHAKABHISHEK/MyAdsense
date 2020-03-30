@@ -22,6 +22,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-material-design": "^4.1.1",
     "jquery": "^3.4.1",
+    "ngx-spinner": "^9.0.1",
     "rxjs": "~6.4.0",
     "sweetalert": "^2.1.2",
     "tslib": "^1.10.0",

@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
@@ -15,6 +15,9 @@ import { RecuitmentComponent } from './component/recuitment/recuitment.component
 import { RateComponent } from './component/rate/rate.component';
 import { NewstemplateComponent } from './component/newstemplate/newstemplate.component';
 import { AuthGuard } from './auth.guard';
+import { MediatorComponent } from './component/mediator/mediator.component';
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -27,10 +30,13 @@ import { AuthGuard } from './auth.guard';
     AboutComponent,
     RecuitmentComponent,
     RateComponent,
-    NewstemplateComponent
+    NewstemplateComponent,
+    MediatorComponent,
+    UserProfileComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgxSpinnerModule],
   providers: [AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

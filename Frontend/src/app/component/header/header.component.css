@@ -2,48 +2,110 @@ li,a{
     display: inline;
     color:#ff1300;
     text-align: center;
-    padding: 30px;
     text-decoration: none;
-    width:85px;
+    /* margin-top: 15px;
+    font-size: 15px; */
 }
-img{
-    margin-top: 4px;
-    width: 200px;
-    height: 80px;
+.colnav li{
+    height: 68px;
+    padding-top:30px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 25%; 
+    /* width: 150px; */
+    /* border: 1px solid black; */
+}
+li a{
+    height: 100%;
+    margin-top: 30px;
+    font-size: 20px;
 
+}
+
+.collogo{
+    padding-top: 8px;
+    padding-left: 50px;
 }
 
 ul{
     background:#e9ecef;
     list-style-type: none;
-    margin: 0;
-    padding: 0;
     overflow: hidden;
-    height: 90px;
-    padding-top: 30px;
+    height: 58px;
+    width: 600px;
+    padding-left: 120px;
     float: right;
+    margin-top: 5px;
+    border-radius: 5px;
+   
 }
 /* .logo{
     float:left;
 } */
 .navigation{
-    height: 90px;
+    height: 64px;
     width: 100%;
     background:#e9ecef;
     margin: 0px;
     /* padding-top: 10px; */
 }
-/* .collogo{
-    width: 20%;
-} */
+
 .colnav{
     float: right;
+    height: 64px;
 } 
 li:hover{
-    border-bottom: 5px solid #ff1300;
+        background-color: whitesmoke;
 }
 #contact{
     background-color: #ff1300;
     color: #fff;
-    height: 90px;
+    height: 64px;
 }
+span{
+    font-size: 30px;
+    font-weight: 800;
+    font-family: 'Lobster', cursive;
+    margin-top: 20px;
+}
+#my{
+    color: #fc8516;
+}
+#ad{
+    color: #ff1300;
+}
+#sense{
+    color: #085ba6;
+}
+#pic{
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+nav{
+    width: 200px;
+}
+
+.vertical-menu {
+    width: 150px; /* Set a width if you like */
+    float: right;
+    margin-right: 10px;
+    margin-top: -10px;
+    z-index: 99999;
+    position: relative;
+  }
+  
+  .vertical-menu a {
+    background-color: white; /* Grey background color */
+    color: black; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 5px; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */
+    border: 1px solid #eee;
+  }
+  
+  .vertical-menu a:hover {
+    background-color: #ccc; /* Dark grey background on mouse-over */
+  }
+  
