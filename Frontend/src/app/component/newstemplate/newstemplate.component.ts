@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PaymentService } from "src/app/service/payment.service";
+import { UserService } from "src/app/service/user.service";
 
 @Component({
   selector: "app-newstemplate",
@@ -11,7 +12,10 @@ export class NewstemplateComponent implements OnInit {
   price = 30;
   count;
   clicked = false;
-  constructor(private paymentService: PaymentService) {}
+  constructor(
+    private paymentService: PaymentService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {}
   WordCount(str) {
@@ -29,13 +33,29 @@ export class NewstemplateComponent implements OnInit {
       locale: "auto",
       token: (token) => {
         console.log("sending");
+        localStorage.setItem("amount", String(this.price));
         this.paymentService
           .pay({
             stripeTokenId: token.id,
-            amount: this.price,
+            amount: this.price * 100,
           })
           .subscribe((res) => {
-            console.log(res);
+            let ad = {
+              userId: localStorage.getItem("userId"),
+              newspaperCategory: localStorage.getItem("category"),
+              newspaperName: localStorage.getItem("newspaper"),
+              newspaperEdition: localStorage.getItem("category"),
+              newspaperLanguage: localStorage.getItem("language"),
+              adType: localStorage.getItem("adType"),
+              adRate: localStorage.getItem("amount"),
+              adPublishDate: localStorage.getItem("dateOfPublish"),
+              ad: "",
+              adPublishedBy: null,
+              adPublishedProof: "",
+            };
+            this.userService.requestAd(ad).subscribe((res) => {
+              console.log(res);
+            });
           });
       },
     });
@@ -43,7 +63,8 @@ export class NewstemplateComponent implements OnInit {
     handler.open({
       name: "MyAdsense",
       description: "Pay And Publish Ad",
-      amount: 2000,
+      amount: this.price * 100,
+      currency: "inr",
     });
   }
 }

@@ -170,7 +170,7 @@ class UserController {
     adRequestsDAO()
       .adPublished(adId, userId, adPublishProof)
       .then((updatedAd) => {
-        res.send("Ad Published");
+        res.json("Ad Published");
       })
       .catch((err) => {
         console.log(err);
@@ -191,7 +191,6 @@ class UserController {
       });
   }
   pay(req, res, next) {
-    console.log("hello");
     let stripeTokenId = req.body.stripeTokenId;
     let amount = req.body.amount;
     console.log(stripeTokenId);
@@ -202,7 +201,7 @@ class UserController {
         currency: "inr",
       })
       .then(() => {
-        res.send("Payment Successfull");
+        res.json("Payment Successfull");
       })
       .catch((err) => {
         console.log(err);

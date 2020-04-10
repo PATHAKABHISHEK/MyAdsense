@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class UserService {
   url;
@@ -17,19 +17,19 @@ export class UserService {
   public signIn(user): Observable<any> {
     return this._http.post(`${this.url}signIn`, user);
   }
-  public loggedIn(){
-    return !!localStorage.getItem("token")
+  public loggedIn() {
+    return !!localStorage.getItem("token");
   }
 
-  public requestAd(user): Observable<any>{
-    return this._http.post(`${this.url}requestAd`,user);
+  public requestAd(ad): Observable<any> {
+    return this._http.post(`${this.url}requestAd`, ad);
   }
 
-  public requestedADs(): Observable<any>{
+  public requestedADs(): Observable<any> {
     return this._http.get(`${this.url}myRequestedAds`);
   }
-  
-  public  publisherAdsList(): Observable<any>{
-    return this._http.get(`${this.url}`)
+
+  public publisherAdsList(): Observable<any> {
+    return this._http.get(`${this.url}`);
   }
 }

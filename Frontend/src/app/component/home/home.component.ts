@@ -1,86 +1,84 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router"
-import { NewspaperService } from 'src/app/service/newspaper.service';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { NewspaperService } from "src/app/service/newspaper.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
-
-  start=true;
-  currentDate=new Date;
-  adType="";
-  adCategory="";
-  adRegion="";
-  adLanguage="";
-  adNewspaper="";
-  dateOfPublish="";
+  start = true;
+  currentDate = new Date();
+  adType = "";
+  adCategory = "";
+  adRegion = "";
+  adLanguage = "";
+  adNewspaper = "";
+  dateOfPublish = "";
   categories = [];
-  newspaper={
+  newspaper = {
     language: null,
-    category: null
+    category: null,
   };
-  newspapers=[];
-  newspaperEditions=[];
-  constructor(public router: Router, public newspaperService: NewspaperService) { }
+  newspapers = [];
+  newspaperEditions = [];
+  constructor(
+    public router: Router,
+    public newspaperService: NewspaperService
+  ) {}
   languages = [];
-  route(){
-      this.router.navigateByUrl("/rate");
-      console.log(this.dateOfPublish);
+  route() {
+    this.router.navigateByUrl("/rate");
+    console.log(this.dateOfPublish);
+    localStorage.setItem("dateOfPublish", this.dateOfPublish);
   }
-
-
 
   ngOnInit() {
-
-    this.newspaperService.getLanguage().subscribe(res => {
+    this.newspaperService.getLanguage().subscribe((res) => {
       this.languages = res["languages"];
-
-    })
+    });
     console.log(this.currentDate);
   }
-  selectCategory(category){
-    this.adCategory=category;
-    localStorage.setItem("category",this.adCategory);
+  selectCategory(category) {
+    this.adCategory = category;
+    localStorage.setItem("category", this.adCategory);
     console.log(this.adCategory);
     this.newspaper.category = this.adCategory;
     this.newspaper.language = this.adLanguage;
-    this.newspaperService.getNewspaper(this.newspaper).subscribe(res=>{
+    this.newspaperService.getNewspaper(this.newspaper).subscribe((res) => {
       console.log(res);
-      this.newspapers=res["newspaper"];
+      this.newspapers = res["newspaper"];
     });
   }
-  selectRegion(region){
-    this.adRegion=region;
-    localStorage.setItem("edition",this.adRegion);
+  selectRegion(region) {
+    this.adRegion = region;
+    localStorage.setItem("edition", this.adRegion);
     console.log(this.adRegion);
   }
-  selectAdType(type){
-    this.adType=type;
-    localStorage.setItem("adType",this.adType);
+  selectAdType(type) {
+    this.adType = type;
+    localStorage.setItem("adType", this.adType);
     console.log(this.adType);
   }
-  selectLanguage(language){
-    this.adLanguage=language;
-    localStorage.setItem("language",this.adLanguage);
+  selectLanguage(language) {
+    this.adLanguage = language;
+    localStorage.setItem("language", this.adLanguage);
     console.log(this.adLanguage);
 
-    this.newspaperService.getCategory().subscribe(res => {
-      this.categories = res["adCategory"]
-
-    })
-
-      }
-  selectNewspaper(newspaperName){
-    this.adNewspaper = newspaperName;
-    localStorage.setItem("newspaper",this.adNewspaper);
-    console.log(this.adNewspaper);
-    this.newspaperService.getNewspaperEdition({newspaper: this.adNewspaper}).subscribe(res=>{
-      console.log(res);
-      this.newspaperEditions=res["newspaperEdition"];
-    })
+    this.newspaperService.getCategory().subscribe((res) => {
+      this.categories = res["adCategory"];
+    });
   }
-
+  selectNewspaper(newspaperName) {
+    this.adNewspaper = newspaperName;
+    localStorage.setItem("newspaper", this.adNewspaper);
+    console.log(this.adNewspaper);
+    this.newspaperService
+      .getNewspaperEdition({ newspaper: this.adNewspaper })
+      .subscribe((res) => {
+        console.log(res);
+        this.newspaperEditions = res["newspaperEdition"];
+      });
+  }
 }
