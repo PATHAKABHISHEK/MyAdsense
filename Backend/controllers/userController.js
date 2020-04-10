@@ -15,6 +15,7 @@ class UserController {
   registerRoutes() {
     this.router.post("/signUp", this.signUpUser.bind(this));
     this.router.post("/signIn", this.signInUser.bind(this));
+    this.router.post("/requestAd", this.requestAd.bind(this));
   }
   /**
    * @desc This is a Api of SignUp User
@@ -31,14 +32,14 @@ class UserController {
     let mobileNumber = req.body.mobileNumber;
     userDAO()
       .checkIfUserExists(emailId)
-      .then(isExist => {
+      .then((isExist) => {
         if (isExist === true) {
           console.log("User Already Exists");
           next();
         } else {
           passwordHashing()
             .hashPassword(password)
-            .then(hashedPassword => {
+            .then((hashedPassword) => {
               return userDAO().addUser(
                 firstName,
                 lastName,
@@ -47,7 +48,7 @@ class UserController {
                 mobileNumber
               );
             })
-            .then(message => {
+            .then((message) => {
               if (message) {
                 console.log(message);
               }
@@ -55,7 +56,7 @@ class UserController {
             });
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         next();
       });
@@ -66,11 +67,11 @@ class UserController {
     let password = req.body.password;
     userDAO()
       .returnUser(emailId)
-      .then(user => {
+      .then((user) => {
         if (user) {
           passwordHashing()
             .comparePassword(password, user.password)
-            .then(result => {
+            .then((result) => {
               if (result) {
                 console.log("valid credentials");
                 user.password = null;
@@ -85,17 +86,54 @@ class UserController {
           next();
         }
       })
-      .catch(err => {
+      .catch((err) => {
+        console.log(err);
+        next();
+      });
+  }
+  requestAd(req, res, next) {
+    let userId = req.body.userId;
+    let newspaperCategory = req.body.newspaperCategory;
+    let newspaperName = req.body.newspaperName;
+    let newspaperEdition = req.body.newspaperEdition;
+    let newspaperLanguage = req.body.newspaperLanguage;
+    let adType = req.body.adType;
+    let adRate = req.body.adRate;
+    let adPublishDate = req.body.adPublishDate;
+    let ad = req.body.ad;
+    let adStatus = req.body.adStatus;
+    let adPublishedBy = req.body.adPublishedBy;
+    let adPublishedProof = req.body.adPublishedProof;
+    console.log(req.body);
+    userDAO()
+      .requestAdFromDAO(
+        userId,
+        newspaperCategory,
+        newspaperName,
+        newspaperEdition,
+        newspaperLanguage,
+        adType,
+        adRate,
+        adPublishDate,
+        ad,
+        adStatus,
+        adPublishedBy,
+        adPublishedProof
+      )
+      .then((ad) => {
+        res.send(ad.userId);
+      })
+      .catch((err) => {
         console.log(err);
         next();
       });
   }
 }
 
-const userController = userRouter => {
+const userController = (userRouter) => {
   new UserController(userRouter);
 };
 
 module.exports = {
-  userController
+  userController,
 };
