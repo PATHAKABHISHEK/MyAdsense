@@ -99,6 +99,7 @@ class UserController {
         next();
       });
   }
+
   requestAd(req, res, next) {
     let userId = req.body.userId;
     let newspaperCategory = req.body.newspaperCategory;
@@ -109,7 +110,6 @@ class UserController {
     let adRate = req.body.adRate;
     let adPublishDate = req.body.adPublishDate;
     let ad = req.body.ad;
-    let adStatus = req.body.adStatus;
     let adPublishedBy = req.body.adPublishedBy;
     let adPublishedProof = req.body.adPublishedProof;
     console.log(req.body);

@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
         this.isAuthenticated="Y";
         localStorage.setItem('canNavigate', this.isAuthenticated);
         localStorage.setItem("username",res.firstName);
+        localStorage.setItem("userId",res.id);
         this.router.navigateByUrl("/home");
         }
         else{

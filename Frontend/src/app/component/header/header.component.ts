@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.isLogin=localStorage.getItem("canNavigate");
-    
+    this.ngOnInit();
   }
   showUserProfile(){
     if(this.location.path().includes("/home"))

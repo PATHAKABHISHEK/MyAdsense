@@ -20,4 +20,16 @@ export class UserService {
   public loggedIn(){
     return !!localStorage.getItem("token")
   }
+
+  public requestAd(user): Observable<any>{
+    return this._http.post(`${this.url}requestAd`,user);
+  }
+
+  public requestedADs(): Observable<any>{
+    return this._http.get(`${this.url}myRequestedAds`);
+  }
+  
+  public  publisherAdsList(): Observable<any>{
+    return this._http.get(`${this.url}`)
+  }
 }
