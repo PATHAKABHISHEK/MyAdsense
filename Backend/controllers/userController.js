@@ -22,6 +22,7 @@ class UserController {
       "/getFreshRequestedAds",
       this.getFreshRequestedAds.bind(this)
     );
+    this.router.post("/publishAd", this.adPublished.bind(this));
   }
 
   /**
@@ -158,6 +159,21 @@ class UserController {
       .catch((err) => {
         console.log(err);
         next;
+      });
+  }
+  adPublished(req, res, next) {
+    let adId = req.body.adId;
+    let userId = req.body.userId;
+    let adPublishProof = req.body.adPublishProof;
+
+    adRequestsDAO()
+      .adPublished(adId, userId, adPublishProof)
+      .then((updatedAd) => {
+        res.send("Ad Published");
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
       });
   }
 }

@@ -68,6 +68,27 @@ class AdRequestsDAO {
         });
     });
   }
+  adPublished(adId, userId, adPublishProof) {
+    return new Promise((resolve, reject) => {
+      AdRequest.update(
+        {
+          adPublishedBy: userId,
+          adPublishedProof: adPublishProof,
+        },
+        {
+          where: {
+            id: adId,
+          },
+        }
+      )
+        .then((updatedAd) => {
+          resolve(updatedAd);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 }
 
 const adRequestsDAO = () => {
