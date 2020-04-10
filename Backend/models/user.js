@@ -7,12 +7,13 @@ module.exports = (sequelize, DataTypes) => {
       lastName: DataTypes.STRING,
       emailId: DataTypes.STRING,
       password: DataTypes.STRING,
-      mobileNumber: DataTypes.INTEGER
+      mobileNumber: DataTypes.INTEGER,
     },
     {}
   );
-  User.associate = function(models) {
+  User.associate = function (models) {
     // associations can be defined here
+    User.hasMany(models.AdRequest);
   };
   return User;
 };
