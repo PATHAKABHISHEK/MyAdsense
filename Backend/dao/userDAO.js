@@ -52,44 +52,6 @@ class UserDAO {
         });
     });
   }
-
-  requestAdFromDAO(
-    userId,
-    newspaperCategory,
-    newspaperName,
-    newspaperEdition,
-    newspaperLanguage,
-    adType,
-    adRate,
-    adPublishDate,
-    ad,
-    adStatus,
-    adPublishedBy,
-    adPublishedProof
-  ) {
-    return new Promise((resolve, reject) => {
-      AdRequest.create({
-        userId: userId,
-        newspaperCategory: newspaperCategory,
-        newspaperName: newspaperName,
-        newspaperEdition: newspaperEdition,
-        newspaperLanguage: newspaperLanguage,
-        adType: adType,
-        adRate: adRate,
-        adPublishDate: adPublishDate,
-        ad: ad,
-        adStatus: adStatus,
-        adPublishedBy: adPublishedBy,
-        adPublishedProof: adPublishedProof,
-      })
-        .then((ad) => {
-          resolve(ad);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
-  }
 }
 
 const userDAO = () => {

@@ -1,4 +1,5 @@
 const userDAO = require("../dao/userDAO").userDAO;
+const adRequestsDAO = require("../dao/adRequestsDAO").adRequestsDAO;
 const passwordHashing = require("../services/passwordHashingService")
   .passwordHashing;
 
@@ -16,6 +17,7 @@ class UserController {
     this.router.post("/signUp", this.signUpUser.bind(this));
     this.router.post("/signIn", this.signInUser.bind(this));
     this.router.post("/requestAd", this.requestAd.bind(this));
+    this.router.get("/myRequestedAds", this.getMyRequestedAds.bind(this));
   }
   /**
    * @desc This is a Api of SignUp User
@@ -105,7 +107,7 @@ class UserController {
     let adPublishedBy = req.body.adPublishedBy;
     let adPublishedProof = req.body.adPublishedProof;
     console.log(req.body);
-    userDAO()
+    adRequestsDAO()
       .requestAdFromDAO(
         userId,
         newspaperCategory,
@@ -122,6 +124,19 @@ class UserController {
       )
       .then((ad) => {
         res.send(ad.userId);
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
+      });
+  }
+
+  getMyRequestedAds(req, res, next) {
+    let userId = req.body.userId;
+    adRequestsDAO()
+      .getMyRequestedAdsFromDAO(userId)
+      .then((myAdRequests) => {
+        res.send(myAdRequests);
       })
       .catch((err) => {
         console.log(err);
