@@ -44,7 +44,7 @@ export class NewstemplateComponent implements OnInit {
               userId: localStorage.getItem("userId"),
               newspaperCategory: localStorage.getItem("category"),
               newspaperName: localStorage.getItem("newspaper"),
-              newspaperEdition: localStorage.getItem("category"),
+              newspaperEdition: localStorage.getItem("edition"),
               newspaperLanguage: localStorage.getItem("language"),
               adType: localStorage.getItem("adType"),
               adRate: localStorage.getItem("amount"),
