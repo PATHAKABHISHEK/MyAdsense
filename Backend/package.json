@@ -18,7 +18,8 @@
     "mysql2": "^2.1.0",
     "nodemailer": "^6.4.5",
     "nodemon": "^2.0.2",
-    "sequelize": "^5.21.5"
+    "sequelize": "^5.21.5",
+    "stripe": "^8.39.1"
   },
   "devDependencies": {
     "esdoc": "^1.1.0",

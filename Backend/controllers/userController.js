@@ -2,6 +2,7 @@ const userDAO = require("../dao/userDAO").userDAO;
 const adRequestsDAO = require("../dao/adRequestsDAO").adRequestsDAO;
 const passwordHashing = require("../services/passwordHashingService")
   .passwordHashing;
+const stripe = require("stripe")("sk_test_o4s7M5bJP8A4FLmyAlLIEPLk005Hq1mZ88");
 
 /**
  * This is UserController
@@ -24,6 +25,7 @@ class UserController {
     );
     this.router.post("/publishAd", this.adPublished.bind(this));
     this.router.get("/myPublishedAds", this.getMyPublishedAds.bind(this));
+    this.router.post("/pay", this.pay.bind(this));
   }
 
   /**
@@ -182,6 +184,25 @@ class UserController {
       .getMyPublishedAdsFromDAO(userId)
       .then((myPublishedAds) => {
         res.send(myPublishedAds);
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
+      });
+  }
+  pay(req, res, next) {
+    console.log("hello");
+    let stripeTokenId = req.body.stripeTokenId;
+    let amount = req.body.amount;
+    console.log(stripeTokenId);
+    stripe.charges
+      .create({
+        amount: amount,
+        source: stripeTokenId,
+        currency: "inr",
+      })
+      .then(() => {
+        res.send("Payment Successfull");
       })
       .catch((err) => {
         console.log(err);

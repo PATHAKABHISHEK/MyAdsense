@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { PaymentService } from "src/app/service/payment.service";
 
 @Component({
   selector: "app-newstemplate",
@@ -10,7 +11,7 @@ export class NewstemplateComponent implements OnInit {
   price = 30;
   count;
   clicked = false;
-  constructor() {}
+  constructor(private paymentService: PaymentService) {}
 
   ngOnInit() {}
   WordCount(str) {
@@ -26,10 +27,16 @@ export class NewstemplateComponent implements OnInit {
     var handler = (<any>window).StripeCheckout.configure({
       key: "pk_test_gEc03eRh7OBt0TpEUhacPJBz00n1JaNHUi",
       locale: "auto",
-      token: function (token: any) {
-        // You can access the token ID with `token.id`.
-        // Get the token ID to your server-side code for use.
-        console.log(token.id);
+      token: (token) => {
+        console.log("sending");
+        this.paymentService
+          .pay({
+            stripeTokenId: token.id,
+            amount: this.price,
+          })
+          .subscribe((res) => {
+            console.log(res);
+          });
       },
     });
 
