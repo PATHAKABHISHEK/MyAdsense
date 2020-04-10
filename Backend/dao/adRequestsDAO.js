@@ -53,6 +53,21 @@ class AdRequestsDAO {
         });
     });
   }
+  getFreshRequestedAdsFromDAO() {
+    return new Promise((resolve, reject) => {
+      AdRequest.findAll({
+        where: {
+          adStatus: "active",
+        },
+      })
+        .then((freshAds) => {
+          resolve(freshAds);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 }
 
 const adRequestsDAO = () => {

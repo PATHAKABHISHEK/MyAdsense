@@ -18,7 +18,12 @@ class UserController {
     this.router.post("/signIn", this.signInUser.bind(this));
     this.router.post("/requestAd", this.requestAd.bind(this));
     this.router.get("/myRequestedAds", this.getMyRequestedAds.bind(this));
+    this.router.get(
+      "/getFreshRequestedAds",
+      this.getFreshRequestedAds.bind(this)
+    );
   }
+
   /**
    * @desc This is a Api of SignUp User
    * @param {Object} req - This is RequestObject
@@ -141,6 +146,18 @@ class UserController {
       .catch((err) => {
         console.log(err);
         next();
+      });
+  }
+
+  getFreshRequestedAds(req, res, next) {
+    adRequestsDAO()
+      .getFreshRequestedAdsFromDAO()
+      .then((freshAds) => {
+        res.send(freshAds);
+      })
+      .catch((err) => {
+        console.log(err);
+        next;
       });
   }
 }
