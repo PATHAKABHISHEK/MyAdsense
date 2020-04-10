@@ -1,13 +1,12 @@
 <div class="container">
-    <div class="main">
+  <div class="main">
     <h1>Compose Ads Matter</h1>
     <textarea name="" id="" cols="50" rows="5" [(ngModel)]="content"></textarea>
-    <h2>{{content}}</h2>
+    <h2>{{ content }}</h2>
     <button (click)="onCalculate()">Calculate Price</button>
     <div class="bill" *ngIf="clicked">
-        <h3>Calculated amount is : {{count}}</h3>
-
+      <h3>Calculated amount is : {{ count }}</h3>
     </div>
-    <button class="btn btn-success">Proceed to pay</button>
-    </div>
+    <button class="btn btn-success" (click)="pay()">Proceed to pay</button>
+  </div>
 </div>
