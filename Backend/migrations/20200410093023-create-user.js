@@ -21,7 +21,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       mobileNumber: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
+      },
+      userRole: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
