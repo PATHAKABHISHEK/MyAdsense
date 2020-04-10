@@ -45,24 +45,23 @@ class UserController {
           console.log("User Already Exists");
           next();
         } else {
-          passwordHashing()
-            .hashPassword(password)
-            .then((hashedPassword) => {
-              return userDAO().addUser(
-                firstName,
-                lastName,
-                emailId,
-                hashedPassword,
-                mobileNumber
-              );
-            })
-            .then((message) => {
-              if (message) {
-                console.log(message);
-              }
-              next();
-            });
+          return passwordHashing().hashPassword(password);
         }
+      })
+      .then((hashedPassword) => {
+        return userDAO().addUser(
+          firstName,
+          lastName,
+          emailId,
+          hashedPassword,
+          mobileNumber
+        );
+      })
+      .then((message) => {
+        if (message) {
+          console.log(message);
+        }
+        res.json("Successfully Registered");
       })
       .catch((err) => {
         console.log(err);
