@@ -23,6 +23,7 @@ class UserController {
       this.getFreshRequestedAds.bind(this)
     );
     this.router.post("/publishAd", this.adPublished.bind(this));
+    this.router.get("/myPublishedAds", this.getMyPublishedAds.bind(this));
   }
 
   /**
@@ -169,6 +170,19 @@ class UserController {
       .adPublished(adId, userId, adPublishProof)
       .then((updatedAd) => {
         res.send("Ad Published");
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
+      });
+  }
+
+  getMyPublishedAds(req, res, next) {
+    let userId = req.body.userId;
+    adRequestsDAO()
+      .getMyPublishedAdsFromDAO(userId)
+      .then((myPublishedAds) => {
+        res.send(myPublishedAds);
       })
       .catch((err) => {
         console.log(err);

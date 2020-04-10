@@ -74,6 +74,7 @@ class AdRequestsDAO {
         {
           adPublishedBy: userId,
           adPublishedProof: adPublishProof,
+          adStatus: "inactive",
         },
         {
           where: {
@@ -83,6 +84,21 @@ class AdRequestsDAO {
       )
         .then((updatedAd) => {
           resolve(updatedAd);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+  getMyPublishedAdsFromDAO(userId) {
+    return new Promise((resolve, reject) => {
+      AdRequest.findAll({
+        where: {
+          adPublishedBy: userId,
+        },
+      })
+        .then((myPublishedAds) => {
+          resolve(myPublishedAds);
         })
         .catch((err) => {
           reject(err);
