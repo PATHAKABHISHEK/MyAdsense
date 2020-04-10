@@ -11,7 +11,6 @@ class AdRequestsDAO {
     adRate,
     adPublishDate,
     ad,
-    adStatus,
     adPublishedBy,
     adPublishedProof
   ) {
@@ -26,7 +25,7 @@ class AdRequestsDAO {
         adRate: adRate,
         adPublishDate: adPublishDate,
         ad: ad,
-        adStatus: adStatus,
+        adStatus: "ACTIVE",
         adPublishedBy: adPublishedBy,
         adPublishedProof: adPublishedProof,
       })
@@ -57,7 +56,7 @@ class AdRequestsDAO {
     return new Promise((resolve, reject) => {
       AdRequest.findAll({
         where: {
-          adStatus: "active",
+          adStatus: "ACTIVE",
         },
       })
         .then((freshAds) => {
@@ -74,7 +73,7 @@ class AdRequestsDAO {
         {
           adPublishedBy: userId,
           adPublishedProof: adPublishProof,
-          adStatus: "inactive",
+          adStatus: "INACTIVE",
         },
         {
           where: {

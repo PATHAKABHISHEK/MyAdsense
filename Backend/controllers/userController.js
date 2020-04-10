@@ -124,7 +124,6 @@ class UserController {
         adRate,
         adPublishDate,
         ad,
-        adStatus,
         adPublishedBy,
         adPublishedProof
       )
