@@ -104,6 +104,27 @@ class UserDAO {
         });
     });
   }
+
+  addUserAccountVerificationCode(emailId, accountVerificationCode) {
+    return new Promise((resolve, reject) => {
+      User.update(
+        {
+          accountVerificationCode: accountVerificationCode,
+        },
+        {
+          where: {
+            emailId: emailId,
+          },
+        }
+      )
+        .then((updatedUser) => {
+          resolve(updatedUser);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 }
 
 const userDAO = () => {

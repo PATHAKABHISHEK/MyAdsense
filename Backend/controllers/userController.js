@@ -68,14 +68,18 @@ class UserController {
         if (message) {
           console.log(message);
         }
-        let verificationCode = Math.floor(Math.random() * 899999) + 100000;
+        let accountVerificationCode =
+          Math.floor(Math.random() * 899999) + 100000;
         let mailOptions = {
           from: process.env.emailId,
           to: emailId,
           subject: "Verify your MyAdsense Account",
-          html: `<h3>Successfully Registered on MyAdsense</h3><br/><p>Before Starting Further, You need to verify your Account. Below see your verfication Code and Don't Share it with anybody.</p><br/><h1>${verificationCode}</h1>`,
+          html: `<h3>Successfully Registered on MyAdsense</h3><br/><p>Before Starting Further, You need to verify your Account. Below see your verfication Code and Don't Share it with anybody.</p><br/><h1>${accountVerificationCode}</h1>`,
         };
         emailSenderService().sendEmail(mailOptions);
+        return addUserAccountVerificationCode(emailId, accountVerificationCode);
+      })
+      .then((updatedUser) => {
         res.json("Successfully Registered");
       })
       .catch((err) => {
