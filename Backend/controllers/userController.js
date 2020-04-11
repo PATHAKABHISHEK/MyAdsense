@@ -272,9 +272,9 @@ class UserController {
       .verifyAccountFromDAO(id, accountVerificationCode)
       .then((isAccountVerified) => {
         if (isAccountVerified) {
-          res.send("Account Verified");
+          res.json("Account Verified");
         } else {
-          res.send("Account not Verified");
+          res.json("Account not Verified");
         }
       })
       .catch((err) => {
