@@ -85,6 +85,23 @@ class UserDAO {
         });
     });
   }
+
+  getUserEmailIdBasedOnIdFromDAO(id) {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        attributes: ["emailId"],
+        where: {
+          id: id,
+        },
+      })
+        .then((user) => {
+          resolve(user);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 }
 
 const userDAO = () => {
