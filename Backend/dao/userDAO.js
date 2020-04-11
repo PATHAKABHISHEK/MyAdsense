@@ -125,6 +125,42 @@ class UserDAO {
         });
     });
   }
+
+  verifyAccountFromDAO(id, accountVerificationCode) {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        attributes: ["accountVerificationCode"],
+        where: {
+          id: id,
+        },
+      })
+        .then((user) => {
+          if (user.accountVerificationCode == accountVerificationCode) {
+            User.update(
+              {
+                userStatus: "ACTIVE",
+              },
+              {
+                where: {
+                  id: id,
+                },
+              }
+            )
+              .then((updatedUser) => {
+                resolve(true);
+              })
+              .catch((err) => {
+                reject(err);
+              });
+          } else {
+            resolve(false);
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 }
 
 const userDAO = () => {

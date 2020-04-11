@@ -77,7 +77,10 @@ class UserController {
           html: `<h3>Successfully Registered on MyAdsense</h3><br/><p>Before Starting Further, You need to verify your Account. Below see your verfication Code and Don't Share it with anybody.</p><br/><h1>${accountVerificationCode}</h1>`,
         };
         emailSenderService().sendEmail(mailOptions);
-        return addUserAccountVerificationCode(emailId, accountVerificationCode);
+        return userDAO().addUserAccountVerificationCode(
+          emailId,
+          accountVerificationCode
+        );
       })
       .then((updatedUser) => {
         res.json("Successfully Registered");
@@ -255,6 +258,23 @@ class UserController {
       .catch((err) => {
         console.log(err);
         next(err);
+      });
+  }
+  verifyAccount(req, res, next) {
+    let id = req.body.id;
+    let accountVerificationCode = req.body.accountVerificationCode;
+    userDAO()
+      .verifyAccountFromDAO(id, accountVerificationCode)
+      .then((isAccountVerified) => {
+        if (isAccountVerified) {
+          res.send("Account Verified");
+        } else {
+          res.send("Account not Verified");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
       });
   }
 }
