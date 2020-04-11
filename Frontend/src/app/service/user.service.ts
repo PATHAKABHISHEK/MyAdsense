@@ -25,11 +25,15 @@ export class UserService {
     return this._http.post(`${this.url}requestAd`, ad);
   }
 
-  public requestedADs(): Observable<any> {
-    return this._http.get(`${this.url}myRequestedAds`);
+  public requestedADs(userId): Observable<any> {
+    return this._http.post(`${this.url}myRequestedAds`,userId);
   }
 
   public publisherAdsList(): Observable<any> {
-    return this._http.get(`${this.url}`);
+    return this._http.get(`${this.url}myPublishedAds`);
   }
+
+  // public myAdsList():Observable<any>{
+  //   return this._http.get(`${this.url}`)
+  // }
 }

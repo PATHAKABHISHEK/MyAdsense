@@ -34,7 +34,7 @@
             <li *ngFor="let newspaper of newspapers" (click)="selectNewspaper(newspaper)">{{newspaper|titlecase}}</li>
   
             </ul>
-            <img class="backImg" (click)="adLanguage=''" src="../../../assets/arrow.png" alt="">
+            <img class="backImg" (click)="adCategory=''" src="../../../assets/arrow.png" alt="">
            </div>
 
     <div *ngIf="adCategory!=='' && adRegion=='' && adNewspaper!=='' && adLanguage!==''">
@@ -43,29 +43,29 @@
             <li *ngFor="let edition of newspaperEditions" (click)="selectRegion(edition)">{{edition|titlecase}}</li>
    
         </ul>
-        <img class="backImg" (click)="adLanguage=''" src="../../../assets/arrow.png" alt="">
+        <img class="backImg" (click)="adNewspaper=''" src="../../../assets/arrow.png" alt="">
       </div>
 
     <div  *ngIf="adCategory!=='' && adRegion!=='' && adLanguage!=='' && adType=='' && adNewspaper!==''">
        <h1> What type of Ads you want?</h1>
         <div class="row">
         <div class="col-sm-6" (click)="selectAdType('text')">
-            <img src="../../../assets/text ads.PNG" alt="Text Ads"><br>
+            <img class="adType" src="../../../assets/text ads.PNG" alt="Text Ads"><br>
             <label>Text Ads</label>
         </div>
         <div class="col-sm-6" (click)="selectAdType('display')">
-            <img src="../../../assets/dispaly.jfif" alt="Text Ads"><br>
+            <img class="adType" src="../../../assets/dispaly.jfif" alt="Text Ads"><br>
             <label>Display Ads</label>
         </div>
         </div>
-        <img class="backImg" (click)="adLanguage=''" src="../../../assets/arrow.png" alt="">
+        <img class="backImg" (click)="adRegion=''" src="../../../assets/arrow.png" alt="">
     </div>
     <div *ngIf="adCategory!=='' && adRegion!=='' && adLanguage!=='' && adType!=='' && adNewspaper!==''">
         <br><br>
         <h1>What date you choose for publish?</h1>
         <input type="date" [min]="currentDate| date:'yyyy-mm-dd'" name="date OF publish" class="form-control date" [(ngModel)]="dateOfPublish">
         <br><br>
-        <img class="backImg" (click)="adLanguage=''" src="../../../assets/arrow.png" alt="">
+        <img class="backImg" (click)="adType=''" src="../../../assets/arrow.png" alt="">
     <button (click)="route()" class="btn btn-success next">Click here to get rate book</button>
     </div>
 

@@ -18,6 +18,8 @@ import { AuthGuard } from './auth.guard';
 import { MediatorComponent } from './component/mediator/mediator.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MyadsComponent } from './component/myads/myads.component';
+import { AdslistComponent } from './component/adslist/adslist.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     RateComponent,
     NewstemplateComponent,
     MediatorComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    MyadsComponent,
+    AdslistComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgxSpinnerModule],
   providers: [AuthGuard],

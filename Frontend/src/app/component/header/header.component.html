@@ -17,6 +17,7 @@
 
 <div class="vertical-menu" id="profileNav" style="display: none;">
   <a routerLink="/userProfile">View Profile</a>
+  <a *ngIf="userRole==='SUBSCRIBER'" routerLink="/myAds">My ADs</a>
   <a routerLink="/" (click)="clearLocalStorage()"> Logout</a>
 </div>
 
