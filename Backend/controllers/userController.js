@@ -26,6 +26,7 @@ class UserController {
     this.router.post("/publishAd", this.adPublished.bind(this));
     this.router.get("/myPublishedAds", this.getMyPublishedAds.bind(this));
     this.router.post("/pay", this.pay.bind(this));
+    this.router.post("/editProfile", this.editUserProfile.bind(this));
   }
 
   /**
@@ -206,6 +207,32 @@ class UserController {
       .catch((err) => {
         console.log(err);
         next();
+      });
+  }
+
+  editUserProfile(req, res, next) {
+    let id = req.body.userId;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let emailId = req.body.emailId;
+    let mobileNumber = req.body.mobileNumber;
+    let userProfile = req.body.userProfile;
+
+    userDAO()
+      .editUserProfileFromDAO(
+        id,
+        firstName,
+        lastName,
+        emailId,
+        mobileNumber,
+        userProfile
+      )
+      .then((updatedUser) => {
+        res.send(updatedUser);
+      })
+      .catch((err) => {
+        console.log(err);
+        next(err);
       });
   }
 }

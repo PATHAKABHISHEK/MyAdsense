@@ -53,6 +53,37 @@ class UserDAO {
         });
     });
   }
+  editUserProfileFromDAO(
+    id,
+    firstName,
+    lastName,
+    emailId,
+    mobileNumber,
+    userProfile
+  ) {
+    return new Promise((resolve, reject) => {
+      User.update(
+        {
+          firstName: firstName,
+          lastName: lastName,
+          emailId: emailId,
+          mobileNumber: mobileNumber,
+          userProfile: userProfile,
+        },
+        {
+          where: {
+            id: id,
+          },
+        }
+      )
+        .then((updatedUser) => {
+          resolve(updatedUser);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 }
 
 const userDAO = () => {
