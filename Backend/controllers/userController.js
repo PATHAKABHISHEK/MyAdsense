@@ -30,6 +30,11 @@ class UserController {
     this.router.get("/myPublishedAds", this.getMyPublishedAds.bind(this));
     this.router.post("/pay", this.pay.bind(this));
     this.router.post("/editProfile", this.editUserProfile.bind(this));
+    this.router.post("/verifyAccount", this.verifyAccount.bind(this));
+    this.router.post(
+      "/resendAccountVerificationCode",
+      this.resendAccountVerificationCode.bind(this)
+    );
   }
 
   /**
