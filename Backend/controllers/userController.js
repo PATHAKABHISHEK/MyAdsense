@@ -277,6 +277,34 @@ class UserController {
         next();
       });
   }
+  resendAccountVerificationCode(req, res, next) {
+    let id = req.body.id;
+    userDAO()
+      .getUserEmailIdBasedOnIdFromDAO(id)
+      .then((user) => {
+        let emailId = user.emailId;
+        let accountVerificationCode =
+          Math.floor(Math.random() * 899999) + 100000;
+        let mailOptions = {
+          from: process.env.emailId,
+          to: emailId,
+          subject: "Verify your MyAdsense Account",
+          html: `<h3>Resend Account Verification Code</h3><br/><p>Before Starting Further, You need to verify your Account. Below see your verfication Code and Don't Share it with anybody.</p><br/><h1>${accountVerificationCode}</h1>`,
+        };
+        emailSenderService().sendEmail(mailOptions);
+        return userDAO().addUserAccountVerificationCode(
+          emailId,
+          accountVerificationCode
+        );
+      })
+      .then((updatedUser) => {
+        res.json("SuccessFully Re-Send Account Verification Code");
+      })
+      .catch((err) => {
+        console.log(err);
+        next(err);
+      });
+  }
 }
 
 const userController = (userRouter) => {

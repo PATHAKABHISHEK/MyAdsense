@@ -139,6 +139,7 @@ class UserDAO {
             User.update(
               {
                 userStatus: "ACTIVE",
+                accountVerificationCode: null,
               },
               {
                 where: {
