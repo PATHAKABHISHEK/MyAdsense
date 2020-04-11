@@ -29,6 +29,9 @@ module.exports = {
       userProfile: {
         type: Sequelize.BLOB
       },
+      userStatus: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
