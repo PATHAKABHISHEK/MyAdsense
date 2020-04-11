@@ -1,8 +1,11 @@
+require("dotenv").config();
 const userDAO = require("../dao/userDAO").userDAO;
 const adRequestsDAO = require("../dao/adRequestsDAO").adRequestsDAO;
 const passwordHashing = require("../services/passwordHashingService")
   .passwordHashing;
 const stripe = require("stripe")("sk_test_o4s7M5bJP8A4FLmyAlLIEPLk005Hq1mZ88");
+const emailSenderService = require("../services/emailSenderService")
+  .emailSenderService;
 
 /**
  * This is UserController
@@ -65,6 +68,14 @@ class UserController {
         if (message) {
           console.log(message);
         }
+        let verificationCode = Math.floor(Math.random() * 899999) + 100000;
+        let mailOptions = {
+          from: process.env.emailId,
+          to: emailId,
+          subject: "Verify your MyAdsense Account",
+          html: `<h3>Successfully Registered on MyAdsense</h3><br/><p>Before Starting Further, You need to verify your Account. Below see your verfication Code and Don't Share it with anybody.</p><br/><h1>${verificationCode}</h1>`,
+        };
+        emailSenderService().sendEmail(mailOptions);
         res.json("Successfully Registered");
       })
       .catch((err) => {
