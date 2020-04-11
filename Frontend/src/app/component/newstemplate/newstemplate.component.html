@@ -1,12 +1,48 @@
 <div class="container">
   <div class="main">
     <h1>Compose Ads Matter</h1>
+    <div>
     <textarea name="" id="" cols="50" rows="5" [(ngModel)]="content"></textarea>
-    <h2>{{ content }}</h2>
-    <button (click)="onCalculate()">Calculate Price</button>
-    <div class="bill" *ngIf="clicked">
-      <h3>Calculated amount is : {{ count }}</h3>
+    <!-- <h2>{{ content }}</h2> -->
+    <button class="btn btn-success" (click)="onCalculate()">Calculate Price</button>
     </div>
-    <button class="btn btn-success" (click)="pay()">Proceed to pay</button>
+    <br>
+    <br>
+    <div>
+      <div *ngIf="clicked">
+        <h2 text-align="center">Invoice</h2>
+        <table class="bill">
+          <tr class="thead">
+            <th class="colLeft">Description</th>
+            <th class="colRight"></th>
+          </tr>
+          <tr>
+            <td class="colLeft">Number of Word</td>
+            <td class="colRight">{{numberOfWord}}</td>
+          </tr>
+          <tr>
+            <td class="colLeft">Cost per word</td>
+            <td class="colRight">{{price}}</td>
+          </tr>
+
+          <tr  class="calPriceTr">
+            <td class="colLeft"></td>
+            <td class="colRight">
+              <table class="calPriceTable">
+                <tr>{{numberOfWord}}</tr>
+                <tr>x {{price}}</tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td  class="colLeft"><h3>Total Amount : </h3></td>
+            <td class="colRight"><i class="fa fa-inr" aria-hidden="true"></i> {{count}}</td>
+          </tr>
+          
+        </table>
+        <br>
+        <button class="btn btn-success" (click)="pay()">Proceed to pay</button>
+      </div>
+    </div>
   </div>
 </div>

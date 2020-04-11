@@ -8,14 +8,56 @@ h1{
     margin-top: 100px;
 }
 textarea{
-    width: 600px;
+    width: 100%;
 
 }
 .main{
     margin-left: 20%;
     margin-right: 20%;
+    min-width: 600px;
 }
 
 .bill{
     border: 1px solid #4c4c4c;
+    width: 100%;
+}
+
+.thead{
+    border-bottom: 1px solid black;
+}
+
+.btn{
+    float: right;
+}
+
+.colLeft{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    width: 80%;
+    border-right: 1px solid black;
+}
+
+.colRight{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.calPriceTable tr{
+    padding-right: 20px;
+    text-align: right;
+}
+
+.calPriceTable{
+    width: 100%;
+}
+
+.calPriceTr{
+    border-bottom: 1px solid black;
+}
+
+.calPriceTr td{
+    padding-top:80px;
 }

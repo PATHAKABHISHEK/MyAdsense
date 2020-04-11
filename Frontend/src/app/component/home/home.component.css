@@ -13,6 +13,11 @@ li{
 
 }
 
+.adType{
+    height: 200px;
+    width: 200px;
+}
+
 .start{
     margin-top: 250px;
     font-size: 30px;
@@ -48,10 +53,10 @@ form{
     margin-right:20%;
 }
 
-img{
+/* img{
     height: 100px;
     width: 100px;
-}
+} */
 .col-sm-6{
     padding-left: 15%;
 }

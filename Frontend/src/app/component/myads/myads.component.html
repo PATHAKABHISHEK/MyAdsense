@@ -1,0 +1,23 @@
+
+<div class="container">
+    <h1 class="head">My Ads List</h1>
+       <div *ngFor="let ad of myAds">
+      <div class="row rowdiv">
+        <div class="col-sm-4">
+          <img src="../../../assets/loginImg.jfif" alt="">
+        </div>
+        <div class="col-sm-5">
+         <h3>{{ad['newspaperName']|titlecase}}</h3>
+         <h6></h6>
+         <h6 >{{ad['newspaperCategory']}}</h6>
+         <h6>{{ad['newspaperEdition']}}</h6>
+         <h6 >{{ad['adType']}}</h6>
+         <h6 >{{ad['adPublishDate']}}</h6>
+         <h6>{{ad['adRate']}}</h6>
+        </div>
+        <div class="col-sm-3 btnDiv">
+          <button  routerLink="/newsContent" class="btn btn-success">Book Deal</button>
+        </div>
+      </div>
+  </div>
+</div>

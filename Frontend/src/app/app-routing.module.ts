@@ -9,6 +9,8 @@ import { RateComponent } from './component/rate/rate.component';
 import { NewstemplateComponent } from './component/newstemplate/newstemplate.component';
 import { AuthGuard } from './auth.guard';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { MyadsComponent } from './component/myads/myads.component';
+import { AdslistComponent } from './component/adslist/adslist.component';
 
 
 
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path:"recuitment", component:RecuitmentComponent, canActivate: [AuthGuard]},
   {path:"rate",component:RateComponent, canActivate: [AuthGuard]},
   {path:"newsContent",component:NewstemplateComponent, canActivate: [AuthGuard]},
-  {path:"userProfile",component:UserProfileComponent}
+  {path:"userProfile",component:UserProfileComponent},
+  {path:"myAds",component:MyadsComponent},
+  {path:"adlist",component:AdslistComponent}
 ];
 
 @NgModule({

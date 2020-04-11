@@ -20,7 +20,9 @@
           </tr>
 
     </table> -->
+    
     <div *ngFor="let rate of newspaperAdRates">
+
       <div class="row rowdiv">
         <div class="col-sm-4">
           <img src="../../../assets/loginImg.jfif" alt="">
@@ -34,8 +36,9 @@
          <h6 *ngIf="adType==='display'">{{rate['adDisplaySize']}}</h6>
         </div>
         <div class="col-sm-3 btnDiv">
-          <button  routerLink="/newsContent" class="btn btn-success">Book Deal</button>
+          <button  routerLink="/newsContent" (click)="adprice($event,rate)" class="btn btn-success">Book Deal</button>
         </div>
       </div>
+
   </div>
 </div>

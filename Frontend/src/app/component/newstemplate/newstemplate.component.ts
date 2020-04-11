@@ -9,21 +9,26 @@ import { UserService } from "src/app/service/user.service";
 })
 export class NewstemplateComponent implements OnInit {
   content = "";
-  price = 30;
+  price :number;
   count;
+  numberOfWord;
   clicked = false;
   constructor(
     private paymentService: PaymentService,
     private userService: UserService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.price=Number(localStorage.getItem('price'));
+    console.log(this.price);
+  }
   WordCount(str) {
     return str.split(" ").length;
   }
   onCalculate() {
     console.log(this.WordCount(this.content));
-    this.count = this.WordCount(this.content) * this.price;
+    this.numberOfWord=this.WordCount(this.content);
+    this.count = this.numberOfWord * this.price;
     this.clicked = true;
   }
 
@@ -37,7 +42,7 @@ export class NewstemplateComponent implements OnInit {
         this.paymentService
           .pay({
             stripeTokenId: token.id,
-            amount: this.price * 100,
+            amount: this.count * 100,
           })
           .subscribe((res) => {
             let ad = {
@@ -63,7 +68,7 @@ export class NewstemplateComponent implements OnInit {
     handler.open({
       name: "MyAdsense",
       description: "Pay And Publish Ad",
-      amount: this.price * 100,
+      amount: this.count * 100,
       currency: "inr",
     });
   }
