@@ -60,7 +60,8 @@ class UserDAO {
     lastName,
     emailId,
     mobileNumber,
-    userProfile
+    userProfile,
+    changeUserStatus
   ) {
     return new Promise((resolve, reject) => {
       User.update(
@@ -70,6 +71,7 @@ class UserDAO {
           emailId: emailId,
           mobileNumber: mobileNumber,
           userProfile: userProfile,
+          userStatus: changeUserStatus ? "INACTIVE" : "ACTIVE",
         },
         {
           where: {

@@ -217,16 +217,23 @@ class UserController {
     let emailId = req.body.emailId;
     let mobileNumber = req.body.mobileNumber;
     let userProfile = req.body.userProfile;
-
+    let changeUserStatus = false;
     userDAO()
-      .editUserProfileFromDAO(
-        id,
-        firstName,
-        lastName,
-        emailId,
-        mobileNumber,
-        userProfile
-      )
+      .getUserEmailIdBasedOnIdFromDAO(id)
+      .then((user) => {
+        if (user.emailId !== emailId) {
+          changeUserStatus = true;
+        }
+        return userDAO().editUserProfileFromDAO(
+          id,
+          firstName,
+          lastName,
+          emailId,
+          mobileNumber,
+          userProfile,
+          changeUserStatus
+        );
+      })
       .then((updatedUser) => {
         res.send(updatedUser);
       })
