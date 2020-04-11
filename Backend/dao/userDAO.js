@@ -27,7 +27,8 @@ class UserDAO {
         emailId: emailId,
         password: password,
         mobileNumber: mobileNumber,
-        userRole: "SUBSCRIBER", // or PUBLISHER
+        userRole: "SUBSCRIBER", // or PUBLISHER,
+        userStatus: "INACTIVE", // or ACTIVE
       })
         .then(() => {
           resolve("User Added");
