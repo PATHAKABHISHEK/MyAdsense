@@ -26,6 +26,15 @@ module.exports = {
       userRole: {
         type: Sequelize.STRING
       },
+      userProfile: {
+        type: Sequelize.BLOB
+      },
+      userStatus: {
+        type: Sequelize.STRING
+      },
+      accountVerificationCode: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

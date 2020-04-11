@@ -27,7 +27,8 @@ class UserDAO {
         emailId: emailId,
         password: password,
         mobileNumber: mobileNumber,
-        userRole: "SUBSCRIBER", // or PUBLISHER
+        userRole: "SUBSCRIBER", // or PUBLISHER,
+        userStatus: "INACTIVE", // or ACTIVE
       })
         .then(() => {
           resolve("User Added");
@@ -46,6 +47,114 @@ class UserDAO {
             resolve(user);
           } else {
             resolve({});
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+  editUserProfileFromDAO(
+    id,
+    firstName,
+    lastName,
+    emailId,
+    mobileNumber,
+    userProfile,
+    changeUserStatus
+  ) {
+    return new Promise((resolve, reject) => {
+      User.update(
+        {
+          firstName: firstName,
+          lastName: lastName,
+          emailId: emailId,
+          mobileNumber: mobileNumber,
+          userProfile: userProfile,
+          userStatus: changeUserStatus ? "INACTIVE" : "ACTIVE",
+        },
+        {
+          where: {
+            id: id,
+          },
+        }
+      )
+        .then((updatedUser) => {
+          resolve(updatedUser);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getUserEmailIdBasedOnIdFromDAO(id) {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        attributes: ["emailId"],
+        where: {
+          id: id,
+        },
+      })
+        .then((user) => {
+          resolve(user);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
+  addUserAccountVerificationCode(emailId, accountVerificationCode) {
+    return new Promise((resolve, reject) => {
+      User.update(
+        {
+          accountVerificationCode: accountVerificationCode,
+        },
+        {
+          where: {
+            emailId: emailId,
+          },
+        }
+      )
+        .then((updatedUser) => {
+          resolve(updatedUser);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
+  verifyAccountFromDAO(id, accountVerificationCode) {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        attributes: ["accountVerificationCode"],
+        where: {
+          id: id,
+        },
+      })
+        .then((user) => {
+          if (user.accountVerificationCode == accountVerificationCode) {
+            User.update(
+              {
+                userStatus: "ACTIVE",
+                accountVerificationCode: null,
+              },
+              {
+                where: {
+                  id: id,
+                },
+              }
+            )
+              .then((updatedUser) => {
+                resolve(true);
+              })
+              .catch((err) => {
+                reject(err);
+              });
+          } else {
+            resolve(false);
           }
         })
         .catch((err) => {

@@ -1,8 +1,11 @@
+require("dotenv").config();
 const userDAO = require("../dao/userDAO").userDAO;
 const adRequestsDAO = require("../dao/adRequestsDAO").adRequestsDAO;
 const passwordHashing = require("../services/passwordHashingService")
   .passwordHashing;
 const stripe = require("stripe")("sk_test_o4s7M5bJP8A4FLmyAlLIEPLk005Hq1mZ88");
+const emailSenderService = require("../services/emailSenderService")
+  .emailSenderService;
 
 /**
  * This is UserController
@@ -26,6 +29,7 @@ class UserController {
     this.router.post("/publishAd", this.adPublished.bind(this));
     this.router.get("/myPublishedAds", this.getMyPublishedAds.bind(this));
     this.router.post("/pay", this.pay.bind(this));
+    this.router.post("/editProfile", this.editUserProfile.bind(this));
   }
 
   /**
@@ -64,6 +68,21 @@ class UserController {
         if (message) {
           console.log(message);
         }
+        let accountVerificationCode =
+          Math.floor(Math.random() * 899999) + 100000;
+        let mailOptions = {
+          from: process.env.emailId,
+          to: emailId,
+          subject: "Verify your MyAdsense Account",
+          html: `<h3>Successfully Registered on MyAdsense</h3><br/><p>Before Starting Further, You need to verify your Account. Below see your verfication Code and Don't Share it with anybody.</p><br/><h1>${accountVerificationCode}</h1>`,
+        };
+        emailSenderService().sendEmail(mailOptions);
+        return userDAO().addUserAccountVerificationCode(
+          emailId,
+          accountVerificationCode
+        );
+      })
+      .then((updatedUser) => {
         res.json("Successfully Registered");
       })
       .catch((err) => {
@@ -206,6 +225,84 @@ class UserController {
       .catch((err) => {
         console.log(err);
         next();
+      });
+  }
+
+  editUserProfile(req, res, next) {
+    let id = req.body.userId;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let emailId = req.body.emailId;
+    let mobileNumber = req.body.mobileNumber;
+    let userProfile = req.body.userProfile;
+    let changeUserStatus = false;
+    userDAO()
+      .getUserEmailIdBasedOnIdFromDAO(id)
+      .then((user) => {
+        if (user.emailId !== emailId) {
+          changeUserStatus = true;
+        }
+        return userDAO().editUserProfileFromDAO(
+          id,
+          firstName,
+          lastName,
+          emailId,
+          mobileNumber,
+          userProfile,
+          changeUserStatus
+        );
+      })
+      .then((updatedUser) => {
+        res.send(updatedUser);
+      })
+      .catch((err) => {
+        console.log(err);
+        next(err);
+      });
+  }
+  verifyAccount(req, res, next) {
+    let id = req.body.id;
+    let accountVerificationCode = req.body.accountVerificationCode;
+    userDAO()
+      .verifyAccountFromDAO(id, accountVerificationCode)
+      .then((isAccountVerified) => {
+        if (isAccountVerified) {
+          res.send("Account Verified");
+        } else {
+          res.send("Account not Verified");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
+      });
+  }
+  resendAccountVerificationCode(req, res, next) {
+    let id = req.body.id;
+    userDAO()
+      .getUserEmailIdBasedOnIdFromDAO(id)
+      .then((user) => {
+        let emailId = user.emailId;
+        let accountVerificationCode =
+          Math.floor(Math.random() * 899999) + 100000;
+        let mailOptions = {
+          from: process.env.emailId,
+          to: emailId,
+          subject: "Verify your MyAdsense Account",
+          html: `<h3>Resend Account Verification Code</h3><br/><p>Before Starting Further, You need to verify your Account. Below see your verfication Code and Don't Share it with anybody.</p><br/><h1>${accountVerificationCode}</h1>`,
+        };
+        emailSenderService().sendEmail(mailOptions);
+        return userDAO().addUserAccountVerificationCode(
+          emailId,
+          accountVerificationCode
+        );
+      })
+      .then((updatedUser) => {
+        res.json("SuccessFully Re-Send Account Verification Code");
+      })
+      .catch((err) => {
+        console.log(err);
+        next(err);
       });
   }
 }
