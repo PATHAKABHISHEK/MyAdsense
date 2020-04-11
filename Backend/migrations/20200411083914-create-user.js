@@ -32,6 +32,9 @@ module.exports = {
       userStatus: {
         type: Sequelize.STRING
       },
+      accountVerificationCode: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
