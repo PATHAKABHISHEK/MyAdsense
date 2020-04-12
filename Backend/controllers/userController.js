@@ -312,7 +312,7 @@ class UserController {
       });
   }
   getUserProfile(req, res, next) {
-    let id = req.body.id;
+    let id = req.query.id;
     userDAO()
       .getUserProfileFromDAO(id)
       .then((user) => {
