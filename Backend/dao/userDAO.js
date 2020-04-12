@@ -162,6 +162,22 @@ class UserDAO {
         });
     });
   }
+
+  getUserProfileFromDAO(id) {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        where: {
+          id: id,
+        },
+      })
+        .then((user) => {
+          resolve(user);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 }
 
 const userDAO = () => {

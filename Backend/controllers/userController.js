@@ -35,6 +35,7 @@ class UserController {
       "/resendAccountVerificationCode",
       this.resendAccountVerificationCode.bind(this)
     );
+    this.router.get("/getUserProfile", this.getUserProfile.bind(this));
   }
 
   /**
@@ -308,6 +309,19 @@ class UserController {
       .catch((err) => {
         console.log(err);
         next(err);
+      });
+  }
+  getUserProfile(req, res, next) {
+    let id = req.body.id;
+    userDAO()
+      .getUserProfileFromDAO(id)
+      .then((user) => {
+        user.password = null;
+        res.send(user);
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
       });
   }
 }
