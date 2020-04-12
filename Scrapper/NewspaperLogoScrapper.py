@@ -5,6 +5,9 @@ from mysql.connector import Error
 import datetime
 import urllib.request
 import base64
+import os
+import shutil
+
 
 # Encoding image to base64
 def get_base64_encoded_image(image_path):
@@ -31,6 +34,9 @@ try:
         print("Connected to MySQL Server version ", db_Info)
         cursor = connection.cursor()
         k = 1
+
+        #Creates Fresh Newspaper Logo Folder
+        os.mkdir("NewspaperLogo")
         for paper in newspaper:
             # # Querying Website based on Paper Name
             page = requests.get('https://{newspaper}.releasemyad.com/'.format(newspaper=paper))
@@ -59,6 +65,25 @@ finally:
         connection.commit()
         connection.close()
         print("MySQL connection is closed")
+
+
+
+
+
+# files = glob.glob('/Scrapper/NewspaperLogo/**.jpg', recursive=True)
+
+# for f in files:
+#     try:
+#         os.remove(f)
+#         print('hi')
+#     except OSError as e:
+#         print("Error: %s : %s" % (f, e.strerror))
+
+# Deletes NewspaperLogo Folder
+try:
+    shutil.rmtree("NewspaperLogo")
+except OSError as e:
+    print ("Error: %s - %s." % (e.filename, e.strerror))
 
 
 # For Testing And Debugging Purposes
