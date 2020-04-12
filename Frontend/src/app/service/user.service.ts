@@ -26,21 +26,21 @@ export class UserService {
   }
 
   public requestedADs(userId): Observable<any> {
-    return this._http.post(`${this.url}myRequestedAds`,userId);
+    return this._http.get(`${this.url}myRequestedAds?userId=${userId}`);
   }
 
   public publisherAdsList(): Observable<any> {
     return this._http.get(`${this.url}myPublishedAds`);
   }
-  public verifyAccount(id, accountVerificationCode):Observable<any>{
+  public verifyAccount(id, accountVerificationCode): Observable<any> {
     return this._http.post(`${this.url}/verifyAccount`, {
       id: id,
-      accountVerificationCode: accountVerificationCode
+      accountVerificationCode: accountVerificationCode,
     });
   }
 
-  public resendAccountVerificationCode(id):Observable<any>{
-    return this._http.post(`${this.url}resendAccountVerificationCode`,{id});
+  public resendAccountVerificationCode(id): Observable<any> {
+    return this._http.post(`${this.url}resendAccountVerificationCode`, { id });
   }
   // public myAdsList():Observable<any>{
   //   return this._http.get(`${this.url}`)
