@@ -36,8 +36,15 @@ export class LoginComponent implements OnInit {
         this.userName=res.firstName+" "+res.lastName;
         localStorage.setItem("userName",this.userName);
         localStorage.setItem("emailId",res.emailId);
+        localStorage.setItem("mobileNo",res.mobileNumber);
         if(res.userRole==="SUBSCRIBER"){
-          this.router.navigateByUrl("/home");
+          if(res.userStatus==="ACTIVE"){
+            this.router.navigateByUrl("/home");
+          }
+          else{
+            this.router.navigateByUrl("/accountVerify");
+          }
+  
         }
         else if(res.userRole==="PUBLISHER"){
           this.router.navigateByUrl("/adlist");

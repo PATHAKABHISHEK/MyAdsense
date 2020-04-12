@@ -11,6 +11,8 @@ import { AuthGuard } from './auth.guard';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { MyadsComponent } from './component/myads/myads.component';
 import { AdslistComponent } from './component/adslist/adslist.component';
+import { AccountVerificationComponent } from './component/account-verification/account-verification.component';
+import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
 
 
 
@@ -24,7 +26,9 @@ const routes: Routes = [
   {path:"newsContent",component:NewstemplateComponent, canActivate: [AuthGuard]},
   {path:"userProfile",component:UserProfileComponent},
   {path:"myAds",component:MyadsComponent},
-  {path:"adlist",component:AdslistComponent}
+  {path:"adlist",component:AdslistComponent},
+  {path:"accountVerify",component:AccountVerificationComponent},
+  {path:"editProfile",component:EditProfileComponent}
 ];
 
 @NgModule({

@@ -20,6 +20,8 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MyadsComponent } from './component/myads/myads.component';
 import { AdslistComponent } from './component/adslist/adslist.component';
+import { AccountVerificationComponent } from './component/account-verification/account-verification.component';
+import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AdslistComponent } from './component/adslist/adslist.component';
     MediatorComponent,
     UserProfileComponent,
     MyadsComponent,
-    AdslistComponent
+    AdslistComponent,
+    AccountVerificationComponent,
+    EditProfileComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgxSpinnerModule],
   providers: [AuthGuard],

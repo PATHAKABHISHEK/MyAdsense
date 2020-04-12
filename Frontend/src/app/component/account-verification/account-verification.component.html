@@ -1,0 +1,16 @@
+<div class="main">
+    <div class="container align-self-center">
+        <h1>Verify email address</h1>
+        <form>
+            <img src="../../../assets/otp.png" alt="">
+            <br>
+            <h6>Please enter the verification code send to</h6>
+            <h6>{{emailId}}</h6>
+            <input type="text" class="form-control" name="verify" [(ngModel)]="accountVerificationCode">
+            <div class="buttons">
+                <span (click)="resendOTP()" class="resend">resend verification code</span>
+                <button class="verify btn" (click)="verify()">Verify</button>
+            </div>
+        </form>
+    </div>
+</div>

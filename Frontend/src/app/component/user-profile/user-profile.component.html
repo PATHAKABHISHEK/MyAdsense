@@ -1,10 +1,14 @@
 
-<div><div class="main-div">
+<div class="main-div">
+    <div class="edit"><img routerLink="/editProfile" src="../../../assets/edit.png" alt=""></div>
     <div class="pic-div">
         <img class="pic" src="../../../assets/logo.PNG" alt="">
     </div>
     <div class="detail-div">
         <h3>{{userName}}</h3>
         <h5>{{emailId}}</h5>
+        
+    <a routerLink="/editProfile"><i class="fa fa-user-edit"></i></a>
+        <h5>{{mobileNo}}</h5>
     </div>
 </div>

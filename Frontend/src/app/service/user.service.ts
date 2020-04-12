@@ -32,7 +32,16 @@ export class UserService {
   public publisherAdsList(): Observable<any> {
     return this._http.get(`${this.url}myPublishedAds`);
   }
+  public verifyAccount(id, accountVerificationCode):Observable<any>{
+    return this._http.post(`${this.url}/verifyAccount`, {
+      id: id,
+      accountVerificationCode: accountVerificationCode
+    });
+  }
 
+  public resendAccountVerificationCode(id):Observable<any>{
+    return this._http.post(`${this.url}resendAccountVerificationCode`,{id});
+  }
   // public myAdsList():Observable<any>{
   //   return this._http.get(`${this.url}`)
   // }
