@@ -204,7 +204,7 @@ class UserController {
   }
 
   getMyPublishedAds(req, res, next) {
-    let userId = req.body.userId;
+    let userId = req.query.userId;
     adRequestsDAO()
       .getMyPublishedAdsFromDAO(userId)
       .then((myPublishedAds) => {
