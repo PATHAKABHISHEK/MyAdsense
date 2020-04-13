@@ -21,7 +21,7 @@ class UserController {
     this.router.post("/signUp", this.signUpUser.bind(this));
     this.router.post("/signIn", this.signInUser.bind(this));
     this.router.post("/requestAd", this.requestAd.bind(this));
-    this.router.post("/myRequestedAds", this.getMyRequestedAds.bind(this));
+    this.router.get("/myRequestedAds", this.getMyRequestedAds.bind(this));
     this.router.get(
       "/getFreshRequestedAds",
       this.getFreshRequestedAds.bind(this)
@@ -164,7 +164,7 @@ class UserController {
   }
 
   getMyRequestedAds(req, res, next) {
-    let userId = req.body.userId;
+    let userId = req.query.userId;
     adRequestsDAO()
       .getMyRequestedAdsFromDAO(userId)
       .then((myAdRequests) => {
@@ -204,7 +204,7 @@ class UserController {
   }
 
   getMyPublishedAds(req, res, next) {
-    let userId = req.body.userId;
+    let userId = req.query.userId;
     adRequestsDAO()
       .getMyPublishedAdsFromDAO(userId)
       .then((myPublishedAds) => {

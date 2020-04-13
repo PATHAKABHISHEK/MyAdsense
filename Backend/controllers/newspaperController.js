@@ -1,4 +1,5 @@
 const newspaperDAO = require("../dao/newspaperDAO").newspaperDAO;
+const newspaperLogoDAO = require("../dao/newspaperLogoDAO").newspaperLogoDAO;
 
 class NewspaperController {
   constructor(router) {
@@ -27,16 +28,20 @@ class NewspaperController {
       "/get_all_newspaper_ad_rate",
       this.getAllNewspaperAdRates.bind(this)
     );
+    this.router.get(
+      "/get_all_newspaper_logos",
+      this.getAllNewspaperLogos.bind(this)
+    );
   }
 
   getNewspaperLanguage(req, res, next) {
     newspaperDAO()
       .getNewspaperLanguage()
-      .then(languages => {
+      .then((languages) => {
         res.send({ languages });
         next();
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         next();
       });
@@ -45,11 +50,11 @@ class NewspaperController {
   getNewspaperCategory(req, res, next) {
     newspaperDAO()
       .getNewspaperCategory()
-      .then(adCategory => {
+      .then((adCategory) => {
         res.send({ adCategory });
         next();
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         next();
       });
@@ -60,10 +65,10 @@ class NewspaperController {
     let category = req.body.category;
     newspaperDAO()
       .getNewspaperBasedOnLanguageAndCategory(language, category)
-      .then(newspaper => {
+      .then((newspaper) => {
         res.send({ newspaper });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         next();
       });
@@ -73,10 +78,10 @@ class NewspaperController {
     let newspaper = req.body.newspaper;
     newspaperDAO()
       .getNewspaperEdition(newspaper)
-      .then(newspaperEdition => {
+      .then((newspaperEdition) => {
         res.send({ newspaperEdition });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         next();
       });
@@ -91,16 +96,32 @@ class NewspaperController {
 
     newspaperDAO()
       .getAllNewspaperAdRates(language, category, newspaper, edition, adType)
-      .then(newspaperAdRates => {
+      .then((newspaperAdRates) => {
         res.send(newspaperAdRates);
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
+      });
+  }
+
+  getAllNewspaperLogos(req, res, next) {
+    newspaperLogoDAO()
+      .getAllNewspaperLogoFromDAO()
+      .then((allNewspaperLogos) => {
+        res.send(allNewspaperLogos);
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
       });
   }
 }
 
-const newspaperController = newspaperRouter => {
+const newspaperController = (newspaperRouter) => {
   return new NewspaperController(newspaperRouter);
 };
 
 module.exports = {
-  newspaperController
+  newspaperController,
 };

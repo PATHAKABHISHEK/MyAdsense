@@ -5,6 +5,9 @@ from mysql.connector import Error
 import datetime
 import urllib.request
 import base64
+import os
+import shutil
+
 
 # Encoding image to base64
 def get_base64_encoded_image(image_path):
@@ -30,7 +33,10 @@ try:
         db_Info = connection.get_server_info()
         print("Connected to MySQL Server version ", db_Info)
         cursor = connection.cursor()
+        k = 1
 
+        #Creates Fresh Newspaper Logo Folder
+        os.mkdir("NewspaperLogo")
         for paper in newspaper:
             # # Querying Website based on Paper Name
             page = requests.get('https://{newspaper}.releasemyad.com/'.format(newspaper=paper))
@@ -41,12 +47,12 @@ try:
             print(newspaperLogoElement['src'])
             urllib.request.urlretrieve('{newspaperLogo}'.format(newspaperLogo = newspaperLogoElement['src']), "NewspaperLogo/{newspaper}.jpg".format(newspaper=paper))    
             # Encode image to base64
-            newspaperLogo = get_base64_encoded_image("{newspaper}.jpg".format(newspaper=paper))
+            newspaperLogo = str(get_base64_encoded_image("NewspaperLogo/{newspaper}.jpg".format(newspaper=paper)))[1:]
             
 
             # SQL QUERY for inserting newspaper text ad rates
-            sql = "INSERT INTO newspaperLogos (id, newspaperName, newspaperLogo, createdAt, updatedAt) \
-                VALUES ({id}, '{newspaper}', '{newspaperLogo}', '{createdAt}', '{updatedAt}')".format(id=k, newspaper=paper, newspaperLogo=newspaperLogo,
+            sql = "INSERT INTO newspaperlogos (id, newspaperName, newspaperLogo, createdAt, updatedAt) \
+                VALUES ({id}, '{newspaper}', {newspaperLogo}, '{createdAt}', '{updatedAt}')".format(id=k, newspaper=paper, newspaperLogo=newspaperLogo,
                     createdAt=datetime.datetime.now(), updatedAt=datetime.datetime.now())
             k += 1
             cursor.execute(sql)  
@@ -59,6 +65,25 @@ finally:
         connection.commit()
         connection.close()
         print("MySQL connection is closed")
+
+
+
+
+
+# files = glob.glob('/Scrapper/NewspaperLogo/**.jpg', recursive=True)
+
+# for f in files:
+#     try:
+#         os.remove(f)
+#         print('hi')
+#     except OSError as e:
+#         print("Error: %s : %s" % (f, e.strerror))
+
+# Deletes NewspaperLogo Folder
+try:
+    shutil.rmtree("NewspaperLogo")
+except OSError as e:
+    print ("Error: %s - %s." % (e.filename, e.strerror))
 
 
 # For Testing And Debugging Purposes
