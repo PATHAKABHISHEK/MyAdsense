@@ -1,7 +1,28 @@
 <div class="main">
     <div class="container">
-        <div class="profile">
-
+        <div class="pic-div">
+            <img class="pic" src="../../../assets/google logo.png" alt="">
+            <div>
+                <span><input type="file" id="">Change Picture</span>
+            </div>
         </div>
+    <div>
+        <form action="">
+            <label for="">First Name</label>
+            <input class="form-control" type="text" name="firstName" [(ngModel)]="profile.firstName" id="">
+
+            <label for="">Last Name</label>
+            <input class="form-control" type="text" name="lastName" [(ngModel)]="profile.lastName" id="">
+            
+            <label for="">Email Address</label>
+            <input class="form-control" type="text" name="email" [(ngModel)]="profile.emailId" id="">
+            
+            <label for="">Mobile Number</label>
+            <input class="form-control" type="text" name="mobileNo" [(ngModel)]="profile.mobileNumber" id="">
+
+            <button (click)="editProfile()">Save</button>
+        </form>
+
+    </div>
     </div>
 </div>

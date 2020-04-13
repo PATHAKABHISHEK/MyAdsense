@@ -42,6 +42,14 @@ export class UserService {
   public resendAccountVerificationCode(id):Observable<any>{
     return this._http.post(`${this.url}resendAccountVerificationCode`,{id});
   }
+
+  public editUserProfile(profile):Observable<any>{
+    return this._http.post(`${this.url}editProfile`,profile);
+  }
+
+  public getUserProfile(id):Observable<any>{
+    return this._http.get(`${this.url}getUserProfile?id=${id}`);
+  }
   // public myAdsList():Observable<any>{
   //   return this._http.get(`${this.url}`)
   // }
