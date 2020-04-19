@@ -22,6 +22,8 @@ import { MyadsComponent } from './component/myads/myads.component';
 import { AdslistComponent } from './component/adslist/adslist.component';
 import { AccountVerificationComponent } from './component/account-verification/account-verification.component';
 import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
+import { PickNewsComponent } from './component/pick-news/pick-news.component';
+import { MyPublishedAdsComponent } from './component/my-published-ads/my-published-ads.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +42,15 @@ import { EditProfileComponent } from './component/edit-profile/edit-profile.comp
     MyadsComponent,
     AdslistComponent,
     AccountVerificationComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    PickNewsComponent,
+    MyPublishedAdsComponent,
+ 
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgxSpinnerModule],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
+  entryComponents: [PickNewsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

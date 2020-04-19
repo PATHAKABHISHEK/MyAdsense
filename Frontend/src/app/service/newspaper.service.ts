@@ -25,5 +25,8 @@ export class NewspaperService {
     return this.http.post(`${this.url}/get_all_newspaper_ad_rate`,newspaper);
 
   }
+  public get_all_newspaper_logos():Observable<any>{
+    return this.http.get(`${this.url}/get_all_newspaper_logos`);
+  }
   
 }

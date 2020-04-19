@@ -12,8 +12,8 @@ export class AuthGuard implements CanActivate {
   canActivate():boolean{
     
     const isAuthenticated = localStorage.getItem('canNavigate');
-
-    if(isAuthenticated=="Y"){
+    const userRole = localStorage.getItem("userRole")
+    if(isAuthenticated=="Y" && userRole==="SUBSCRIBER"){
       return true
     }
     else{

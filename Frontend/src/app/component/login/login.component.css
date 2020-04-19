@@ -1,6 +1,7 @@
 .main{
     /* background: rgb(252,133,22); */
-    background: linear-gradient(126deg, rgba(252,133,22,1) 0%, rgba(244,18,0,0.802025033646271) 47%, rgba(62,143,187,1) 100%);   height: 590px;
+    background: linear-gradient(126deg, rgba(252,133,22,1) 0%, rgba(244,18,0,0.802025033646271) 47%, rgba(62,143,187,1) 100%);  
+     height: 590px;
     padding-top: 70px;
     /* padding-left: 25%; */
 }
@@ -57,7 +58,7 @@ img{
 .loginBtn{
     background-color: #ff1300;
     color: white;
-    margin-right: 40px;
+    margin-right: 60px;
 }
 a{
     color:#ff1300;

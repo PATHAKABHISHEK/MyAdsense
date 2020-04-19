@@ -1,0 +1,52 @@
+.main{
+    background: wheat;
+    padding-top: 15%;
+    padding-bottom: 13%;
+    background: linear-gradient(126deg, rgba(252,133,22,1) 0%, rgba(244,18,0,0.802025033646271) 47%, rgba(62,143,187,1) 100%);  
+   
+}
+.container{
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    padding-top:40px;
+    box-shadow: 0 0.56875rem 2.1875rem rgba(4,9,20,.03), 0 1.0375rem 1.40625rem rgba(4,9,20,.03), 0 0.55rem 0.53125rem rgba(4,9,20,.05), 0 0.125rem 0.1875rem rgba(4,9,20,.03);
+
+}
+
+.button{
+    background-color: #df493a;
+    color: white;
+}
+
+h1{
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+input{
+    margin-left: 90px;
+}
+
+.file-upload-button {
+    /* background-color: #df493a; */
+    overflow: hidden;
+    position: relative;
+    width: 150px;
+    color: black;
+    }
+
+    input[type="file"] {
+        font-size: 100px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        }
+
+label{
+    margin-left: 100px;
+}
+h4{
+    text-align: center;
+}

@@ -1,10 +1,15 @@
-<div class="main">
+<div class="body">
+<div class="container main">
     <div class="container">
         <div class="pic-div">
             <img class="pic" src="../../../assets/google logo.png" alt="">
-            <div>
-                <span><input type="file" id="">Change Picture</span>
-            </div>
+            <button class="btn file-upload-button">
+                <input
+                  type="file"
+                  #fileInput
+                  (change)="onProfilePicUpload($event)"
+                />Change Pic
+              </button>
         </div>
     <div>
         <form action="">
@@ -20,9 +25,10 @@
             <label for="">Mobile Number</label>
             <input class="form-control" type="text" name="mobileNo" [(ngModel)]="profile.mobileNumber" id="">
 
-            <button (click)="editProfile()">Save</button>
+            <button class="btn button" (click)="editProfile()">Save</button>
         </form>
 
     </div>
     </div>
+</div>
 </div>

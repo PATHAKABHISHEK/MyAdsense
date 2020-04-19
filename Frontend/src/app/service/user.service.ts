@@ -50,7 +50,16 @@ export class UserService {
   public getUserProfile(id):Observable<any>{
     return this._http.get(`${this.url}getUserProfile?id=${id}`);
   }
+  public getFreshRequestedAds():Observable<any>{
+    return this._http.get(`${this.url}getFreshRequestedAds`);
+  }
   // public myAdsList():Observable<any>{
   //   return this._http.get(`${this.url}`)
   // }
+  public adPublished(newsDetail):Observable<any>{
+    return this._http.post(`${this.url}publishAd`,newsDetail);
+  }
+  public getMyPublishedAds(userId):Observable<any>{
+    return this._http.get(`${this.url}myPublishedAds?userId=${userId}`);
+  }
 }

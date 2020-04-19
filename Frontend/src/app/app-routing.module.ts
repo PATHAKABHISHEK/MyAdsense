@@ -13,6 +13,8 @@ import { MyadsComponent } from './component/myads/myads.component';
 import { AdslistComponent } from './component/adslist/adslist.component';
 import { AccountVerificationComponent } from './component/account-verification/account-verification.component';
 import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
+import { PickNewsComponent } from './component/pick-news/pick-news.component';
+import { MyPublishedAdsComponent } from './component/my-published-ads/my-published-ads.component';
 
 
 
@@ -28,7 +30,9 @@ const routes: Routes = [
   {path:"myAds",component:MyadsComponent},
   {path:"adlist",component:AdslistComponent},
   {path:"accountVerify",component:AccountVerificationComponent},
-  {path:"editProfile",component:EditProfileComponent}
+  {path:"editProfile",component:EditProfileComponent},
+  {path:"pickAd",component:PickNewsComponent},
+  {path:"myPublishedAds",component:MyPublishedAdsComponent}
 ];
 
 @NgModule({

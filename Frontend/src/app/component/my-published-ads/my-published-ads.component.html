@@ -1,22 +1,22 @@
 
 <div class="main">
     <div class="container">
-        <div class="adsList" *ngFor="let ad of ads">
+        <h1>My Published Ads</h1>
+        <div class="adsList" *ngFor="let ad of publishedAds">
             <div class="newspaperDetail">
                 <div id="newspaperName">{{ad['newspaperName']| titlecase }}</div>
-                <span id="newspaperCategory">{{ad['newspaperCategory']| titlecase }}</span>
-                <span id="newspaperEdition">{{ad["newspaperEdition"]| titlecase}}</span>
-                <span id="newspaperLanguage">{{ad["newspaperLanguage"]| titlecase}}</span>
-            </div>
+                <div class="tags"> 
+                    <span id="newspaperCategory">{{ad['newspaperCategory']| titlecase }}</span>
+                    <span id="newspaperEdition">{{ad["newspaperEdition"]| titlecase}}</span>
+                    <span id="newspaperLanguage">{{ad["newspaperLanguage"]| titlecase}}</span>
+                </div>
+                </div>
             <div class="adDetail">
                 <label >Ad Type: </label><span>{{ad["adType"]| titlecase}}</span>
                 <div *ngIf="ad['adType']==='text'"><label >Total Cost : </label> <span>{{ad['adRate']}}</span></div>
                 <div *ngIf="ad['adType']==='display'"><label >Total Cost : </label> <span>{{ad['adRate']}}</span></div>
             </div>
-            <div>
-                <button class="pickButton btn btn-success" (click)="picked(ad)">Pick</button>
-            </div>
-
+            <button class="btn pickButton">View Ad</button>
         </div>
     </div>
 </div>

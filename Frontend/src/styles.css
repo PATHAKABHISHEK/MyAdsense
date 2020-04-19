@@ -3,3 +3,10 @@
 /* @import '~bootstrap-material-design/dist/css/bootstrap-material-design.min.css'; */
 /* @import '~bootstrap-material-design/dist/js/bootstrap-material-design.min.js'; */
 /* @import '~jquery/dist/jquery.min.js'; */
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: Roboto,
+     "Helvetica Neue", sans-serif;
+     /* background: linear-gradient(126deg, rgba(252,133,22,1) 0%, rgba(244,18,0,0.802025033646271) 47%, rgba(62,143,187,1) 100%);   height: 590px; */
+    }

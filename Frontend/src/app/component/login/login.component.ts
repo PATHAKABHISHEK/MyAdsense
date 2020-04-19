@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/service/user.service";
 import { Router } from "@angular/router";
 import swal from "sweetalert";
+import { NewspaperService } from 'src/app/service/newspaper.service';
 
 @Component({
   selector: "app-login",
@@ -9,7 +10,7 @@ import swal from "sweetalert";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  constructor(private userService: UserService ,private router : Router) {}
+  constructor(private userService: UserService ,private router : Router, private newspaperService:NewspaperService) {}
   emailId;
   password;
   userName:string;
@@ -55,5 +56,9 @@ export class LoginComponent implements OnInit {
           swal("Incorrect Credential","","danger");
         }
       });
+      this.newspaperService.get_all_newspaper_logos()
+      .subscribe(res=>{
+        console.log(res);
+      })
   }
 }

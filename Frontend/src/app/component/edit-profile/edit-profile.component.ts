@@ -8,6 +8,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class EditProfileComponent implements OnInit {
 userId=localStorage.getItem("userId");
+
   profile={
     userId:localStorage.getItem("userId"),
     firstName:localStorage.getItem("firstName"),
@@ -15,6 +16,9 @@ userId=localStorage.getItem("userId");
     emailId:localStorage.getItem("emailId"),
     mobileNumber:localStorage.getItem("mobileNo")
   }
+  selectedImage: any;
+  imgURL: string | ArrayBuffer;
+  pic =null;
 
   constructor(private userService:UserService) { }
 
@@ -29,7 +33,17 @@ userId=localStorage.getItem("userId");
     .subscribe(res=>{
       console.log(res);
     });
-
   }
 
+  
+  onProfilePicUpload(event){
+    var input = event.target;
+    var reader = new FileReader();
+    reader.onload = function(){
+      var dataURL = reader.result;
+      var output = document.getElementById('output');
+      // output.src = dataURL;
+    };
+    reader.readAsDataURL(input.files[0]);
+}
 }
