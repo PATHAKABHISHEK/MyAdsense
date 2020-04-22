@@ -14,17 +14,27 @@ userId=localStorage.getItem("userId");
     firstName:localStorage.getItem("firstName"),
     lastName:localStorage.getItem("lastName"),
     emailId:localStorage.getItem("emailId"),
-    mobileNumber:localStorage.getItem("mobileNo")
+    mobileNumber:localStorage.getItem("mobileNo"),
+    userProfile:null
   }
   selectedImage: any;
   imgURL: string | ArrayBuffer;
   pic =null;
-
+  profileDetail: any;
+  imageUrl:any;
+  img:any;
+  imageFile: any;
   constructor(private userService:UserService) { }
 
   ngOnInit() {
     this.userService.getUserProfile(this.userId).subscribe(res=>{
-      console.log(res);
+      this.profileDetail=res;
+      console.log(res.userProfile);
+
+      const TYPED_ARRAY = new Uint8Array(res.userProfile);
+      this.imageUrl = res.userProfile.data
+      console.log(this.imageUrl)
+      
     })
   }
 
@@ -37,13 +47,14 @@ userId=localStorage.getItem("userId");
 
   
   onProfilePicUpload(event){
-    var input = event.target;
-    var reader = new FileReader();
-    reader.onload = function(){
-      var dataURL = reader.result;
-      var output = document.getElementById('output');
-      // output.src = dataURL;
+    this.imageFile = event.target.files[0];
+    const filereader =new FileReader();
+    filereader.onload = e=>{
+      this.profile.userProfile=filereader.result;
+      this.profile.userProfile=btoa(
+        this.profile.userProfile
+      );
     };
-    reader.readAsDataURL(input.files[0]);
+    filereader.readAsBinaryString(this.imageFile);
 }
 }

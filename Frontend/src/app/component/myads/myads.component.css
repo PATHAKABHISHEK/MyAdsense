@@ -1,0 +1,84 @@
+.container{
+  
+    width: 70%;
+}
+.adsList{
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 50% 40% 10%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.main{
+    /* background: linear-gradient(126deg, rgba(252,133,22,1) 0%, rgba(244,18,0,0.802025033646271) 47%, rgba(62,143,187,1) 100%);   */
+    /* color: white; */
+    padding-top: 100px;
+    height: 100%;
+}
+
+.adDetail{
+    margin-top: 15px;
+}
+
+h1{
+    font-weight: 900;
+    font-size: 25px;
+    text-align: center;
+    
+}
+#newspaperName{
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.tags{
+    margin-bottom: 10px;
+}
+
+#newspaperCategory, #newspaperEdition, #newspaperLanguage{
+    margin-left: 20px;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    background-color:teal;
+    padding:5px;
+    border-radius: 3px;
+    /* margin-right: 20px; */
+}
+
+#newspaperCategory{
+    background-color: #fc8516;
+}
+
+#newspaperEdition{
+    background-color: #ff1300;
+}
+#newspaperLanguage{
+    background-color: #085ba6;
+}
+
+
+.pickButton{
+    float: right;
+    margin-right: 20px;
+    margin-top: 8%;  
+    margin-left: 20px;
+    background-color: #ff1300; 
+    width: 100px; 
+    height: 50px;
+    color: white;
+}
+
+
+.modal-xl{
+    width: 80%;
+}
+#modal{
+    display: inline;
+}
+.model.show{
+    display: block;
+}

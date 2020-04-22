@@ -22,6 +22,7 @@ li{
 .start{
     margin-top: 250px;
     font-size: 30px;
+    margin-bottom: 0px;
 }
 li:hover,.date:hover{
     border:2px solid #ff1300;
@@ -29,7 +30,7 @@ li:hover,.date:hover{
     background-color: white;
 }
 .container{
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }
 h1{
     text-align: center;

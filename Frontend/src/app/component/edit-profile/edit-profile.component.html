@@ -2,8 +2,8 @@
 <div class="container main">
     <div class="container">
         <div class="pic-div">
-            <img class="pic" src="../../../assets/google logo.png" alt="">
-            <button class="btn file-upload-button">
+            <img class="pic" src="{{imageUrl}}" alt="">
+            <button class="btn file-upload-buton">
                 <input
                   type="file"
                   #fileInput
@@ -14,16 +14,16 @@
     <div>
         <form action="">
             <label for="">First Name</label>
-            <input class="form-control" type="text" name="firstName" [(ngModel)]="profile.firstName" id="">
+            <input class="form-control" type="text" name="firstName" [(ngModel)]="profileDetail.firstName" id="">
 
             <label for="">Last Name</label>
-            <input class="form-control" type="text" name="lastName" [(ngModel)]="profile.lastName" id="">
+            <input class="form-control" type="text" name="lastName" [(ngModel)]="profileDetail.lastName" id="">
             
             <label for="">Email Address</label>
-            <input class="form-control" type="text" name="email" [(ngModel)]="profile.emailId" id="">
+            <input class="form-control" type="text" name="email" [(ngModel)]="profileDetail.emailId" id="">
             
             <label for="">Mobile Number</label>
-            <input class="form-control" type="text" name="mobileNo" [(ngModel)]="profile.mobileNumber" id="">
+            <input class="form-control" type="text" name="mobileNo" [(ngModel)]="profileDetail.mobileNumber" id="">
 
             <button class="btn button" (click)="editProfile()">Save</button>
         </form>

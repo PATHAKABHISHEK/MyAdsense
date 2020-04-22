@@ -24,13 +24,17 @@ h1{
 } */
 
 .logWithGmail{
-   /* border: 2px solid #ff1300; */
-   /* color: #ff1300; */
-   height: 40px;
-   background-color: #df493a;
-   width: 280px;
-   margin-left:25px ;
-}
+    /* border: 2px solid #ff1300;
+    color: #ff1300; */
+    height: 40px;
+    background-color: #df493a;
+    width: 200px;
+    margin-left:21%;
+    margin-right: 21%;
+ }
+ .signText{
+     font-size: 12px;
+ }
 
 img{
     /* margin-top: 5px; */
@@ -58,7 +62,7 @@ a{
 .but-text{
     margin-top: 10px;
     color: white;
-    font-weight: 400;
+    font-weight: 600;
 }
 p{
     font-size: 20px;

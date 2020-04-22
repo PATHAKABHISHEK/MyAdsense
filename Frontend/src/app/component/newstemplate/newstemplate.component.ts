@@ -32,6 +32,10 @@ export class NewstemplateComponent implements OnInit {
     this.clicked = true;
   }
 
+  alert(){
+    swal("success","","success");
+  }
+
   pay() {
     var handler = (<any>window).StripeCheckout.configure({
       key: "pk_test_gEc03eRh7OBt0TpEUhacPJBz00n1JaNHUi",

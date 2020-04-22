@@ -10,13 +10,11 @@ export class MyadsComponent implements OnInit {
 
   userId=localStorage.getItem("userId");
   myAds=[];
-  id={
-    userId:localStorage.getItem("userId")
-  }
+  
   constructor(private userservice:UserService) { }
 
   ngOnInit() {
-    this.userservice.requestedADs(this.id)
+    this.userservice.requestedADs(this.userId)
     .subscribe(res=>{
       this.myAds=res;
       console.log(res);
