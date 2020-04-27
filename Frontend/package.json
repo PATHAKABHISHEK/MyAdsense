@@ -3,15 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.14",
+    "@angular/cli": "~8.3.23",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
     "@angular/core": "~8.2.14",
@@ -22,6 +24,7 @@
     "@angular/router": "~8.2.14",
     "bootstrap": "^4.4.1",
     "bootstrap-material-design": "^4.1.1",
+    "express": "^4.17.1",
     "jquery": "^3.4.1",
     "ngx-spinner": "^9.0.1",
     "rxjs": "~6.4.0",
@@ -31,7 +34,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.23",
-    "@angular/cli": "~8.3.23",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
     "@types/node": "~8.9.4",
@@ -49,5 +51,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
+  },
+  "engines": {
+    "node": "12.14.1",
+    "npm": "6.13.4"
   }
 }
