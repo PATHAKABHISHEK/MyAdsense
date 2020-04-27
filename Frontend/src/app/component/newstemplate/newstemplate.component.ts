@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PaymentService } from "src/app/service/payment.service";
 import { UserService } from "src/app/service/user.service";
+import swal from "sweetalert";
 
 @Component({
   selector: "app-newstemplate",
@@ -9,7 +10,7 @@ import { UserService } from "src/app/service/user.service";
 })
 export class NewstemplateComponent implements OnInit {
   content = "";
-  price :number;
+  price: number;
   count;
   numberOfWord;
   clicked = false;
@@ -19,7 +20,7 @@ export class NewstemplateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.price=Number(localStorage.getItem('price'));
+    this.price = Number(localStorage.getItem("price"));
     console.log(this.price);
   }
   WordCount(str) {
@@ -27,13 +28,13 @@ export class NewstemplateComponent implements OnInit {
   }
   onCalculate() {
     console.log(this.WordCount(this.content));
-    this.numberOfWord=this.WordCount(this.content);
+    this.numberOfWord = this.WordCount(this.content);
     this.count = this.numberOfWord * this.price;
     this.clicked = true;
   }
 
-  alert(){
-    swal("success","","success");
+  alert() {
+    swal("success", "", "success");
   }
 
   pay() {
