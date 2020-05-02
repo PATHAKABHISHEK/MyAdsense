@@ -27,7 +27,8 @@
 
 <div class="main">
   <div class="container">
-      <div class="adsList" *ngFor="let ad of myAds">
+      <div class="adsList" *ngFor="let ad of myAds; let i index" (click)="showDiv(i)" >
+        <div class="grid" >
           <div class="newspaperDetail">
               <div id="newspaperName">{{ad['newspaperName']| titlecase }}</div>
               <span id="newspaperCategory">{{ad['newspaperCategory']| titlecase }}</span>
@@ -37,13 +38,17 @@
           <div class="adDetail">
               <div><label >Ad Type: </label><span>{{ad["adType"]| titlecase}}</span></div>
               <div><label >Ad publish Date: </label><span>{{ad['adPublishDate']|date:'longDate'}}</span></div>
-              <div *ngIf="ad['adType']==='text'"><label >Total Cost : </label> <span>{{ad['adRate']}}</span></div>
-              <div *ngIf="ad['adType']==='display'"><label >Total Cost : </label> <span>{{ad['adRate']}}</span></div>
+              <div *ngIf="ad['adType']==='text'"><label >Total Cost : <i class="fa fa-inr" aria-hidden="true"></i></label> <span>{{ad['adRate']}}</span></div>
+              <div *ngIf="ad['adType']==='display'"><label >Total Cost : <i class="fa fa-inr" aria-hidden="true"></i></label> <span>{{ad['adRate']}}</span></div>
           </div>
-          <div>
-              <span>{{ad['adStatus']|uppercase}}</span>
-          </div>
-
+          <div class="status-div">
+              <span id="processing-status" *ngIf="ad['adStatus']==='PROCESSING'">{{ad['adStatus']|uppercase}}</span>
+              <span id="published-status" *ngIf="ad['adStatus']==='PUBLISHED'">{{ad['adStatus']|uppercase}}</span>
+              {{ad['show']}}
+            </div>
+        </div>
+          <div class="news" *ngIf="ad.show">
+            <div class="newsContent">{{ad['adContent']}}</div>
       </div>
   </div>
 </div>

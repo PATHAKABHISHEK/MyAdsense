@@ -2,8 +2,17 @@
   <div class="main">
     <h1>Compose Ads Matter</h1>
     <div>
-    <textarea name="" id="" cols="50" rows="5" [(ngModel)]="content"></textarea>
+      <div *ngIf="adtype==='text'" id="textarea" >
+        <textarea name="" id="textarea" cols="50" rows="5" [(ngModel)]="content"></textarea>
+      </div>
+      <div *ngIf="adtype==='display'" id="textarea">
+          <input type="file" name="" id="">
+      </div>
+    <!-- <textarea name="" id="textarea" cols="50" rows="5" [(ngModel)]="content"></textarea> -->
     <!-- <h2>{{ content }}</h2> -->
+
+
+    <span>{{content}}</span>
     <button class="btn btn-success" (click)="onCalculate()">Calculate Price</button>
     </div>
     <br>

@@ -8,13 +8,13 @@
 .container{
     align-items: center;    
     background-color: white;
-    width:400px;
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 2%;
     padding-top: 2%;
     height: 430px;
     margin-top: 50px;
+    width: 400px;
  
 }
 h1{

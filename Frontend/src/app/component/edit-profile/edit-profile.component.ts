@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
-
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -24,16 +24,17 @@ userId=localStorage.getItem("userId");
   imageUrl:any;
   img:any;
   imageFile: any;
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.userService.getUserProfile(this.userId).subscribe(res=>{
       this.profileDetail=res;
       console.log(res.userProfile);
-
+      this.spinner.hide();
       const TYPED_ARRAY = new Uint8Array(res.userProfile);
       this.imageUrl = res.userProfile.data
-      console.log(this.imageUrl)
+      console.log(this.imageUrl);
       
     })
   }
