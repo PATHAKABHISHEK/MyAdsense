@@ -64,8 +64,15 @@ try:
                 
                 #Selection Edition
                 edition = soup.find_all('h1')
-                newspaperLanguage = edition[-3].text.split(" ")[-2]
-                edition = edition[2:-2]
+                
+                #
+                # for i in edition:
+                #     print(i)
+                # Bug arises here either edition[-2] or edition[-3] or edition[-1]
+                newspaperLanguage = edition[-1].text.split(" ")[-2]
+                # print(newspaperLanguage)
+                #edition[2:-2]
+                edition = edition[2:-1]
                 edition = edition[0:int(len(edition)/2)]
                 for i in range(len(edition)):
                     edition[i] = edition[i].text

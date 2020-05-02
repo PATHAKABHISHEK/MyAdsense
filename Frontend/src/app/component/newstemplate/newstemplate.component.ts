@@ -13,7 +13,7 @@ import html2canvas from 'html2canvas';
 })
 export class NewstemplateComponent implements OnInit {
   content = "";
-  price :number;
+  price: number;
   count;
   numberOfWord;
   newsElement;
@@ -28,7 +28,7 @@ export class NewstemplateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.price=Number(localStorage.getItem('price'));
+    this.price = Number(localStorage.getItem("price"));
     console.log(this.price);
     this.adtype=localStorage.getItem("adType");
   }
@@ -37,13 +37,17 @@ export class NewstemplateComponent implements OnInit {
   }
   onCalculate() {
     console.log(this.WordCount(this.content));
-    this.numberOfWord=this.WordCount(this.content);
+    this.numberOfWord = this.WordCount(this.content);
     this.count = this.numberOfWord * this.price;
     this.clicked = true;
     const a=btoa(this.content);
     console.log(btoa(this.content));
     console.log(atob(a));
     
+  }
+
+  alert() {
+    swal("success", "", "success");
   }
 
   pay() {
