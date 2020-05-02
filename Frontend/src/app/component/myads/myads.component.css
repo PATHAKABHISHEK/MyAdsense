@@ -4,16 +4,32 @@
 }
 .adsList{
     border: 1px solid black;
-    display: grid;
-    grid-template-columns: 50% 40% 10%;
     margin-bottom: 10px;
     border-radius: 10px;
 }
+
+.grid{
+    display: grid;
+    grid-template-columns: 50% 35% 15%;
+}
+
 .main{
     /* background: linear-gradient(126deg, rgba(252,133,22,1) 0%, rgba(244,18,0,0.802025033646271) 47%, rgba(62,143,187,1) 100%);   */
     /* color: white; */
     padding-top: 100px;
     height: 100%;
+}
+.newsContent{
+    border-width:3px;  
+    border-style:dashed;
+    width:60%;
+    height:300px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding:30px;
+    text-align:center;
 }
 
 .adDetail{
@@ -81,4 +97,18 @@ h1{
 }
 .model.show{
     display: block;
+}
+
+
+#processing-status{
+    font-weight: 800;
+    color: red;
+}
+#published-status{
+    font-weight: 800;
+    color: green;
+}
+
+.status-div{
+    padding-top:33%;
 }

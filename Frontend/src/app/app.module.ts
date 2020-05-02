@@ -2,7 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -17,13 +17,17 @@ import { NewstemplateComponent } from './component/newstemplate/newstemplate.com
 import { AuthGuard } from './auth.guard';
 import { MediatorComponent } from './component/mediator/mediator.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { MyadsComponent } from './component/myads/myads.component';
 import { AdslistComponent } from './component/adslist/adslist.component';
 import { AccountVerificationComponent } from './component/account-verification/account-verification.component';
 import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
 import { PickNewsComponent } from './component/pick-news/pick-news.component';
 import { MyPublishedAdsComponent } from './component/my-published-ads/my-published-ads.component';
+import { ProfileNavComponent } from './component/profile-nav/profile-nav.component';
+// Import library module
+import { NgxSpinnerModule } from "ngx-spinner";
+// import {MatDialogModule} from '@angular/material/dialog';
+import { NewsImgComponent } from './component/news-img/news-img.component';
 
 @NgModule({
   declarations: [
@@ -45,12 +49,14 @@ import { MyPublishedAdsComponent } from './component/my-published-ads/my-publish
     EditProfileComponent,
     PickNewsComponent,
     MyPublishedAdsComponent,
+    ProfileNavComponent,
+    NewsImgComponent,
  
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgxSpinnerModule],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [PickNewsComponent],
+  entryComponents: [PickNewsComponent,NewsImgComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
