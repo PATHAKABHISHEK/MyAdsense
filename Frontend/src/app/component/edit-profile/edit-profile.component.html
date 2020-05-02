@@ -1,15 +1,15 @@
 <div class="body">
-<div class="container main">
+<div class="main">
     <div class="container">
         <div class="pic-div">
-            <img class="pic" src="{{imageUrl}}" alt="">
-            <button class="btn file-upload-buton">
+            <img class="pic" [src]="imgUrl" alt="">
+            <h4 class="file-upload-button">
                 <input
                   type="file"
                   #fileInput
                   (change)="onProfilePicUpload($event)"
-                />Change Pic
-              </button>
+                /><label for="imgInp"><i class="fa fa-cloud-upload"></i>Chosse file</label>
+            </h4>
         </div>
     <div>
         <form action="">

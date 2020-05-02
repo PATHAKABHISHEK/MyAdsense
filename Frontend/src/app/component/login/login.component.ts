@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("userName",this.userName);
         localStorage.setItem("emailId",res.emailId);
         localStorage.setItem("mobileNo",res.mobileNumber);
+        // console.log(this.stringFromArray(res.userProfile.data));
+        localStorage.setItem("profilePic",this.stringFromArray(res.userProfile.data));
         if(res.userRole==="SUBSCRIBER"){
           if(res.userStatus==="ACTIVE"){
             this.router.navigateByUrl("/home");
@@ -60,5 +62,15 @@ export class LoginComponent implements OnInit {
       .subscribe(res=>{
         console.log(res);
       })
+  }
+  stringFromArray(data)
+  {
+    var count = data.length;
+    var str = "";
+    
+    for(var index = 0; index < count; index += 1)
+      str += String.fromCharCode(data[index]);
+    
+    return btoa(str);
   }
 }

@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   isLogin=true;
   userRole=localStorage.getItem("userRole");
   constructor(private location: Location, private router:Router) { }
-
+  profilePic=localStorage.getItem("profilePic");
   ngOnInit() {
     // if(this.isLogin===""){
     // this.isLogin=localStorage.getItem("canNavigate");
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
     // this.router.navigate(["/"]).then(e=>{
     //   this.ngOnInit();
     // })
-
+    
     if(
       (this.location.path().includes('/home')||
       this.location.path().includes('/adlist')) && 
