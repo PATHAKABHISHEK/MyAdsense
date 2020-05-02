@@ -6,13 +6,14 @@ li,a{
     /* margin-top: 15px;
     font-size: 15px; */
 }
-.colnav li{
+.colnav ul li{
     height: 68px;
-    padding-top:30px;
+    padding-top:50px;
     padding-bottom: 25px;
     padding-left: 25px;
     padding-right: 25px;
     width: 25%; 
+    
     /* width: 150px; */
     /* border: 1px solid black; */
 }
@@ -21,6 +22,9 @@ li a{
     margin-top: 30px;
     font-size: 20px;
 
+}
+li{
+    margin-top: 50px;
 }
 
 .collogo{
@@ -32,12 +36,14 @@ ul{
     background:#e9ecef;
     list-style-type: none;
     overflow: hidden;
-    height: 58px;
+    height: 64px;
     width: 600px;
     padding-left: 120px;
     float: right;
     margin-top: 5px;
     border-radius: 5px;
+    margin-top: 0px;
+    /* padding-top: 50px; */
    
 }
 /* .logo{

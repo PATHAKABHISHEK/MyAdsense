@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from "@angular/common";
 import {Router} from "@angular/router";
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ export class HeaderComponent implements OnInit {
   userRole=localStorage.getItem("userRole");
   constructor(private location: Location, private router:Router) { }
   profilePic=localStorage.getItem("profilePic");
+  login=localStorage.getItem("canNavigate");
   ngOnInit() {
     // if(this.isLogin===""){
     // this.isLogin=localStorage.getItem("canNavigate");
@@ -21,6 +23,9 @@ export class HeaderComponent implements OnInit {
     //   this.ngOnInit();
     // })
     
+  this.login=localStorage.getItem("canNavigate");
+  console.log(this.login);
+  console.log(this.userRole);
     if(
       (this.location.path().includes('/home')||
       this.location.path().includes('/adlist')) && 
@@ -36,6 +41,7 @@ export class HeaderComponent implements OnInit {
   showUserProfile(){
     if(this.location.path().includes('/home')||
     this.location.path().includes('/about')||
+    this.location.path().includes("/contactUs")||
     this.location.path().includes('/rate')||
     this.location.path().includes('/newsContent')||
     this.location.path().includes('/userProfile')||
@@ -49,6 +55,17 @@ export class HeaderComponent implements OnInit {
     }
     else{
       return false;
+    }
+  }
+  homeNav(){
+    if(this.userRole==="SUBSCRIBER"){
+      this.router.navigateByUrl("/home");
+    }
+    else if(this.userRole==="PUBLISHER"){
+      this.router.navigateByUrl("/adlist")
+    }
+    else{
+      this.router.navigateByUrl("/")
     }
   }
 

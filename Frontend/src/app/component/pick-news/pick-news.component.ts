@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
-
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-pick-news',
   templateUrl: './pick-news.component.html',
@@ -8,7 +8,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class PickNewsComponent implements OnInit {
 
-  constructor(private userservice: UserService) { }
+  constructor(private userservice: UserService,private router:Router) { }
 
   adproofFile:any;
   adPublishProof:any;
@@ -40,6 +40,7 @@ export class PickNewsComponent implements OnInit {
     this.userservice.adPublished(this.publishDetail)
     .subscribe(res=>{
       console.log(res);
+      this.router.navigateByUrl("/myPublishedAds");
     })
   }
 

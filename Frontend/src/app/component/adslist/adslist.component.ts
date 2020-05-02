@@ -20,6 +20,14 @@ export class AdslistComponent implements OnInit {
     .subscribe(res=>{
       this.ads=res;
       console.log(this.ads);
+      for(let i=0;i<this.ads.length;i++){
+        this.ads[i]["show"]=false;
+        console.log(this.ads[i].show);
+        console.log(this.stringFromArray(this.ads[i].ad.data));
+        this.ads[i]['adContent']=(this.stringFromArray(this.ads[i].ad.data));
+        console.log(this.ads['adContent']);
+      }
+      console.log(this.ads);
       this.spinner.hide();
     })
   }
@@ -29,6 +37,23 @@ export class AdslistComponent implements OnInit {
     console.log(ad.id);
     localStorage.setItem("adId",ad.id);
  
+  }
+
+  stringFromArray(data)
+  {
+    var count = data.length;
+    var str = "";
+    
+    for(var index = 0; index < count; index += 1)
+      str += String.fromCharCode(data[index]);
+    
+    return atob(str);
+  }
+
+  showDiv(event){
+    console.log(event);
+    event.show=!event.show;
+    // console.log(ts.myAds);
   }
 }
 

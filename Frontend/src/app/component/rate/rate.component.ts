@@ -29,6 +29,7 @@ NewsRate:{};
       console.log(res);
     });
     console.log(this.price);
+    console.log(this.newspaper);
   }
 
   adprice(event,rate){

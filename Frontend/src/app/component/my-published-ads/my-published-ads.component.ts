@@ -12,6 +12,7 @@ export class MyPublishedAdsComponent implements OnInit {
 
   userId=localStorage.getItem("userId");
   publishedAds: any;
+  imgUrl: void;
   constructor(private userService:UserService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
@@ -26,10 +27,34 @@ export class MyPublishedAdsComponent implements OnInit {
       this.publishedAds=res;
         console.log(res);
         this.spinner.hide();
+        for(let i=0;i<this.publishedAds.length;i++){
+          this.publishedAds[i]["show"]=false;
+          // console.log(this.publishedAds[i].show);
+          // console.log(this.stringFromArray(this.publishedAds[i].adPublishedProof.data));
+          this.publishedAds[i]["adProof"]="data:image/png;base64,"+(this.stringFromArray(this.publishedAds[i].adPublishedProof.data));
+          console.log(this.publishedAds["adProof"]);
+        }
+        console.log(this.publishedAds);
       }
     )
     
-
-    
   }
+
+  stringFromArray(data)
+  {
+    var count = data.length;
+    var str = "";
+    
+    for(var index = 0; index < count; index += 1)
+      str += String.fromCharCode(data[index]);
+    // console.log(str);
+    return (str);
+  }
+
+  showDiv(event){
+    console.log(event);
+    event.show=!event.show;
+    // console.log(ts.myAds);
+  }
+  
 }
