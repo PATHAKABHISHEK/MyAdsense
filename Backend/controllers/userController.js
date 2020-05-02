@@ -7,7 +7,31 @@ const stripe = require("stripe")("sk_test_o4s7M5bJP8A4FLmyAlLIEPLk005Hq1mZ88");
 const emailSenderService = require("../services/emailSenderService")
   .emailSenderService;
 const fs = require("fs");
-
+const detect = require("detect-gender");
+const MALE = [
+  "man1.jpg",
+  "man2.jpg",
+  "man3.jpg",
+  "man4.jpg",
+  "man5.jpg",
+  "man6.jpg",
+  "man7.jpg",
+  "man8.jpg",
+  "man9.jpg",
+  "man10.jpg",
+];
+const FEMALE = [
+  "woman1.jpg",
+  "woman2.jpg",
+  "woman3.jpg",
+  "woman4.jpg",
+  "woman5.jpg",
+  "woman6.jpg",
+  "woman7.jpg",
+  "woman8.jpg",
+  "woman9.jpg",
+  "woman10.jpg",
+];
 /**
  * This is UserController
  * @constructor
@@ -63,21 +87,29 @@ class UserController {
         }
       })
       .then((hashedPassword) => {
-        fs.readFile("../Backend/images/userProfile.png", (err, userProfile) => {
-          if (err) {
-            console.log("Something Went Wrong");
-            console.log(err);
-            next();
+        detect(firstName).then(function (gender) {
+          let image;
+          if (gender == "male") {
+            image = MALE[Math.floor(Math.random() * MALE.length)];
           } else {
-            return userDAO().addUser(
-              firstName,
-              lastName,
-              emailId,
-              hashedPassword,
-              mobileNumber,
-              userProfile
-            );
+            image = FEMALE[Math.floor(Math.random() * FEMALE.length)];
           }
+          fs.readFile(`../Backend/images/${image}`, (err, userProfile) => {
+            if (err) {
+              console.log("Something Went Wrong");
+              console.log(err);
+              next();
+            } else {
+              return userDAO().addUser(
+                firstName,
+                lastName,
+                emailId,
+                hashedPassword,
+                mobileNumber,
+                userProfile
+              );
+            }
+          });
         });
       })
       .then((message) => {
@@ -235,8 +267,9 @@ class UserController {
         source: stripeTokenId,
         currency: "inr",
       })
-      .then(() => {
-        res.json("Payment Successfull");
+      .then((data) => {
+        res.send(data);
+        // res.json("Payment Successfull");
       })
       .catch((err) => {
         console.log(err);
