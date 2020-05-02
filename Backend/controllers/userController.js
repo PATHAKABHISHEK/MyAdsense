@@ -6,6 +6,7 @@ const passwordHashing = require("../services/passwordHashingService")
 const stripe = require("stripe")("sk_test_o4s7M5bJP8A4FLmyAlLIEPLk005Hq1mZ88");
 const emailSenderService = require("../services/emailSenderService")
   .emailSenderService;
+const fs = require("fs");
 
 /**
  * This is UserController
@@ -62,13 +63,22 @@ class UserController {
         }
       })
       .then((hashedPassword) => {
-        return userDAO().addUser(
-          firstName,
-          lastName,
-          emailId,
-          hashedPassword,
-          mobileNumber
-        );
+        fs.readFile("../Backend/images/userProfile.png", (err, userProfile) => {
+          if (err) {
+            console.log("Something Went Wrong");
+            console.log(err);
+            next();
+          } else {
+            return userDAO().addUser(
+              firstName,
+              lastName,
+              emailId,
+              hashedPassword,
+              mobileNumber,
+              userProfile
+            );
+          }
+        });
       })
       .then((message) => {
         if (message) {

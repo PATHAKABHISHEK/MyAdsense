@@ -19,7 +19,7 @@ class UserDAO {
     });
   }
 
-  addUser(firstName, lastName, emailId, password, mobileNumber) {
+  addUser(firstName, lastName, emailId, password, mobileNumber, userProfile) {
     return new Promise((resolve, reject) => {
       User.create({
         firstName: firstName,
@@ -29,6 +29,7 @@ class UserDAO {
         mobileNumber: mobileNumber,
         userRole: "SUBSCRIBER", // or PUBLISHER,
         userStatus: "INACTIVE", // or ACTIVE
+        userProfile: userProfile,
       })
         .then(() => {
           resolve("User Added");
