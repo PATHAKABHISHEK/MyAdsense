@@ -78,3 +78,16 @@ input[type="text"],input[type='password']{
 input{
     box-shadow: none;
 }
+
+
+
+@media screen and (max-width:450px){
+    
+    .container{
+        width: 350px;
+        margin-top: 70px;
+    }
+    .main{
+        height:700px;
+    }
+}

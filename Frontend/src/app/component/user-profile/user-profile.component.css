@@ -7,9 +7,7 @@
     /* border: 1px solid black; */
     box-shadow: 0 0.56875rem 2.1875rem rgba(4,9,20,.03), 0 1.0375rem 1.40625rem rgba(4,9,20,.03), 0 0.55rem 0.53125rem rgba(4,9,20,.05), 0 0.125rem 0.1875rem rgba(4,9,20,.03);
     width: 50%;
-    height: 80%;
-    min-height: 380px;
-    min-width: 600px;
+    height: 50%;
     align-content: center;
     background-color: white;
 
@@ -18,6 +16,7 @@
     padding-top: 100px;
     height: 100%;
     padding-bottom: 50px;
+    margin-bottom: 50px;
     background: linear-gradient(126deg, rgba(252,133,22,1) 0%, rgba(244,18,0,0.802025033646271) 47%, rgba(62,143,187,1) 100%);  
 }
 .pic-div{
@@ -47,4 +46,23 @@
     margin-right: 20px;
     float: right;
     cursor: pointer;
+}
+
+@media screen and (max-width:600px){
+    .main-div{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        height:80%;
+    }
+    .pic{
+        height: 100px;
+        width: 100px;
+    }
+    .pic-div{
+        margin-left: 35%;
+    }
+    .main{
+        height: 700px;
+    }
 }

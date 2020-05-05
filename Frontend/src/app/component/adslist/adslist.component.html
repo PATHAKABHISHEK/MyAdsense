@@ -10,7 +10,7 @@
                 <span id="newspaperLanguage">{{ad["newspaperLanguage"]| titlecase}}</span>
             </div>
             <div class="adDetail">
-                <label >Ad Type: </label><span>{{ad["adType"]| titlecase}}</span>
+                <label >Ad Type: </label><span>{{ad["adType"]| titlecase}} <i class="fa fa-download" aria-hidden="true" (click)="downloadAd(i)"></i></span>
                 <div *ngIf="ad['adType']==='text'"><label >Total Cost : </label> <span>{{ad['adRate']}}</span></div>
                 <div *ngIf="ad['adType']==='display'"><label >Total Cost : </label> <span>{{ad['adRate']}}</span></div>
             </div>

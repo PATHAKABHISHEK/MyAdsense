@@ -7,7 +7,7 @@
                 <span>Publish your Ads and compare price from different Newspapers...</span>
             </p>
             <br>
-            <div class="arrow" (click)="start=false"><i><img src="../../../assets/arrow.png" alt=""></i></div>
+            <div class="arrow" (click)="start=false"><i class="fa fa-angle-right fa-2x" aria-hidden="true"></i></div>
         </div>
     
         <form #ADs="ngForm">
@@ -17,6 +17,7 @@
                 <ul>
                     <li *ngFor="let lang of languages, let i=index"  (click)="selectLanguage(lang)">{{lang|titlecase}}</li>
                 </ul>
+                <i class="fa fa-angle-left fa-3x back" (click)="start=true" aria-hidden="true"></i>
             </div>
     
             <div *ngIf="adCategory=='' && adLanguage!==''">
@@ -26,48 +27,56 @@
                     <li *ngFor="let cat of categories ,let i = index" (click)="selectCategory(cat)">{{cat|titlecase}}</li>
              
                 </ul>
-                <img class="backImg" (click)="adLanguage=''" src="../../../assets/arrow.png" alt="">
+                <i class="fa fa-angle-left fa-3x back" (click)="adLanguage=''"  aria-hidden="true"></i>
                 </div>
     
             <div *ngIf="adNewspaper=='' && adCategory!=='' && adLanguage!==''">
                 <h1>In which newspaper you want to publish ad?</h1>
                 <ul>
-                <li *ngFor="let newspaper of newspapers" (click)="selectNewspaper(newspaper)">{{newspaper|titlecase}}</li>
+                <li *ngFor="let newspaper of cloneLogo" (click)="selectNewspaper(newspaper['paperName'])"><img id="paperLogo" [src]="newspaper['logo']" alt="">{{newspaper['paperName']|titlecase}}</li>
       
                 </ul>
-                <img class="backImg" (click)="adCategory=''" src="../../../assets/arrow.png" alt="">
+                <i class="fa fa-angle-left fa-3x back" (click)="adCategory=''" aria-hidden="true"></i>
+                <!-- <img class="backImg" (click)="adCategory=''" src="../../../assets/arrow.png" alt=""> -->
                </div>
     
         <div *ngIf="adCategory!=='' && adRegion=='' && adNewspaper!=='' && adLanguage!==''">
-            <h1>What reagion you want to publish?</h1>
+            <h1>What edition you want to publish?</h1>
             <ul>
                 <li *ngFor="let edition of newspaperEditions" (click)="selectRegion(edition)">{{edition|titlecase}}</li>
        
             </ul>
-            <img class="backImg" (click)="adNewspaper=''" src="../../../assets/arrow.png" alt="">
+            <i class="fa fa-angle-left fa-3x  back" (click)="adNewspaper=''" aria-hidden="true"></i>
+            <!-- <img class="backImg" (click)="adNewspaper=''" src="../../../assets/arrow.png" alt=""> -->
           </div>
     
         <div  *ngIf="adCategory!=='' && adRegion!=='' && adLanguage!=='' && adType=='' && adNewspaper!==''">
            <h1> What type of Ads you want?</h1>
-            <div class="row">
-            <div class="col-sm-6" (click)="selectAdType('text')">
+            <div class="gridAdType">
+            <div class="adTypeDiv" (click)="selectAdType('text')">
                 <img class="adType" src="../../../assets/text ads.PNG" alt="Text Ads"><br>
-                <label>Text Ads</label>
-            </div>
-            <div class="col-sm-6" (click)="selectAdType('display')">
+                <label class="adTypeLabel">Classified Ads</label>
+            </div> 
+            <div class="adTypeDiv" (click)="selectAdType('display')">
                 <img class="adType" src="../../../assets/dispaly.jfif" alt="Text Ads"><br>
-                <label>Display Ads</label>
+                <label class="adTypeLabel">Display Ads</label>
             </div>
             </div>
-            <img class="backImg" (click)="adRegion=''" src="../../../assets/arrow.png" alt="">
+            <i class="fa fa-angle-left fa-3x  back" (click)="adRegion=''" aria-hidden="true"></i>
+            <!-- <img class="backImg" (click)="adRegion=''" src="../../../assets/arrow.png" alt=""> -->
         </div>
         <div *ngIf="adCategory!=='' && adRegion!=='' && adLanguage!=='' && adType!=='' && adNewspaper!==''">
             <br><br>
             <h1>What date you choose for publish?</h1>
-            <input type="date" [min]="currentDate| date:'yyyy-mm-dd'" name="date OF publish" class="form-control date" [(ngModel)]="dateOfPublish">
+            <input type="date" [min]="currentDate| date:'yyyy-mm-dd'" name="date OF publish" class="form-control date" required [(ngModel)]="dateOfPublish">
             <br><br>
-            <img class="backImg" (click)="adType=''" src="../../../assets/arrow.png" alt="">
-        <button (click)="route()" class="btn btn-success next">Click here to get rate book</button>
+            <div>
+                <i class="fa fa-angle-left fa-3x  dateBack" (click)="adType=''" aria-hidden="true"></i>
+                <!-- <img class="backImg" (click)="adType=''" src="../../../assets/arrow.png" alt=""> -->
+            <!-- <button (click)="route()" class="btn btn-success next">Click here to get rate book</button> -->
+            <i *ngIf="dateOfPublish!==''" class="fa fa-angle-right fa-3x dateRight" (click)="route()" aria-hidden="true"></i>
+
+            </div>
         </div>
     
     </form>

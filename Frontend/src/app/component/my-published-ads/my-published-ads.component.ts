@@ -55,6 +55,26 @@ export class MyPublishedAdsComponent implements OnInit {
     console.log(event);
     event.show=!event.show;
     // console.log(ts.myAds);
+    let text=(event.adProof);
+    let name=`Ad_Proof_id${event.id}.png`;
+    this.download(name,text);
   }
   
+  download(file, text) { 
+  
+    //creating an invisible element 
+    var element = document.createElement('a'); 
+    element.setAttribute('href', text); 
+    element.setAttribute('download', file); 
+
+    //the above code is equivalent to 
+    // <a href="path of file" download="file name"> 
+
+    document.body.appendChild(element); 
+
+    //onClick property 
+    element.click(); 
+
+    document.body.removeChild(element); 
+} 
 }

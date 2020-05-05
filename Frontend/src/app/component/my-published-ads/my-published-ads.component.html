@@ -18,7 +18,7 @@
                 <div *ngIf="ad['adType']==='display'"><label >Total Cost : </label> <span>{{ad['adRate']}}</span></div>
             </div>
                 <div>
-                    <button class="btn pickButton">View Ad</button>
+                    <button class="btn pickButton" (click)="showDiv(i)">View Ad</button>
                 </div>
                 <div class="arrows" (click)="showDiv(i)"> 
                     <i class="fa fa-angle-down fa-2x" aria-hidden="true" *ngIf="!ad.show"></i>

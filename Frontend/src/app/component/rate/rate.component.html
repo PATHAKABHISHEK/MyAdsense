@@ -23,7 +23,7 @@
     <div *ngFor="let rate of newspaperAdRates">
     <div class="row  highlight" *ngIf="rate['newspaperName']===newspaper.newspaper">
       <div class="col-sm-4">
-        <img id="highlightImg" src="../../../assets/loginImg.jfif" alt="">
+        <img id="highlightImg" [src]="rate.logo" alt="">
       </div>
       <div class="col-sm-5">
        <h3 id="highlightName">{{rate['newspaperName']|titlecase}}</h3>
@@ -42,7 +42,7 @@
       
       <div class="row rowdiv"  *ngIf="rate['newspaperName']!==newspaper.newspaper">
         <div class="col-sm-4">
-          <img src="../../../assets/loginImg.jfif" alt="">
+          <img [src]="rate.logo" id="newsLogo" alt="">
         </div>
         <div class="col-sm-5">
          <h3>{{rate['newspaperName']|titlecase}}</h3>

@@ -22,8 +22,10 @@ export class HomeComponent implements OnInit {
     language: null,
     category: null,
   };
-  newspapers = [];
+  newspapers :any;
   newspaperEditions = [];
+  logos: any;
+  cloneLogo=[];
   constructor(
     public router: Router,
     public newspaperService: NewspaperService,
@@ -42,6 +44,13 @@ export class HomeComponent implements OnInit {
     this.newspaperService.getLanguage().subscribe((res) => {
       this.languages = res["languages"];
     });
+
+    this.newspaperService.get_all_newspaper_logos()
+      .subscribe(res=>{
+        console.log(res);
+        this.logos=res;
+        console.log(this.logos);
+      })
     console.log(this.currentDate);
     this.spinner.hide();
   }
@@ -49,13 +58,35 @@ export class HomeComponent implements OnInit {
     this.adCategory = category;
     localStorage.setItem("category", this.adCategory);
     console.log(this.adCategory);
+
     this.newspaper.category = this.adCategory;
     this.newspaper.language = this.adLanguage;
     this.spinner.show();
     this.newspaperService.getNewspaper(this.newspaper).subscribe((res) => {
       console.log(res);
-      this.newspapers = res["newspaper"];
+     
+      this.newspapers=res['newspaper'];
+
+      console.log(this.newspapers.length);
+      for (let i=0;i<this.newspapers.length;i++){
+        if(this.logos[i].newspaperName===this.newspapers[i]){
+          this.logos[i]['paperName']=this.newspapers[i];
+          this.logos[i]["logo"]="data:image/png;base64,"+this.stringFromArray(this.logos[i].newspaperLogo.data);
+        }
+      }
+      while(this.cloneLogo.length>0){
+        this.cloneLogo.pop();
+      }
+      console.log("pop",this.cloneLogo);
+      for(let j=0;j<this.logos.length;j++){
+        if(this.logos[j]["paperName"]!==undefined){
+          this.cloneLogo.push(this.logos[j]);
+        }
+      }
+      console.log(this.cloneLogo);
+      console.log(this.logos);
       this.spinner.hide();
+
     });
   }
   selectRegion(region) {
@@ -83,6 +114,7 @@ export class HomeComponent implements OnInit {
     localStorage.setItem("newspaper", this.adNewspaper);
     console.log(this.adNewspaper);
     this.spinner.show();
+    
     this.newspaperService
       .getNewspaperEdition({ newspaper: this.adNewspaper })
       .subscribe((res) => {
@@ -91,5 +123,15 @@ export class HomeComponent implements OnInit {
         this.spinner.hide();
       });
 
+  }
+  stringFromArray(data)
+  {
+    var count = data.length;
+    var str = "";
+    
+    for(var index = 0; index < count; index += 1)
+      str += String.fromCharCode(data[index]);
+    
+    return (str);
   }
 }

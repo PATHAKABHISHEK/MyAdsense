@@ -6,6 +6,7 @@
     border: 1px solid black;
     margin-bottom: 10px;
     border-radius: 10px;
+    min-width: 550px;
 }
 .grid{
     display: grid;
@@ -94,4 +95,14 @@ h1{
 }
 .model.show{
     display: block;
+}
+
+@media screen and (max-width:450px){
+    .container{
+        margin-left: 0px;
+    }
+    h1{
+        text-align: center;
+    }
+
 }

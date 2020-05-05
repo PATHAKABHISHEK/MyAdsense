@@ -4,11 +4,16 @@
     min-width: 400px;
     margin-left: 20%;
     margin-right:20%;
+    margin-bottom: 60px;
 }
 .head{
     text-align: center;
     margin-bottom: 50px;
     margin-top: 100px;
+}
+#newsLogo{
+    height: 100px;
+    width: 100px;
 }
 .highlight{
     border: 2px solid red;  
@@ -59,3 +64,5 @@ img{
 .btn{
     width:80px
 }
+
+

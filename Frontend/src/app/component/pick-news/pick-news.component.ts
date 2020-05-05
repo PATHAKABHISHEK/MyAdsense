@@ -35,6 +35,7 @@ export class PickNewsComponent implements OnInit {
       );
     };
     filereader.readAsBinaryString(this.adproofFile);
+    console.log(this.publishDetail.adPublishProof);
   }
   uploadAdProof(){
     this.userservice.adPublished(this.publishDetail)

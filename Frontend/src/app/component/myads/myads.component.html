@@ -38,8 +38,8 @@
           <div class="adDetail">
               <div><label >Ad Type: </label><span>{{ad["adType"]| titlecase}}</span></div>
               <div><label >Ad publish Date: </label><span>{{ad['adPublishDate']|date:'longDate'}}</span></div>
-              <div *ngIf="ad['adType']==='text'"><label >Total Cost : <i class="fa fa-inr" aria-hidden="true"></i></label> <span>{{ad['adRate']}}</span></div>
-              <div *ngIf="ad['adType']==='display'"><label >Total Cost : <i class="fa fa-inr" aria-hidden="true"></i></label> <span>{{ad['adRate']}}</span></div>
+              <div *ngIf="ad['adType']==='text'"><label >Total Cost : <i class="fa fa-inr" aria-hidden="true"></i></label> <span>{{ad['adRate']}} </span><i class="fa fa-download" aria-hidden="true" (click)="downloadInvoice(i)"></i></div>
+              <div *ngIf="ad['adType']==='display'"><label >Total Cost : <i class="fa fa-inr" aria-hidden="true"></i></label> <span>{{ad['adRate']}} </span><i class="fa fa-download" aria-hidden="true" (click)="downloadInvoice(i)"></i></div>
           </div>
           <div class="status-div">
               <span id="processing-status" *ngIf="ad['adStatus']==='PROCESSING'">{{ad['adStatus']|uppercase}}</span>

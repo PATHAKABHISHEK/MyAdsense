@@ -1,4 +1,4 @@
-.body .container{
+.container{
     /* margin-bottom: 50px; */
     /* border: 1px solid black; */
     box-shadow: 0 0.56875rem 2.1875rem rgba(4,9,20,.03), 0 1.0375rem 1.40625rem rgba(4,9,20,.03), 0 0.55rem 0.53125rem rgba(4,9,20,.05), 0 0.125rem 0.1875rem rgba(4,9,20,.03);
@@ -6,7 +6,7 @@
     width: 550px;
     height: 630px;
     align-content: center;
-    min-width: 600px;
+    /* min-width: 600px; */
     padding-top: 20px;
 
 }
@@ -78,4 +78,76 @@ input[type="file"] {
     color: white;
     float: right;
     margin-bottom: 50px;
+}
+
+@media screen and (max-width:600px){
+    .container{
+        width: 400px;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 40px;
+        height:80%;
+    }
+    /* input[type="text"]{
+        width: 80%;
+    } */
+    .pic{
+        height: 100px;
+        width: 100px;
+        margin-left: 16px;
+    }
+    .pic-div{
+        margin-left: 25%;
+    }
+    .main{
+        height: 700px;
+    }
+    .file-upload-button {
+        width: 120px;
+        font-size: 14px;
+        font-weight: 400;
+        height: 40px;
+        padding-left: 15px;
+    }
+    .body{
+        padding-bottom: 40px;
+    }
+
+}
+@media screen and (max-width:450px){
+    .container{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        height:80%;
+        
+        margin-bottom: 40px;
+    }
+    /* input[type="text"]{
+        width: 80%;
+    } */
+    .pic{
+        height: 100px;
+        width: 100px;
+        margin-left: 16px;
+    }
+    .pic-div{
+        margin-left: 25%;
+    }
+    .main{
+        height: 700px;
+    }
+    .file-upload-button {
+        width: 120px;
+        font-size: 14px;
+        font-weight: 400;
+        height: 40px;
+        padding-left: 15px;
+    }
+    form label{
+        font-size: small;
+    }
+    .body{
+        padding-bottom: 40px;
+    }
 }

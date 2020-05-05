@@ -72,4 +72,33 @@ showDiv(event){
   openNews(){
     // this.dialog.open(NewsImgComponent);
   }
+
+
+  download(file, text) { 
+  
+    //creating an invisible element 
+    var element = document.createElement('a'); 
+    element.setAttribute('href', 'data:text/plain;charset=utf-8, ' 
+                         + encodeURIComponent(text)); 
+    element.setAttribute('download', file); 
+
+    //the above code is equivalent to 
+    // <a href="path of file" download="file name"> 
+
+    document.body.appendChild(element); 
+
+    //onClick property 
+    element.click(); 
+
+    document.body.removeChild(element); 
+} 
+
+downloadInvoice(event){
+  console.log(event);
+  let text=("Total Amount paid : "+event.adRate);
+  let name="Invoice.txt";
+  this.download(name,text);
+}
+
+
 }

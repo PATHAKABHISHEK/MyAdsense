@@ -10,6 +10,7 @@ import { NewspaperService } from 'src/app/service/newspaper.service';
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
+  logos: any;
   constructor(private userService: UserService ,private router : Router, private newspaperService:NewspaperService) {}
   emailId;
   password;
@@ -61,6 +62,11 @@ export class LoginComponent implements OnInit {
       this.newspaperService.get_all_newspaper_logos()
       .subscribe(res=>{
         console.log(res);
+        this.logos=res;
+        console.log(this.logos);
+        for(let i=0;i<this.logos.length;i++){
+          localStorage.setItem(this.logos[i].newspaperName,this.logos[i].newspaperLogo);
+        }
       })
   }
   stringFromArray(data)

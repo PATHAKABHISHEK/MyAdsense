@@ -55,5 +55,31 @@ export class AdslistComponent implements OnInit {
     event.show=!event.show;
     // console.log(ts.myAds);
   }
+  download(file, text) { 
+  
+    //creating an invisible element 
+    var element = document.createElement('a'); 
+    element.setAttribute('href', 'data:text/plain;charset=utf-8, ' 
+                         + encodeURIComponent(text)); 
+    element.setAttribute('download', file); 
+
+    //the above code is equivalent to 
+    // <a href="path of file" download="file name"> 
+
+    document.body.appendChild(element); 
+
+    //onClick property 
+    element.click(); 
+
+    document.body.removeChild(element); 
+} 
+
+downloadAd(event){
+  console.log(event);
+  let text=(event.adContent);
+  let name=`Ad_Id${event.id}.txt`;
+  this.download(name,text);
+}
+
 }
 

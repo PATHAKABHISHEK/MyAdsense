@@ -20,6 +20,9 @@ export class NewstemplateComponent implements OnInit {
   newsBlob;
   clicked = false;
   adtype: string;
+  displayAdFile:any;
+  displayAd:any;
+  adsContent: any;
   constructor(
     private paymentService: PaymentService,
     private userService: UserService,
@@ -43,7 +46,23 @@ export class NewstemplateComponent implements OnInit {
     const a=btoa(this.content);
     console.log(btoa(this.content));
     console.log(atob(a));
+    this.adsContent=btoa(this.content);
     
+  }
+
+  
+  displayAds(event){
+    console.log(event);
+    this.displayAdFile=event.target.files[0];
+    const filereader =new FileReader();
+    filereader.onload = e=>{
+      this.displayAd=filereader.result;
+      this.displayAd=btoa(
+        this.displayAd
+      );
+    };
+    filereader.readAsBinaryString(this.displayAdFile);
+    this.adsContent=this.displayAd;
   }
 
   alert() {
@@ -73,7 +92,7 @@ export class NewstemplateComponent implements OnInit {
               adType: localStorage.getItem("adType"),
               adRate: parseFloat(this.count),
               adPublishDate: localStorage.getItem("dateOfPublish"),
-              ad: btoa(this.content),
+              ad: this.adsContent,
               adPublishedBy: null,
               adPublishedProof: "",
             };
@@ -95,4 +114,7 @@ export class NewstemplateComponent implements OnInit {
       currency: "inr",
     });
   }
+
+
+
 }
