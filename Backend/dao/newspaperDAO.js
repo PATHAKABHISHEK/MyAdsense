@@ -6,17 +6,17 @@ class NewspaperDAO {
     return new Promise((resolve, reject) => {
       let languages = [];
       AdCollection.aggregate("newspaperLanguage", "DISTINCT", {
-        plain: false
+        plain: false,
       })
-        .then(distinctLanguages => {
+        .then((distinctLanguages) => {
           if (distinctLanguages) {
-            distinctLanguages.forEach(element => {
+            distinctLanguages.forEach((element) => {
               languages.push(element["DISTINCT"]);
             });
           }
           resolve(languages);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -26,17 +26,17 @@ class NewspaperDAO {
     return new Promise((resolve, reject) => {
       let adCategories = [];
       AdCollection.aggregate("adCategory", "DISTINCT", {
-        plain: false
+        plain: false,
       })
-        .then(distinctCategories => {
+        .then((distinctCategories) => {
           if (distinctCategories) {
-            distinctCategories.forEach(element => {
+            distinctCategories.forEach((element) => {
               adCategories.push(element["DISTINCT"]);
             });
           }
           resolve(adCategories);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -48,22 +48,22 @@ class NewspaperDAO {
       AdCollection.findAll({
         attributes: [
           Sequelize.fn("DISTINCT", Sequelize.col("newspaperName")),
-          "newspaperName"
+          "newspaperName",
         ],
         where: {
           newspaperLanguage: language,
-          adCategory: category
-        }
+          adCategory: category,
+        },
       })
-        .then(newspaper => {
+        .then((newspaper) => {
           if (newspaper) {
-            newspaper.forEach(element => {
+            newspaper.forEach((element) => {
               newspapers.push(element["newspaperName"]);
             });
           }
           resolve(newspapers);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -75,22 +75,22 @@ class NewspaperDAO {
       AdCollection.findAll({
         attributes: [
           Sequelize.fn("DISTINCT", Sequelize.col("adEdition")),
-          "adEdition"
+          "adEdition",
         ],
         where: {
-          newspaperName: newspaper
-        }
+          newspaperName: newspaper,
+        },
       })
-        .then(newspaperEdition => {
+        .then((newspaperEdition) => {
           if (newspaperEdition) {
-            newspaperEdition.forEach(element => {
+            newspaperEdition.forEach((element) => {
               newspaperEditions.push(element["adEdition"]);
             });
           }
           console.log(newspaperEdition);
           resolve(newspaperEditions);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -103,21 +103,49 @@ class NewspaperDAO {
           "adTextWord",
           "adDisplayPrice",
           "adDisplaySize",
-          "newspaperName"
+          "newspaperName",
         ],
         where: {
           newspaperLanguage: language,
           adCategory: category,
           adEdition: edition,
-          adType: adType
-        }
+          adType: adType,
+        },
       })
-        .then(newspaperAdRate => {
+        .then((newspaperAdRate) => {
           if (newspaperAdRate) {
             resolve(newspaperAdRate);
           }
         })
-        .catch(err => {
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+  getNewspaperAdRate(language, category, newspaper, edition, adType) {
+    return new Promise((resolve, reject) => {
+      AdCollection.findOne({
+        attributes: [
+          "adTextPrice",
+          "adTextWord",
+          "adDisplayPrice",
+          "adDisplaySize",
+          "newspaperName",
+        ],
+        where: {
+          newspaperLanguage: language,
+          adCategory: category,
+          adEdition: edition,
+          adType: adType,
+          newspaperName: newspaper,
+        },
+      })
+        .then((newspaperAdRate) => {
+          if (newspaperAdRate) {
+            resolve(newspaperAdRate);
+          }
+        })
+        .catch((err) => {
           reject(err);
         });
     });
@@ -129,5 +157,5 @@ const newspaperDAO = () => {
 };
 
 module.exports = {
-  newspaperDAO
+  newspaperDAO,
 };

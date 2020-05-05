@@ -32,6 +32,10 @@ class NewspaperController {
       "/get_all_newspaper_logos",
       this.getAllNewspaperLogos.bind(this)
     );
+    this.router.get(
+      "/get_newspaper_ad_rate",
+      this.getNewspaperAdRate.bind(this)
+    );
   }
 
   getNewspaperLanguage(req, res, next) {
@@ -110,6 +114,24 @@ class NewspaperController {
       .getAllNewspaperLogoFromDAO()
       .then((allNewspaperLogos) => {
         res.send(allNewspaperLogos);
+      })
+      .catch((err) => {
+        console.log(err);
+        next();
+      });
+  }
+  getNewspaperAdRate(req, res, next) {
+    let language = req.query.language;
+    let category = req.query.category;
+    let newspaper = req.query.newspaper;
+    let edition = req.query.edition;
+    let adType = req.query.adType;
+
+    console.log(language);
+    newspaperDAO()
+      .getNewspaperAdRate(language, category, newspaper, edition, adType)
+      .then((newspaperAdRates) => {
+        res.send(newspaperAdRates);
       })
       .catch((err) => {
         console.log(err);
