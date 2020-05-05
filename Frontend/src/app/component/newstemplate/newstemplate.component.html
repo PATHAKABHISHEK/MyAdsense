@@ -6,20 +6,39 @@
         <textarea name="" id="textarea" cols="50" rows="5" [(ngModel)]="content"></textarea>
       </div>
       <div *ngIf="adtype==='display'" id="textarea">
-          <input type="file" name="" id="">
+        <h4 class="file-upload-button">
+          <input
+            type="file"
+            #fileInput
+            (change)="displayAds($event)"
+          /><label for="imgInp"><i class="fa fa-cloud-upload"></i>Choose file</label>
+      </h4>
+      <div class="grid">
+        <div>
+          <label for="size">Size of Ad:</label>
+        </div>
+        <div>
+          <select name="size" id="" placeholder="select" class="form-control" [(ngModel)]="size">
+            <!-- <option value="">--Select--</option> -->
+            <option value="10x10">10x10</option>
+            <option value="5x5">5x5</option>
+            <option value="4x4">4x4</option>
+            <option value="3x3">3x3</option>
+    
+          </select>
+        </div>
+      </div>
+ 
       </div>
     <!-- <textarea name="" id="textarea" cols="50" rows="5" [(ngModel)]="content"></textarea> -->
     <!-- <h2>{{ content }}</h2> -->
-
-
-    <span>{{content}}</span>
     <button class="btn btn-success" (click)="onCalculate()">Calculate Price</button>
     </div>
     <br>
     <br>
     <div>
       <div *ngIf="clicked">
-        <h2 text-align="center">Invoice</h2>
+        <h2 text-align="center">Amount to pay</h2>
         <table class="bill">
           <tr class="thead">
             <th class="colLeft">Description</th>

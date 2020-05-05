@@ -4,11 +4,27 @@
     min-width: 400px;
     margin-left: 20%;
     margin-right:20%;
+    margin-bottom: 60px;
 }
 .head{
     text-align: center;
     margin-bottom: 50px;
     margin-top: 100px;
+}
+#newsLogo{
+    height: 100px;
+    width: 100px;
+}
+.highlight{
+    border: 2px solid red;  
+    width: 80%;  
+    min-width: 550px;
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 15px;
+    height:120px;
+    box-shadow:0 0.46875rem 2.1875rem rgba(4,9,20,.04), 0 0.9375rem 1.40625rem rgba(4,9,20,.04), 0 0.25rem 0.53125rem rgba(4,9,20,.05), 0 0.125rem 0.1875rem rgba(4,9,20,.03);
 }
 td,th{
     width: 100px;
@@ -24,16 +40,29 @@ table{
     margin-left: 15%;
     margin-right: 15%;
     margin-bottom: 10px;
-    box-shadow: 4px 4px 0px #e9ecef;
-    box-shadow: 6px 6px 0px #f4f6f7 ;
-    border-bottom-right-radius: 0.5em;
+    box-shadow:0 0.46875rem 2.1875rem rgba(4,9,20,.03), 0 0.9375rem 1.40625rem rgba(4,9,20,.03), 0 0.25rem 0.53125rem rgba(4,9,20,.05), 0 0.125rem 0.1875rem rgba(4,9,20,.03);
+    z-index: 999;
 }
 img{
-    height: 96px;
+    height: 100px;
+}
+#highlightImg{
+    height: 116px;
+}
+#highlightName{
+    font-size: 2.3em;
+}
+#highlightText,#highlightDisplay{
+    font-size: 1.3em;
 }
 .btnDiv{
-    padding-top: 17px;
+    padding-top: 19px;
+}
+.highlightbtnDiv{
+    padding-top: 26px;
 }
 .btn{
     width:80px
 }
+
+

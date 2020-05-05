@@ -1,17 +1,25 @@
 <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
 <div class="row navigation">
-    <div class="col-lg-4 collogo">
+    <!-- <div class="col-sm-5 collogo">
         <a routerLink="/home"><span id="my">My</span><span id="ad">Ad</span><span id="sense">sense</span></a>
+    </div> -->
+    <div class="colnav">
+      <div class="topnav" id="myTopnav">
+            <a (click)="homeNav()" id="myAdsenseLogo"><span id="my">My</span><span id="ad">Ad</span><span id="sense">sense</span></a>
+            <a id="home" (click)="homeNav()">Home</a>
+            <a routerLink="/about">About us</a>
+            <a id="contact" routerLink="/contactUs">Contact us</a>
+            <a id="pic" (click)="displayNav()"><app-profile-nav *ngIf="showUserProfile()"></app-profile-nav></a>
+            <a href="javascript:void(0);" style="font-size:25px; margin-right: 20px;" class="icon" (click)="myFunction()">&#9776;</a>
     </div>
-    <div class="col-lg-8 colnav">
-        <ul>
-            <li><a routerLink='/home'>Home</a></li>
-            <li><a routerLink="/about">About us</a></li>
-            <!-- <li *ngIf="isLogin"><a routerLink="/">Login</a></li> -->
-            <li><a href="">Contact us</a></li>
-            <li (click)="displayNav()"><app-profile-nav *ngIf="showUserProfile()"></app-profile-nav></li>
-        </ul>
-    </div>
+    <!-- <div class="topnav" id="myTopnav">
+      <a href="#home" class="active">Home</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div> -->
+</div>
 </div>
 
 
@@ -19,6 +27,7 @@
   <a routerLink="/userProfile">View Profile</a>
   <a *ngIf="userRole==='SUBSCRIBER'" routerLink="/myAds">My ADs</a>
   <a *ngIf="userRole==='PUBLISHER'" routerLink="/myPublishedAds">My Published Ads</a>
+  <a  target="_blank" (click)="goToLink()">Adsense VApp</a>
   <a routerLink="/" (click)="clearLocalStorage()"> Logout</a>
 </div>
 

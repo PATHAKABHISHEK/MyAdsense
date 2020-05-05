@@ -4,10 +4,24 @@
 }
 .adsList{
     border: 1px solid black;
-    display: grid;
-    grid-template-columns: 50% 30% 20%;
     margin-bottom: 10px;
     border-radius: 10px;
+    min-width: 550px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 50% 25% 20% 5%;
+    padding-bottom: 10px;
+}
+p{
+    text-align: center;
+}
+
+.arrows{
+    padding-top: 29px;
+}
+p img{
+    border: 1px solid black;
 }
 .main{
     /* background: linear-gradient(126deg, rgba(252,133,22,1) 0%, rgba(244,18,0,0.802025033646271) 47%, rgba(62,143,187,1) 100%);   */
@@ -64,7 +78,7 @@ h1{
 .pickButton{
     float: right;
     margin-right: 20px;
-    margin-top: 8%;  
+    margin-top: 13%;  
     margin-left: 20px;
     background-color: #ff1300; 
     width: 100px; 
@@ -81,4 +95,31 @@ h1{
 }
 .model.show{
     display: block;
+}
+
+@media screen and (max-width:450px){
+    .container{
+        margin-left: 0px;
+    }
+    h1{
+        text-align: center;
+    }
+
+}
+
+.newsContentAd{
+    border-width:3px;  
+    border-style:dashed;
+    width:60%;
+    height:300px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding:30px;
+    text-align:center;
+}
+
+.link{
+    cursor: pointer;
 }

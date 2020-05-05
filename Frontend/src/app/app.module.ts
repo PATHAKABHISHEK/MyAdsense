@@ -28,6 +28,7 @@ import { ProfileNavComponent } from './component/profile-nav/profile-nav.compone
 import { NgxSpinnerModule } from "ngx-spinner";
 // import {MatDialogModule} from '@angular/material/dialog';
 import { NewsImgComponent } from './component/news-img/news-img.component';
+import { ContactComponent } from './component/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { NewsImgComponent } from './component/news-img/news-img.component';
     MyPublishedAdsComponent,
     ProfileNavComponent,
     NewsImgComponent,
+    ContactComponent,
  
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgxSpinnerModule],

@@ -4,10 +4,21 @@
 }
 .adsList{
     border: 1px solid black;
-    display: grid;
-    grid-template-columns: 50% 30% 20%;
     margin-bottom: 10px;
     border-radius: 10px;
+    min-width: 550px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 50% 30% 15% 5%;
+    margin-bottom: 10px;
+}
+.arrows{
+    padding-top: 28px;
+    padding-left: 10%;
+}
+.arrow i{
+    font-weight: 700;
 }
 .main{
     /* background: linear-gradient(126deg, rgba(252,133,22,1) 0%, rgba(244,18,0,0.802025033646271) 47%, rgba(62,143,187,1) 100%);   */
@@ -60,11 +71,24 @@ h1{
     background-color: #085ba6;
 }
 
+.newsContent{
+    border-width:3px;  
+    border-style:dashed;
+    width:60%;
+    height:300px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding:30px;
+    text-align:center;
+}
+
 
 .pickButton{
     float: right;
     margin-right: 20px;
-    margin-top: 8%;  
+    margin-top: 15%;  
     margin-left: 20px;
     background-color: #ff1300; 
     width: 100px; 
@@ -81,4 +105,19 @@ h1{
 }
 .model.show{
     display: block;
+}
+
+@media screen and (max-width:450px){
+    .container{
+        margin-left: 0px;
+    }
+    h1{
+        text-align: center;
+    }
+
+}
+
+
+.link{
+    cursor: pointer;
 }

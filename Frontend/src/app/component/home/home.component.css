@@ -1,6 +1,6 @@
 li{
     display: block;
-    min-width: 400px;
+    /* min-width: 400px; */
     border: 1px solid #cccccc;
     height: 60px;
     font-size: 20px;
@@ -12,13 +12,32 @@ li{
     box-shadow:0 0.46875rem 2.1875rem rgba(4,9,20,.03), 0 0.9375rem 1.40625rem rgba(4,9,20,.03), 0 0.25rem 0.53125rem rgba(4,9,20,.05), 0 0.125rem 0.1875rem rgba(4,9,20,.03);
 
 }
-
-
-.adType{
-    height: 200px;
-    width: 200px;
+.adTypeLabel{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left: 40px;
+    margin-top: 20px;
 }
-
+.adTypeDiv{
+    cursor: pointer;
+}
+.adType:hover{
+    transform: scale(1.2);
+}
+#paperLogo{
+    height: 40px;
+    width: 40px;
+    margin-right: 50px;
+}
+.adType{
+    height: 160px;
+    width: 160px;
+    margin-left: 40px;
+}
+li:hover{
+    transform: scale(1.05);
+}
 .start{
     margin-top: 250px;
     font-size: 30px;
@@ -40,7 +59,7 @@ h1{
 }
 .date{
     width: 100%;
-    min-width: 400px;
+    /* min-width: 400px; */
     height: 40px;
     align-self:center;
 }
@@ -90,8 +109,18 @@ form{
 }
 .arrow{
     width: 100%;
+    padding-left: 49%;
 }
+.back{
+    margin-left: 40px;
+}
+/* .backLeft{
 
+} */
+.dateRight{
+    float: right;
+
+}
 .backImg{
     transform: rotate(180deg);
     border: none;
@@ -99,4 +128,57 @@ form{
     height: 50px;
     width: 50px;
     box-shadow: 0 0.56875rem 2.1875rem rgba(4,9,20,.03), 0 1.0375rem 1.40625rem rgba(4,9,20,.03), 0 0.55rem 0.53125rem rgba(4,9,20,.05), 0 0.125rem 0.1875rem rgba(4,9,20,.03);
+}
+.gridAdType{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-left: 50px;
+}
+div i{
+    margin-bottom: 60px;
+}
+
+@media screen and (max-width:600px){
+    form{
+        margin-left: 0;
+    }
+    #paperLogo{
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media screen and (max-width:450px){
+    form{
+        margin-left: 0;
+    }
+    li{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        height: 50px;
+        margin-left: 10px;
+    }
+    #paperLogo{
+        height: 30px;
+        width: 30px;
+    }
+    .adType{
+        height: 100px;
+        width: 100px;
+    }
+    .adTypeLabel{
+        font-size: 10px;
+    }
+    .gridAdType{
+        margin-left: 0;
+    }
+    .date{
+        width: 90%;
+        margin-left:3%;
+        margin-right: 7%;
+    }
+    .container{
+        padding-left: 4%;
+    }
 }

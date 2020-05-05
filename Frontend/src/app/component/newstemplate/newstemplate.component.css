@@ -12,10 +12,13 @@ textarea{
     width: 100%;
 
 }
+.container{
+    padding-bottom: 80px;
+}
 .main{
     margin-left: 20%;
     margin-right: 20%;
-    min-width: 600px;
+    /* min-width: 600px; */
     margin-bottom: 20px;
 }
 
@@ -52,6 +55,18 @@ textarea{
     text-align: right;
 }
 
+.grid{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+select:hover{
+    border: 2px solid #ff1300;
+}
+
 .calPriceTable{
     width: 100%;
 }
@@ -66,4 +81,44 @@ textarea{
 
 .paybtn{
     margin-bottom: 20px;
+}
+
+.file-upload-button {
+    /* background-color: #df493a; */
+    overflow: hidden;
+    position: relative;
+    /* width: 150px; */
+    color: black;
+    }
+
+    input[type="file"] {
+        font-size: 100px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        }
+
+/* label{
+    margin-left: 100px;
+} */
+h4{
+    text-align: center;
+}
+
+
+@media screen and (max-width:450px){
+    h1{
+        font-size: 22px;
+    }
+    .main
+    {
+        margin: auto 5%;
+    }
+    .container{
+        margin-bottom: 60px;
+    }
+    .clicked{
+        margin-bottom: 100px;
+    }
 }

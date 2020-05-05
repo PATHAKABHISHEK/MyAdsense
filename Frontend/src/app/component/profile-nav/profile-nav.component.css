@@ -3,3 +3,37 @@
     width: 50px;
     border-radius: 100%;
 }
+
+
+@media screen and (max-width: 655px) {
+    #pic{
+        height: 40px;
+        width: 40px;
+    }
+  }
+  @media screen and (max-width:1050px){
+
+  }
+  @media screen and (max-width:800px){
+
+  }
+  @media screen and (max-width:935px){
+      #myAdsenseLogo{
+          margin-right: 0%;
+      }
+      .topnav a{
+        font-size: 20px;
+      }
+  }
+  @media screen and (max-width:1000px){
+      #myAdsenseLogo{
+          margin-right: 25%;
+      }
+  
+  }
+  @media screen and (max-width: 655px) {
+   #pic{
+
+   }
+  }
+  

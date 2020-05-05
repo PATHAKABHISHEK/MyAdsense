@@ -10,6 +10,7 @@ import { NewspaperService } from 'src/app/service/newspaper.service';
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
+  logos: any;
   constructor(private userService: UserService ,private router : Router, private newspaperService:NewspaperService) {}
   emailId;
   password;
@@ -39,6 +40,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("userName",this.userName);
         localStorage.setItem("emailId",res.emailId);
         localStorage.setItem("mobileNo",res.mobileNumber);
+        // console.log(this.stringFromArray(res.userProfile.data));
+        localStorage.setItem("profilePic",this.stringFromArray(res.userProfile.data));
         if(res.userRole==="SUBSCRIBER"){
           if(res.userStatus==="ACTIVE"){
             this.router.navigateByUrl("/home");
@@ -59,6 +62,21 @@ export class LoginComponent implements OnInit {
       this.newspaperService.get_all_newspaper_logos()
       .subscribe(res=>{
         console.log(res);
+        this.logos=res;
+        console.log(this.logos);
+        for(let i=0;i<this.logos.length;i++){
+          localStorage.setItem(this.logos[i].newspaperName,this.logos[i].newspaperLogo);
+        }
       })
+  }
+  stringFromArray(data)
+  {
+    var count = data.length;
+    var str = "";
+    
+    for(var index = 0; index < count; index += 1)
+      str += String.fromCharCode(data[index]);
+    
+    return btoa(str);
   }
 }

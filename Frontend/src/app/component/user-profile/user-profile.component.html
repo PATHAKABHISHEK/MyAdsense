@@ -2,12 +2,12 @@
     <div class="main-div">
     <div class="edit"><img routerLink="/editProfile" src="../../../assets/edit.png" alt=""></div>
     <div class="pic-div">
-        <img class="pic" src="../../../assets/logo.PNG" alt="">
+        <img class="pic" [src]=imgUrl alt="">
     </div>
     <div class="detail-div">
-        <h3>{{userName| titlecase}}</h3>
-        <h5>{{emailId}}</h5>
-        <h5>{{mobileNo}}</h5>
+        <h5>Name : {{userName| titlecase}}</h5>
+        <h5>Email Id : {{emailId}}</h5>
+        <h5>Mobile Number : {{mobileNo}}</h5>
     </div>
     </div>
 </div>
