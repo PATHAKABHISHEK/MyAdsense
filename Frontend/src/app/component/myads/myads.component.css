@@ -118,3 +118,6 @@ h1{
 .status-div{
     padding-top:33%;
 }
+.link{
+    cursor: pointer;
+}

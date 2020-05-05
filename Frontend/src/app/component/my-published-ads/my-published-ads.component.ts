@@ -29,10 +29,12 @@ export class MyPublishedAdsComponent implements OnInit {
         this.spinner.hide();
         for(let i=0;i<this.publishedAds.length;i++){
           this.publishedAds[i]["show"]=false;
+          this.publishedAds[i]['showAds']=false;
           // console.log(this.publishedAds[i].show);
           // console.log(this.stringFromArray(this.publishedAds[i].adPublishedProof.data));
           this.publishedAds[i]["adProof"]="data:image/png;base64,"+(this.stringFromArray(this.publishedAds[i].adPublishedProof.data));
           console.log(this.publishedAds["adProof"]);
+          this.publishedAds[i]['adContent']=atob(this.stringFromArray(this.publishedAds[i].ad.data));
         }
         console.log(this.publishedAds);
       }
@@ -60,6 +62,11 @@ export class MyPublishedAdsComponent implements OnInit {
     this.download(name,text);
   }
   
+  showAd(event){
+    console.log(event);
+    event.showAds=!event.showAds;
+  }
+
   download(file, text) { 
   
     //creating an invisible element 
@@ -77,4 +84,5 @@ export class MyPublishedAdsComponent implements OnInit {
 
     document.body.removeChild(element); 
 } 
+
 }

@@ -18,16 +18,22 @@
                 <div *ngIf="ad['adType']==='display'"><label >Total Cost : </label> <span>{{ad['adRate']}}</span></div>
             </div>
                 <div>
-                    <button class="btn pickButton" (click)="showDiv(i)">View Ad</button>
+                    <button class="btn pickButton  link" (click)="showDiv(i)">View Ad</button>
                 </div>
-                <div class="arrows" (click)="showDiv(i)"> 
-                    <i class="fa fa-angle-down fa-2x" aria-hidden="true" *ngIf="!ad.show"></i>
-                    <i class="fa fa-angle-up fa-2x" aria-hidden="true" *ngIf="ad.show"></i>
+                <div class="arrows" (click)="showAd(i)"> 
+                    <i class="fa fa-angle-down fa-2x link" aria-hidden="true" *ngIf="!ad.showAds"></i>
+                    <i class="fa fa-angle-up fa-2x  link" aria-hidden="true" *ngIf="ad.showAds"></i>
                 </div>   
             </div>
             <div class="news" *ngIf="ad.show">
                 <div class="newsContent">
                     <p><img [src]="ad.adProof" alt=""></p></div>
+          </div>
+          <div class="news" *ngIf="ad.showAds">
+            <div class="newsContentAd">
+                {{ad['adContent']}}
+            </div>
+      
           </div>
         </div>
     </div>

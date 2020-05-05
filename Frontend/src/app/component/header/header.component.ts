@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(private location: Location, private router:Router) { }
   profilePic=localStorage.getItem("profilePic");
   login=localStorage.getItem("canNavigate");
+  link='wwww.google.com';
   ngOnInit() {
     // if(this.isLogin===""){
     // this.isLogin=localStorage.getItem("canNavigate");
@@ -92,5 +93,9 @@ export class HeaderComponent implements OnInit {
         x.className = "topnav";
       }
     }
+    goToLink(){
+      window.open("https://adsensevapp.herokuapp.com/", "_blank");
+  }
+
   }
 

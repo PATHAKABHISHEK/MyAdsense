@@ -27,6 +27,7 @@
   <a routerLink="/userProfile">View Profile</a>
   <a *ngIf="userRole==='SUBSCRIBER'" routerLink="/myAds">My ADs</a>
   <a *ngIf="userRole==='PUBLISHER'" routerLink="/myPublishedAds">My Published Ads</a>
+  <a  target="_blank" (click)="goToLink()">Adsense VApp</a>
   <a routerLink="/" (click)="clearLocalStorage()"> Logout</a>
 </div>
 

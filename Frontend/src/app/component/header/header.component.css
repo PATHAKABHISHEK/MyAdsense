@@ -161,11 +161,10 @@ body {margin:0;font-family:Arial}
     width: 100%;
     text-align: left;
   }
-  .vertical-menu{
+  /* .vertical-menu{
       position: relative;
       right: 300px;
-
-    }
+    } */
 }
 
 nav{

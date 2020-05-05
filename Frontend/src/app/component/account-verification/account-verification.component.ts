@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
-
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-account-verification',
   templateUrl: './account-verification.component.html',
@@ -10,7 +10,7 @@ export class AccountVerificationComponent implements OnInit {
   id = localStorage.getItem("userId");
   accountVerificationCode;
   emailId=localStorage.getItem("emailId");
-  constructor(public userService:UserService) { }
+  constructor(public userService:UserService,private router:Router) { }
 
   ngOnInit() {
   
@@ -18,6 +18,7 @@ export class AccountVerificationComponent implements OnInit {
   verify(){
     this.userService.verifyAccount(this.id, this.accountVerificationCode).subscribe(res => {
       console.log(res);
+      this.router.navigateByUrl("/");
     })
   }
 
